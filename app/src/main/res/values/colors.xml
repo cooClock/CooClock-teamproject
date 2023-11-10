@@ -12,4 +12,7 @@
     <color name="pc_yello">#FFD338</color>
     <color name="pc_orange">#FF400C</color>
 
+    <!-- filtering page btn color   -->
+    <color name="btn_bg">#F5F5F5</color>
+    <color name="btn_text">#798184</color>
 </resources>
