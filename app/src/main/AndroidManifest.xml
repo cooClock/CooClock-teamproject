@@ -13,6 +13,36 @@
         android:theme="@style/Theme.CooClock"
         tools:targetApi="31">
         <activity
+            android:name=".setting_page"
+            android:exported="false" />
+        <activity
+            android:name=".recipe_page"
+            android:exported="false" />
+        <activity
+            android:name=".my_recipe_page"
+            android:exported="false" />
+        <activity
+            android:name=".profile_page"
+            android:exported="false" />
+        <activity
+            android:name=".favorite_recipe_page"
+            android:exported="false" />
+        <activity
+            android:name=".camera_scan_page"
+            android:exported="false" />
+        <activity
+            android:name=".photo_scan_page"
+            android:exported="false" />
+        <activity
+            android:name=".add_ingredient_self_page"
+            android:exported="false" />
+        <activity
+            android:name=".my_refrigerator_page"
+            android:exported="false" />
+        <activity
+            android:name=".recipe_write_page"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
