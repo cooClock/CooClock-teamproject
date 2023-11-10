@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">CooClock</string>
+    <string name="find_recipe">레시피를 검색해보세요</string>
+    <string name="filter_pg_edit_text">검색 내용을 입력해주세요</string>
+
+    <string name="username">김클락님</string>
+
+    <string name="filter_d0">필터</string>
+    <string name="filter_d1">선택한 재료를 바탕으로 </string>
+    <string name="filter_d2">최적의 레시피</string>
+    <string name="filter_d3">를 추천합니다.</string>
+
+    <string name="coock_time0">요리 시간</string>
+    <string name="coock_time1">~ 15분</string>
+    <string name="coock_time2">16분 ~ 30분</string>
+    <string name="coock_time3">31분~ 59분</string>
+    <string name="coock_time4">1시간 이상</string>
 </resources>
