@@ -27,13 +27,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".category_select_page"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".filtering_page"
             android:exported="false">
             <meta-data
