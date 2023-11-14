@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,7 +30,7 @@ public class signin_page extends AppCompatActivity {
         setContentView(R.layout.activity_signin_page);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("cooclock");
 
         mEtID = findViewById(R.id.et_id);
         mEtPwd = findViewById(R.id.et_pw);
@@ -49,6 +50,17 @@ public class signin_page extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
+                            UserAccount account = new UserAccount();
+                            account.setIdToken(firebaseUser.getUid());
+                            account.setEmailId(firebaseUser.getEmail());
+                            account.setPassword(strPW);
+
+                            mDatabaseRef.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
+
+                            Toast.makeText(signin_page.this, "회원가입에 성공하셨습니다.",Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(signin_page.this, "회원가입에 실패하셨습니다.",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
