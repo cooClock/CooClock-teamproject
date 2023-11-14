@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -50,7 +51,7 @@ public class login_page extends AppCompatActivity {
                             startActivity(intent);
                             finish(); //현재 액티비티 파괴
                         } else{
-
+                            Toast.makeText(signin_page.this, "로그인에 실패하셨습니다.",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
