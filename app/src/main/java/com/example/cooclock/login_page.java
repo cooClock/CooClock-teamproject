@@ -51,7 +51,7 @@ public class login_page extends AppCompatActivity {
                             startActivity(intent);
                             finish(); //현재 액티비티 파괴
                         } else{
-                            Toast.makeText(signin_page.this, "로그인에 실패하셨습니다.",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(login_page.this, "로그인에 실패하셨습니다.",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
