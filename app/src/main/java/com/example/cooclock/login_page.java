@@ -60,6 +60,14 @@ public class login_page extends AppCompatActivity {
 
 
 
+        Button btn_google_register = (Button) findViewById(R.id.btn_google_register);
+        btn_google_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),signin_page.class);
+                startActivity(intent);
+            }
+        });
         Button btn_register = (Button) findViewById(R.id.btn_register);
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
