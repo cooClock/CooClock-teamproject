@@ -4,6 +4,129 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFD338"
     tools:context=".signin_page">
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:background="@drawable/login_rect"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="131dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="242dp"
+        android:layout_height="245dp"
+        android:src="@tools:sample/avatars"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:srcCompat="@drawable/logo_1" />
+
+    <TextView
+        android:id="@+id/logintext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:textColor="#0A191E"
+        android:textSize="38dp"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="229dp" />
+
+    <TextView
+        android:id="@+id/logindetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cooClock의 다양한 서비스를 경험하세요."
+        android:textColor="#8F9698"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="284dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:textColor="#000000"
+        android:textSize="20.7dp"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="322dp" />
+
+    <EditText
+        android:id="@+id/id"
+        android:layout_width="371dp"
+        android:layout_height="54.08dp"
+        android:background="@drawable/login_editbox_background"
+        android:hint="아이디"
+        android:paddingLeft="15dp"
+        android:textColorHint="#818080"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="350dp"></EditText>
+
+    <TextView
+        android:id="@+id/Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textColor="#000000"
+        android:textSize="20.7dp"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="418dp" />
+
+    <TextView
+        android:id="@+id/Passwordcheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password Check"
+        android:textColor="#000000"
+        android:textSize="20.7dp"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="523dp" />
+
+    <EditText
+        android:id="@+id/pw"
+        android:layout_width="371dp"
+        android:layout_height="54.08dp"
+        android:background="@drawable/login_editbox_background"
+        android:hint="비밀번호"
+        android:paddingLeft="15dp"
+        android:textColorHint="#818080"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="446dp"></EditText>
+
+    <EditText
+        android:id="@+id/pw2"
+        android:layout_width="371dp"
+        android:layout_height="54.08dp"
+        android:background="@drawable/login_editbox_background"
+        android:hint="비밀번호 확인"
+        android:paddingLeft="15dp"
+        android:textColorHint="#818080"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="551dp"></EditText>
+
+    <Button
+        android:id="@+id/loginbtn"
+        android:layout_width="371dp"
+        android:layout_height="54.08dp"
+        android:background="@drawable/login_button_gradient"
+        android:text="Sign in"
+        android:textSize="20.7sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="626dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
