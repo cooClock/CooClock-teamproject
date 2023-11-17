@@ -8,25 +8,16 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.GridLayout;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 
 import java.util.ArrayList;
@@ -139,7 +130,7 @@ public class main_page extends AppCompatActivity {
             items.add(new subCategroyItem("데이트",R.drawable.food_situation_date));
             items.add(new subCategroyItem("보양식",R.drawable.food_situation_health));
             items.add(new subCategroyItem("도시락",R.drawable.food_situation_lunchbox));
-            items.add(new subCategroyItem("아이용",R.drawable.food_situation_child));
+            items.add(new subCategroyItem("아이용", R.drawable.food_situation_child));
             items.add(new subCategroyItem("이유식",R.drawable.food_situation_baby));
         }
 
