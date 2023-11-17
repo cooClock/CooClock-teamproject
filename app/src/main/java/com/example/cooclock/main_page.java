@@ -3,11 +3,13 @@ package com.example.cooclock;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
@@ -15,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -23,7 +26,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 
 import java.util.ArrayList;
@@ -37,8 +39,8 @@ public class main_page extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
         // 카테고리 선택 버튼(라디오 그룹)
         MaterialButtonToggleGroup categorySelect = findViewById(R.id.category_select);
-        MaterialButton foodType = findViewById(R.id.food_type);
-        MaterialButton foodSituation = findViewById(R.id.food_situation);
+        Button foodType = findViewById(R.id.food_type);
+        Button foodSituation = findViewById(R.id.food_situation);
         Log.d(TAG,"asdaf");
         // 그리드 뷰 배치
         updateSubCategories();
@@ -110,6 +112,10 @@ public class main_page extends AppCompatActivity {
         MaterialButtonToggleGroup categoryToggleGroup = findViewById(R.id.category_select);
         int selectedMainCategoryId = categoryToggleGroup.getCheckedButtonId(); // 어떤 것이 눌려져있는지 확인
         if (selectedMainCategoryId != R.id.food_situation){
+            Button btn = findViewById(R.id.food_type);
+            Button btn2 = findViewById(R.id.food_situation);
+            btn.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.pc_yello)));
+            btn2.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.white)));
             items.add(new subCategroyItem("한식",R.drawable.food_type_korea));
             items.add(new subCategroyItem("일식",R.drawable.food_type_japan));
             items.add(new subCategroyItem("중식",R.drawable.food_type_china));
@@ -120,6 +126,11 @@ public class main_page extends AppCompatActivity {
             items.add(new subCategroyItem("반찬류",R.drawable.food_type_side));
         }
         else{
+            Button btn = findViewById(R.id.food_type);
+            Button btn2 = findViewById(R.id.food_situation);
+            btn.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.white)));
+            btn2.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.pc_yello)));
+
             items.add(new subCategroyItem("소주상",R.drawable.food_situation_soju));
             items.add(new subCategroyItem("맥주상",R.drawable.food_situation_beer));
             items.add(new subCategroyItem("대접용",R.drawable.food_situation_hospitality));

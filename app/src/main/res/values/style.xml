@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme -->
+    <style name="AppTheme" parent="Theme.Material3.DayNight">
+        <!-- Your app theme attributes go here -->
+    </style>
+
+    <!-- Button style -->
+    <style name="MyButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="backgroundTint">
+        </item>
+    </style>
+</resources>
