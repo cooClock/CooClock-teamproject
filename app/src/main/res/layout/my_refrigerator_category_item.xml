@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:elevation="4dp">
+    <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="130dp"
+        android:gravity="center"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/my_refrigerator_category_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"/>
+        <TextView
+            android:id="@+id/my_refrigerator_category_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="카테고리"
+            android:textColor="@color/black"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:textSize="18dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"/>
+    </LinearLayout>
+</LinearLayout>
