@@ -169,20 +169,22 @@
                 app:singleSelection="true"
                 app:backgroundTint="@drawable/search_edit_text_border">
 
-                <com.google.android.material.button.MaterialButton
+                <Button
+                    style="?attr/materialButtonOutlinedStyle"
                     android:id="@+id/food_type"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="종류별"
-                    app:toggleCheckedStateOnClick="true"/>
+                    app:toggleCheckedStateOnClick="true"
+                    app:strokeColor="@color/pc_yello"/>
 
-                <com.google.android.material.button.MaterialButton
+                <Button
+                    style="?attr/materialButtonOutlinedStyle"
                     android:id="@+id/food_situation"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="상황별" />
+                    android:text="상황별"
+                    app:strokeColor="@color/pc_yello"/>
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
             <!-- 세부 카테고리 표시 부 -->
