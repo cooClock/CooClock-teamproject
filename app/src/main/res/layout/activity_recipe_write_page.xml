@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".recipe_write_page">
+    tools:context=".recipe_write_page"
+    android:background="#999999">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

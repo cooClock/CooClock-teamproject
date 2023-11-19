@@ -8,17 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class recipe_write_page extends Fragment {
+public class home_page extends Fragment {
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_recipe_write_page);
-//    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                          Bundle savedInstanceState){
 
-        return inflater.inflate(R.layout.activity_recipe_write_page,container,false);
+        return inflater.inflate(R.layout.activity_main_page,container,false);
     }
 }

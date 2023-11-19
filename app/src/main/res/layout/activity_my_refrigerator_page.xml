@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".my_refrigerator_page">
+    tools:context=".my_refrigerator_page"
+    android:background="#42ed45">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
