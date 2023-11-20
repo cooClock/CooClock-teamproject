@@ -33,7 +33,6 @@ public class main_page extends AppCompatActivity {
         MaterialButtonToggleGroup categorySelect = findViewById(R.id.category_select);
         Button foodType = findViewById(R.id.food_type);
         Button foodSituation = findViewById(R.id.food_situation);
-        Log.d(TAG,"asdaf");
         // 그리드 뷰 배치
         updateSubCategories();
         // 리스트 뷰 배치

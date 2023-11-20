@@ -14,20 +14,20 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class my_recipe_page extends AppCompatActivity {
+public class recent_recipe_page extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_recipe_page);
-        updateMyRecipeList();
+        setContentView(R.layout.activity_recent_recipe_page);
+        updateRecentRecipeList();
     }
 
 
     /*
-    내가 올린 레시피
+    최근 본 레시피
     */
-    // 내가 올린 레시피 리스트리사이클러 뷰를 위한 뷰 홀더
+    // 최근 본 레시피 리스트리사이클러 뷰를 위한 뷰 홀더
     public static class RecipeListCustomViewHolder extends RecyclerView.ViewHolder {
         private ImageView recipe_image;
         private TextView recipe_title;
@@ -43,8 +43,8 @@ public class my_recipe_page extends AppCompatActivity {
         }
     }
 
-    // 내가 올린 레시피 리스트를 관리할 adapter
-    public static class RecipeListCustomAdapter extends RecyclerView.Adapter<my_recipe_page.RecipeListCustomViewHolder> {
+    // 최근 본 레시피 리스트를 관리할 adapter
+    public static class RecipeListCustomAdapter extends RecyclerView.Adapter<recent_recipe_page.RecipeListCustomViewHolder> {
         ArrayList<recipeItem> items;
 
         public RecipeListCustomAdapter(ArrayList<recipeItem> a_list){
@@ -53,13 +53,13 @@ public class my_recipe_page extends AppCompatActivity {
 
         @NonNull
         @Override
-        public my_recipe_page.RecipeListCustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public recent_recipe_page.RecipeListCustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_list_item, parent, false);
-            return new my_recipe_page.RecipeListCustomViewHolder(view);
+            return new recent_recipe_page.RecipeListCustomViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull my_recipe_page.RecipeListCustomViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull recent_recipe_page.RecipeListCustomViewHolder holder, int position) {
             recipeItem item = items.get(position);
             holder.recipe_image.setImageResource(item.getResId());
             holder.recipe_title.setText(item.getTitle());
@@ -72,12 +72,11 @@ public class my_recipe_page extends AppCompatActivity {
             return items.size();
         }
 
-        // 어댑터의 내용...
     }
 
-    // 내가 올린 레시피 리스트 업데이트 코드
-    private void updateMyRecipeList(){
-        RecyclerView myRecipeList = findViewById(R.id.my_recipe_list);
+    // 최근 본 레시피리스트 업데이트 코드
+    private void updateRecentRecipeList(){
+        RecyclerView recentRecipeList = findViewById(R.id.recent_recipe_list);
 //        myRefrigeratorCategory.removeAllViews();
 
         ArrayList<recipeItem> items = new ArrayList<recipeItem>();
@@ -90,12 +89,12 @@ public class my_recipe_page extends AppCompatActivity {
         items.add(new recipeItem("멸치 볶음", R.drawable.recipe_list_test2,20,100));
         items.add(new recipeItem("된장 찌개", R.drawable.recipe_list_test1,30,500));
 
-        my_recipe_page.RecipeListCustomAdapter rlAdapter = new my_recipe_page.RecipeListCustomAdapter(items);
-        myRecipeList.setAdapter(rlAdapter);
+        recent_recipe_page.RecipeListCustomAdapter rlAdapter = new recent_recipe_page.RecipeListCustomAdapter(items);
+        recentRecipeList.setAdapter(rlAdapter);
 
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
-        myRecipeList.setLayoutManager(layoutManager);
+        recentRecipeList.setLayoutManager(layoutManager);
     }
 
 }
