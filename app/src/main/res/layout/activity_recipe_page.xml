@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- 모든 아이템? 뷰?를 한번에 표시하고 스크롤이 이중으로 적용되지 않도록 함 -->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".recipe_page">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- 상단 이미지 -->
+
+    <!-- 레시피 제목 -->
+
+    <!-- -->
+
+</androidx.core.widget.NestedScrollView>
