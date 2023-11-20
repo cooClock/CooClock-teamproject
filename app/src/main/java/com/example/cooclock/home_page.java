@@ -13,7 +13,7 @@ public class home_page extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                          Bundle savedInstanceState){
-
+//        ((main_page)getActivity()).updateSubCategories();
         return inflater.inflate(R.layout.activity_main_page,container,false);
     }
 }

@@ -2,9 +2,11 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:color="@color/pc_yello"
-        android:state_checked="true"/>
+        android:backgroundTint="@color/white"
+        android:state_checked="true" />
 
     <item
         android:color="@color/pc_unclicked"
+        android:backgroundTint="@color/white"
         android:state_checked="false"/>
 </selector>
