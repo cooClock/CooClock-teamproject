@@ -11,7 +11,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".filtering_page">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -65,23 +67,13 @@
 
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="20dp">
 
-            <!-- 검색어 입력칸 -->
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/filter_pg_edit_text"
-                android:textColorHint="@color/pc_yello"
-                android:background="@drawable/search_edit_text_border"
-                android:textSize="15dp"
-                android:fontFamily="@font/notosanskr_medium"
-                android:paddingLeft="15dp"
-                android:layout_marginBottom="20dp"/>
 
             <!-- 필터 타이틀 -->
             <TextView
@@ -99,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="30dp">
+                android:layout_marginBottom="20dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -126,6 +118,36 @@
                     android:fontFamily="@font/notosanskr_regular"
                     android:includeFontPadding="false" />
             </LinearLayout>
+
+
+            <!-- 검색어 입력칸 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="30dp"
+                android:paddingLeft="15dp"
+                android:background="@drawable/search_edit_text_border">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/search_icon"
+                    android:layout_gravity="center"/>
+
+                <EditText
+                    android:id="@+id/search_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:layout_margin="1dp"
+                    android:hint="@string/main_pg_search_hint"
+                    android:textColorHint="@color/pc_yello"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:background="#FFFFFF" />
+            </LinearLayout>
+
+
 
             <!-- 요리 시간 타이틀 -->
             <TextView
