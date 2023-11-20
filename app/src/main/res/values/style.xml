@@ -12,4 +12,10 @@
         <item name="backgroundTint">@android:color/white</item>
     </style>
 
+    <!--   menu icon clicked -->
+    <style name="BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="itemIconTint">@drawable/menu_click_color</item>
+        <item name="itemTextColor">@drawable/menu_click_color</item>
+    </style>
+
 </resources>

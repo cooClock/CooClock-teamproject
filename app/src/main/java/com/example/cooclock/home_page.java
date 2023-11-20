@@ -62,6 +62,14 @@ public class home_page extends Fragment {
             }
         });
 
+//        ImageView goto_my_refrigerator = rootView.findViewById(R.id.go_my_refrigerator);
+//        goto_my_refrigerator.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
+
         return rootView;
     }
 

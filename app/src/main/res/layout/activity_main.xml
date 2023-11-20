@@ -20,6 +20,7 @@
         app:menu="@menu/navi_menu"
         tools:ignore="MissingConstraints"
         />
+<!--    style="@style/BottomNavigationView"-->
     <!--    app:labelVisibilityMode="unlabeled"-->
 
     <FrameLayout
