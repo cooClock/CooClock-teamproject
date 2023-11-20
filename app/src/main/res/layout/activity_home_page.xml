@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".favorite_recipe_page"
-    android:background="#5f92d2">
+    tools:context=".home_page">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
