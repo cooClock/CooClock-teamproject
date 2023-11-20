@@ -1,7 +1,13 @@
 <resources>
+<!--    앱 이름 -->
     <string name="app_name">CooClock</string>
+
+<!--    페이지 상단 구문 -->
     <string name="find_recipe">레시피를 검색해보세요</string>
     <string name="filter_pg_edit_text">검색 내용을 입력해주세요</string>
+    <string name="my_refrigerator_page_text">내 냉장고 속 재료를 추가해보세요.</string>
+    <string name="favorite_page_text">즐겨찾는 레시피를 확인해보세요.</string>
+    <string name="mypage_text">마이페이지 입니다.</string>
 
     <string name="username">김클락님</string>
 

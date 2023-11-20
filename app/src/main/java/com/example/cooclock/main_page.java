@@ -56,9 +56,9 @@ public class main_page extends AppCompatActivity {
             }
         });
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_FrameLayout, new home_page())
-                .commit();
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.main_FrameLayout, new home_page())
+//                .commit();
     }
 
 
@@ -68,8 +68,8 @@ public class main_page extends AppCompatActivity {
      */
     // 세부 카테고리 리사이클러 뷰를 위한 뷰 홀더
     public static class SubCategoryCustomViewHolder extends RecyclerView.ViewHolder {
-        private ImageView category_icon;
-        private TextView category_name;
+        ImageView category_icon;
+        TextView category_name;
         public SubCategoryCustomViewHolder(@NonNull View itemView) {
             super(itemView);
             category_icon = itemView.findViewById(R.id.subCategory_icon);
@@ -160,10 +160,10 @@ public class main_page extends AppCompatActivity {
     */
     // 추천 레시피 리스트리사이클러 뷰를 위한 뷰 홀더
     public static class RecipeListCustomViewHolder extends RecyclerView.ViewHolder {
-        private ImageView recipe_image;
-        private TextView recipe_title;
-        private TextView recipe_time;
-        private TextView recipe_like;
+        ImageView recipe_image;
+        TextView recipe_title;
+        TextView recipe_time;
+        TextView recipe_like;
 
         public RecipeListCustomViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -230,8 +230,8 @@ public class main_page extends AppCompatActivity {
      */
     // 재료 카테고리 리사이클러 뷰를 위한 뷰 홀더
     public static class CustomViewHolder extends RecyclerView.ViewHolder {
-        private ImageView category_icon;
-        private TextView category_name;
+        ImageView category_icon;
+        TextView category_name;
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
             category_icon = itemView.findViewById(R.id.my_refrigerator_category_icon);

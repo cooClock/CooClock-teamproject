@@ -25,6 +25,8 @@
     <FrameLayout
         android:id="@+id/main_FrameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@id/navigationView" />
+    <!--        app:layout_alignParentTop="true"-->
 
 </RelativeLayout>
