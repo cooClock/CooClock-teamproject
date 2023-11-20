@@ -34,7 +34,7 @@ public class main_page extends AppCompatActivity {
     private String TAG = "MAIN_PAGE";
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
         // 카테고리 선택 버튼(라디오 그룹)
@@ -55,6 +55,10 @@ public class main_page extends AppCompatActivity {
                 updateSubCategories();
             }
         });
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_FrameLayout, new home_page())
+                .commit();
     }
 
 
@@ -104,7 +108,7 @@ public class main_page extends AppCompatActivity {
     }
 
     // 세부 카테고리 업데이트 코드
-    private void updateSubCategories(){
+    public void updateSubCategories(){
         RecyclerView subCategory = findViewById(R.id.subCategory);
 //        myRefrigeratorCategory.removeAllViews();
 

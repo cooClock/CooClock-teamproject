@@ -9,7 +9,7 @@
     <!-- Button style -->
     <style name="MyButtonStyle" parent="Widget.MaterialComponents.Button">
         <item name="android:textColor">@android:color/white</item>
-        <item name="backgroundTint">
-        </item>
+        <item name="backgroundTint">@android:color/white</item>
     </style>
+
 </resources>
