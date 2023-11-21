@@ -20,10 +20,13 @@
     <string name="filter_d3">를 추천합니다.</string>
 
     <string name="coock_time0">요리 시간</string>
-    <string name="coock_time1">~15분</string>
-    <string name="coock_time2">15~30분</string>
-    <string name="coock_time3">30~60분</string>
-    <string name="coock_time4">60분~</string>
+    <string name="coock_time1">15분 이하</string>
+    <string name="coock_time2">30분</string>
+    <string name="coock_time3">60분 이상</string>
+
+    <string name="time_step1">15 이하</string>
+    <string name="time_step2">30</string>
+    <string name="time_step3">60 이상</string>
 
     <string name="my_refrigerator_ingredient">나의 냉장고 재료</string>
     <string name="main_pg_search_hint">요리, 재료를 입력해주세요.</string>
@@ -43,7 +46,7 @@
     <string name="write_the_food_name">음식 이름을 입력하세요.</string>
     <string name="food_category">카테고리</string>
     <string name="check_the_food_category">카테고리를 선택하세요.</string>
-    <string name="coock_time">요리 시간</string>
+    <string name="coock_time">요리 시간(분)</string>
     <string name="food_ingredient">재료</string>
     <string name="write_the_ingredient">재료를 입력하세요.</string>
     <string name="add_the_ingredient">재료 추가하기</string>

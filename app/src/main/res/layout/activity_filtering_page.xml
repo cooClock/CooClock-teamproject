@@ -12,6 +12,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".filtering_page">
     <LinearLayout
@@ -148,28 +149,28 @@
             </LinearLayout>
 
 
-
-            <!-- 요리 시간 타이틀 -->
+            <!--  요리시간  title    -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/coock_time0"
+                android:text="@string/coock_time"
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="10dp"/>
 
-            <!-- 요리 시간 버튼 4개 -->
+
+            <!-- 요리 시간 버튼 3개 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center"
                 android:layout_marginBottom="30dp">
                 <Button
-                    android:layout_width="80dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="@string/coock_time1"
                     android:fontFamily="@font/notosanskr_medium"
                     android:textSize="13dp"
@@ -179,8 +180,9 @@
                     android:layout_marginRight="10dp"
                     android:padding="0dp"/>
                 <Button
-                    android:layout_width="90dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="@string/coock_time2"
                     android:fontFamily="@font/notosanskr_medium"
                     android:textSize="13dp"
@@ -189,8 +191,9 @@
                     android:textColor="@color/btn_text"
                     android:layout_marginRight="10dp"/>
                 <Button
-                    android:layout_width="90dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="@string/coock_time3"
                     android:fontFamily="@font/notosanskr_medium"
                     android:textSize="13dp"
@@ -198,15 +201,6 @@
                     android:backgroundTint="@color/btn_bg"
                     android:textColor="@color/btn_text"
                     android:layout_marginRight="10dp"/>
-                <Button
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/coock_time4"
-                    android:fontFamily="@font/notosanskr_medium"
-                    android:textSize="13dp"
-                    android:includeFontPadding="false"
-                    android:backgroundTint="@color/btn_bg"
-                    android:textColor="@color/btn_text" />
             </LinearLayout>
 
             <!-- 나의 냉장고 타이틀 -->
