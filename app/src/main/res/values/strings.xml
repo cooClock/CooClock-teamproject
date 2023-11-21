@@ -27,4 +27,10 @@
     <string name="main_myr_d0">나의 냉장고</string>
     <string name="main_myr_d1">당신의 냉장고 속 재료를 추가하세요</string>
     <string name="my_recipe_d0">내가 올린 레시피</string>
+    <string name="recipe_page_user_d1">님의 레시피</string>
+    <string name="recipe_page_user_d0">이재원</string>
+    <string name="recipe_page_title_d0">4</string>
+    <string name="recipe_page_title_d1">인분 기준</string>
+    <string name="recipe_page_title_d2">둘이 먹다 하나 죽어도 모르는 만둣국</string>
+    <string name="recipe_page_ingredient_d0">재료</string>
 </resources>
