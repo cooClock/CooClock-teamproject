@@ -163,11 +163,13 @@
 
             <!-- 요리 시간 버튼 3개 -->
             <LinearLayout
+                android:id="@+id/cookTimeRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginBottom="30dp">
                 <Button
+                    android:id="@+id/cookTime1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -175,11 +177,12 @@
                     android:fontFamily="@font/notosanskr_medium"
                     android:textSize="13dp"
                     android:includeFontPadding="false"
-                    android:backgroundTint="@color/btn_bg"
+                    android:backgroundTint="@color/buttonOffColor"
                     android:textColor="@color/btn_text"
                     android:layout_marginRight="10dp"
                     android:padding="0dp"/>
                 <Button
+                    android:id="@+id/cookTime2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -187,10 +190,11 @@
                     android:fontFamily="@font/notosanskr_medium"
                     android:textSize="13dp"
                     android:includeFontPadding="false"
-                    android:backgroundTint="@color/btn_bg"
+                    android:backgroundTint="@color/buttonOffColor"
                     android:textColor="@color/btn_text"
                     android:layout_marginRight="10dp"/>
                 <Button
+                    android:id="@+id/cookTime3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -198,7 +202,7 @@
                     android:fontFamily="@font/notosanskr_medium"
                     android:textSize="13dp"
                     android:includeFontPadding="false"
-                    android:backgroundTint="@color/btn_bg"
+                    android:backgroundTint="@color/buttonOffColor"
                     android:textColor="@color/btn_text"
                     android:layout_marginRight="10dp"/>
             </LinearLayout>
@@ -230,7 +234,8 @@
                     android:backgroundTint="@color/btn_bg"
                     android:textColor="@color/btn_text"
                     android:layout_marginRight="10dp"
-                    android:padding="0dp"/>
+                    android:padding="0dp"
+                    android:onClick="btnClicked"/>
                 <Button
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
@@ -240,7 +245,8 @@
                     android:includeFontPadding="false"
                     android:backgroundTint="@color/btn_bg"
                     android:textColor="@color/btn_text"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:onClick="btnClicked"/>
                 <Button
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
@@ -250,7 +256,8 @@
                     android:includeFontPadding="false"
                     android:backgroundTint="@color/btn_bg"
                     android:textColor="@color/btn_text"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:onClick="btnClicked"/>
                 <Button
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
@@ -259,7 +266,8 @@
                     android:textSize="13dp"
                     android:includeFontPadding="false"
                     android:backgroundTint="@color/btn_bg"
-                    android:textColor="@color/btn_text" />
+                    android:textColor="@color/btn_text"
+                    android:onClick="btnClicked"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -276,7 +284,8 @@
                     android:backgroundTint="@color/btn_bg"
                     android:textColor="@color/btn_text"
                     android:layout_marginRight="10dp"
-                    android:padding="0dp"/>
+                    android:padding="0dp"
+                    android:onClick="btnClicked"/>
                 <Button
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
@@ -286,7 +295,8 @@
                     android:includeFontPadding="false"
                     android:backgroundTint="@color/btn_bg"
                     android:textColor="@color/btn_text"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:onClick="btnClicked"/>
                 <Button
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
@@ -296,7 +306,8 @@
                     android:includeFontPadding="false"
                     android:backgroundTint="@color/btn_bg"
                     android:textColor="@color/btn_text"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:onClick="btnClicked"/>
                 <Button
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
@@ -305,7 +316,8 @@
                     android:textSize="13dp"
                     android:includeFontPadding="false"
                     android:backgroundTint="@color/btn_bg"
-                    android:textColor="@color/btn_text" />
+                    android:textColor="@color/btn_text"
+                    android:onClick="btnClicked"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -322,7 +334,8 @@
                     android:backgroundTint="@color/btn_bg"
                     android:textColor="@color/btn_text"
                     android:layout_marginRight="10dp"
-                    android:padding="0dp"/>
+                    android:padding="0dp"
+                    android:onClick="btnClicked"/>
                 <Button
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
@@ -332,7 +345,8 @@
                     android:includeFontPadding="false"
                     android:backgroundTint="@color/btn_bg"
                     android:textColor="@color/btn_text"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:onClick="btnClicked"/>
                 <Button
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
@@ -342,7 +356,8 @@
                     android:includeFontPadding="false"
                     android:backgroundTint="@color/btn_bg"
                     android:textColor="@color/btn_text"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:onClick="btnClicked"/>
                 <Button
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
@@ -351,7 +366,8 @@
                     android:textSize="13dp"
                     android:includeFontPadding="false"
                     android:backgroundTint="@color/btn_bg"
-                    android:textColor="@color/btn_text" />
+                    android:textColor="@color/btn_text"
+                    android:onClick="btnClicked"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -368,7 +384,8 @@
                     android:backgroundTint="@color/btn_bg"
                     android:textColor="@color/btn_text"
                     android:layout_marginRight="10dp"
-                    android:padding="0dp"/>
+                    android:padding="0dp"
+                    android:onClick="btnClicked"/>
                 <Button
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
@@ -378,7 +395,8 @@
                     android:includeFontPadding="false"
                     android:backgroundTint="@color/btn_bg"
                     android:textColor="@color/btn_text"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:onClick="btnClicked"/>
                 <Button
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
@@ -388,7 +406,8 @@
                     android:includeFontPadding="false"
                     android:backgroundTint="@color/btn_bg"
                     android:textColor="@color/btn_text"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:onClick="btnClicked"/>
             </LinearLayout>
             <TextView
                 android:layout_width="match_parent"

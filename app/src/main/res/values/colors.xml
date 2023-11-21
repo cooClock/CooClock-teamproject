@@ -18,6 +18,9 @@
     <color name="btn_bg">#F5F5F5</color>
     <color name="btn_text">#798184</color>
 
+    <color name="buttonOnColor">#FFD338</color>
+    <color name="buttonOffColor">#F5F5F5</color>
+
     <color name="selected_button_color">#FFD338</color>
     <color name="default_button_color">#FFFFFF</color>
 </resources>
