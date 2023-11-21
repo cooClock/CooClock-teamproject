@@ -1,11 +1,20 @@
 package com.example.cooclock;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class filtering_page extends AppCompatActivity {
     private Button cookTime1Btn;
@@ -15,6 +24,10 @@ public class filtering_page extends AppCompatActivity {
     private boolean isButton1On = false;
     private boolean isButton2On = false;
     private boolean isButton3On = false;
+
+    private RecyclerView mRecyclerView;
+    private MyRecyclerAdapter mRecyclerAdapter;
+    private ArrayList<FriendItem> mfriendItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +50,40 @@ public class filtering_page extends AppCompatActivity {
         cookTime2Btn.setOnClickListener(commonClickListener);
         cookTime3Btn.setOnClickListener(commonClickListener);
 
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.ingredient_btn_recyclerView);
+
+        /* initiate adapter */
+        mRecyclerAdapter = new MyRecyclerAdapter();
+
+        /* initiate recyclerview */
+        mRecyclerView.setAdapter(mRecyclerAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL,false));
+
+        /* adapt data */
+        mfriendItems = new ArrayList<>();
+        for(int i=1;i<=10;i++){
+            if(i%2==0)
+                mfriendItems.add(new FriendItem(R.drawable.profile_off,i+"번째 사람",i+"번째 상태메시지"));
+            else
+                mfriendItems.add(new FriendItem(R.drawable.profile_on,i+"번째 사람",i+"번째 상태메시지"));
+
+        }
+        mRecyclerAdapter.setFriendList(mfriendItems);
+
+//        List<ingredientBtnModel> buttonList = new ArrayList<>();
+//        for (int i = 1; i <= 16; i++) {
+//            buttonList.add(new ingredientBtnModel("Button " + i));
+//            Log.d("logcat","Button"+i);
+//        }
+//        Log.d("logcat","this is :: "+ buttonList.toString());
+//
+//        RecyclerView recyclerView = findViewById(R.id.ingredient_btn_recyclerView);
+//        recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
+//
+//        IngredientButtonAdapter buttonAdapter = new IngredientButtonAdapter(buttonList);
+//        recyclerView.setAdapter(buttonAdapter);
     }
 
     public void handleButtonClick(View view) {
@@ -99,4 +146,60 @@ public class filtering_page extends AppCompatActivity {
             clickedBtn.setTag(true);
         }
     }
+
+    /*
+    나의 냉장고 재료 btn
+    */
+    //버튼 모델을 나타내는 클래스
+//    public static class ingredientBtnModel {
+//        private String buttonText;
+//
+//        public ButtonModel(String buttonText) {
+//            this.buttonText = buttonText;
+//        }
+//
+//        public String getButtonText() {
+//            return buttonText;
+//        }
+//
+//        public void setButtonText(String buttonText) {
+//            this.buttonText = buttonText;
+//        }
+//    }
+//    //버튼 어댑터 생성
+//    public static class IngredientButtonAdapter extends RecyclerView.Adapter<IngredientButtonAdapter.ButtonViewHolder> {
+//
+//        private List<ingredientBtnModel> buttonList;
+//
+//        public IngredientButtonAdapter(List<ingredientBtnModel> buttonList) {
+//            this.buttonList = buttonList;
+//        }
+//
+//        @NonNull
+//        @Override
+//        public ButtonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ref_ingredient_btn, parent, false);
+//            return new ButtonViewHolder(view);
+//        }
+//
+//        @Override
+//        public void onBindViewHolder(@NonNull ButtonViewHolder holder, int position) {
+//            ingredientBtnModel buttonModel = buttonList.get(position);
+//            holder.button.setText(buttonModel.getButtonText());
+//        }
+//
+//        @Override
+//        public int getItemCount() {
+//            return buttonList.size();
+//        }
+//
+//        public static class ButtonViewHolder extends RecyclerView.ViewHolder {
+//            Button button;
+//
+//            public ButtonViewHolder(@NonNull View itemView) {
+//                super(itemView);
+//                button = itemView.findViewById(R.id.ingredient_btn);
+//             }
+//        }
+//    }
 }
