@@ -243,7 +243,7 @@
                     android:textSize="20dp"/>
             </LinearLayout>
             <!-- 4-3. progress bar -->
-            <com.google.android.material.progressindicator.LinearProgressIndicatorㅌ
+            <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/recipe_progress_bar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
