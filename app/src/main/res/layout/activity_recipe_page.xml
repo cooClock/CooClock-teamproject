@@ -254,18 +254,304 @@
                 app:indicatorTrackGapSize="12dp"
                 app:trackStopIndicatorSize="12dp"/>
             <!-- 4-4. 타이머 부분 -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recipe_step_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+        <!-- 5. 관련 노하우 부분 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
+            <!-- 5-1. "관련 노하우" 타이틀 -->
+            <TextView
+                android:layout_width="180dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/recipe_page_d3"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:background="@drawable/recipe_page_title_border"/>
+            <!-- 5-2. 노하우 리스트 -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/know_how_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+            </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
 
-
-
-        <!-- 5. 관련 노하우 부분 -->
-        <!-- 5-1. "관련 노하우" 타이틀 -->
-        <!-- 5-2. 노하우 리스트 -->
-
-
         <!-- 6. 후기 및 별점 부분 -->
-        <!-- 6-1. "후기" 타이틀 -->
-        <!-- 6-2. 별점 표시부 -->
-        <!-- 6-3. 별점 입력 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:padding="15dp">
+            <!-- 6-1. "후기" 타이틀 -->
+            <TextView
+                android:layout_width="180dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/recipe_page_d4"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:background="@drawable/recipe_page_title_border"/>
+            <!-- 6-2. 별점 표시부 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:background="@drawable/recipe_page_rating_background">
+                <!-- 별점 개수 표시부 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <!-- 5개 -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <!-- "5" -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5"
+                            android:fontFamily="@font/notosanskr_medium"
+                            android:includeFontPadding="false"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+                        <!-- 별 모양 -->
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:scaleType="fitXY"
+                            android:layout_gravity="center"
+                            android:src="@drawable/rating_star_icon"
+                            android:paddingLeft="5dp"/>
+                        <!-- 선으로 표시 -->
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/rating_5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            app:trackCornerRadius="10dp"
+                            app:trackThickness="0dp"
+                            app:indicatorColor="@color/green"
+                            app:indicatorTrackGapSize="13dp"
+                            app:trackStopIndicatorSize="13dp"
+                            android:layout_gravity="center"/>
+                    </LinearLayout>
+                    <!-- 4개 -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <!-- "4" -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4"
+                            android:fontFamily="@font/notosanskr_medium"
+                            android:includeFontPadding="false"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+                        <!-- 별 모양 -->
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:scaleType="fitXY"
+                            android:layout_gravity="center"
+                            android:src="@drawable/rating_star_icon"
+                            android:paddingLeft="5dp"/>
+                        <!-- 선으로 표시 -->
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/rating_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            app:trackCornerRadius="10dp"
+                            app:trackThickness="0dp"
+                            app:indicatorColor="@color/green"
+                            app:indicatorTrackGapSize="13dp"
+                            app:trackStopIndicatorSize="13dp"
+                            android:layout_gravity="center"/>
+                    </LinearLayout>
+                    <!-- 3개 -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <!-- "3" -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3"
+                            android:fontFamily="@font/notosanskr_medium"
+                            android:includeFontPadding="false"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+                        <!-- 별 모양 -->
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:scaleType="fitXY"
+                            android:layout_gravity="center"
+                            android:src="@drawable/rating_star_icon"
+                            android:paddingLeft="5dp"/>
+                        <!-- 선으로 표시 -->
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/rating_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            app:trackCornerRadius="10dp"
+                            app:trackThickness="0dp"
+                            app:indicatorColor="@color/green"
+                            app:indicatorTrackGapSize="13dp"
+                            app:trackStopIndicatorSize="13dp"
+                            android:layout_gravity="center"/>
+                    </LinearLayout>
+                    <!-- 2개 -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <!-- "2" -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2"
+                            android:fontFamily="@font/notosanskr_medium"
+                            android:includeFontPadding="false"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+                        <!-- 별 모양 -->
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:scaleType="fitXY"
+                            android:layout_gravity="center"
+                            android:src="@drawable/rating_star_icon"
+                            android:paddingLeft="5dp"/>
+                        <!-- 선으로 표시 -->
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/rating_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            app:trackCornerRadius="10dp"
+                            app:trackThickness="0dp"
+                            app:indicatorColor="@color/green"
+                            app:indicatorTrackGapSize="13dp"
+                            app:trackStopIndicatorSize="13dp"
+                            android:layout_gravity="center"/>
+                    </LinearLayout>
+                    <!-- 1개 -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <!-- "1" -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1"
+                            android:fontFamily="@font/notosanskr_medium"
+                            android:includeFontPadding="false"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+                        <!-- 별 모양 -->
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:scaleType="fitXY"
+                            android:layout_gravity="center"
+                            android:src="@drawable/rating_star_icon"
+                            android:paddingLeft="5dp"/>
+                        <!-- 선으로 표시 -->
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/rating_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            app:trackCornerRadius="10dp"
+                            app:trackThickness="0dp"
+                            app:indicatorColor="@color/green"
+                            app:indicatorTrackGapSize="13dp"
+                            app:trackStopIndicatorSize="13dp"
+                            android:layout_gravity="center"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <!-- 오른족 통계 부분 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="2"
+                    android:paddingRight="10dp">
+                    <!-- 평균 별점 숫자 -->
+                    <TextView
+                        android:id="@+id/rating_average"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1.0"
+                        android:fontFamily="@font/notosanskr_bold"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/black"
+                        android:textSize="30dp"
+                        android:layout_gravity="right"/>
+                    <!-- 평균 별점 모양 -->
+                    <RatingBar
+                        android:id="@+id/raring_bar_average"
+                        style="@style/custom_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        android:stepSize="1"
+                        android:rating="4"
+                        android:max="5"
+                        android:isIndicator="false"/>
+                    <!-- 리뷰 수 텍스트 부 -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <!-- 리뷰수 -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <!-- "Reviews" -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <!-- 6-3. 별점 입력 -->
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

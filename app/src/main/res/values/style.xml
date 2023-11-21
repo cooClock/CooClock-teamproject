@@ -12,4 +12,8 @@
         <item name="backgroundTint">@android:color/white</item>
     </style>
 
+    <style name="custom_rating" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="android:progressDrawable">@drawable/selector_star</item>
+    </style>
+
 </resources>

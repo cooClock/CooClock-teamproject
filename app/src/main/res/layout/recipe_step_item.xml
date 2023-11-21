@@ -7,7 +7,7 @@
 
     <!-- 레시피 단계  -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="340dp"
+        android:layout_width="344dp"
         android:layout_height="560dp">
         <!-- 1. 박스 (노란선) -->
         <LinearLayout
@@ -16,18 +16,21 @@
             android:layout_height="460dp"
             android:background="@drawable/recipe_step_border"
             android:orientation="vertical"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintVertical_bias="1.0"
+            android:elevation="20dp">
             <!-- 3. 레시피 단계 세부 내용 -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="350dp"
                 android:layout_marginTop="110dp"
-                android:padding="10dp">
+                android:padding="10dp"
+                android:orientation="vertical">
                 <!-- 3-1. 상단부 -->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -47,7 +50,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_gravity="center">
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_weight="2">
                         <!-- 3-1-2-1. 레시피 단계 번호 -->
                         <TextView
                             android:id="@+id/recipe_step_number"
@@ -84,20 +89,109 @@
                         android:src="@drawable/back_btn2"
                         android:layout_gravity="right"/>
                 </LinearLayout>
-
-
-                <!-- 3-2. 중간부 -->
-                <!-- 3-2-1. 레시피 설명 텍스트 -->
+                <!-- 3-2. 레시피 설명 텍스트 -->
+                <TextView
+                    android:id="@+id/recipe_step_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/recipe_step_d00"
+                    android:fontFamily="@font/notosanskr_light"
+                    android:includeFontPadding="false"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:isScrollContainer="true"/>
                 <!-- 3-3. 하단부(타이머 부분) -->
-                <!-- 3-3-1. 시간 표시부 -->
-                <!-- 3-3-1-1.분 -->
-                <!-- 3-3-1-2. ":" -->
-                <!-- 3-3-1-3.초 -->
-                <!-- 3-3-2. 버튼부 -->
-                <!-- 3-3-2-1. 시작 -->
-                <!-- 3-3-2-2.일시정지 -->
-                <!-- 3-3-2-3. 처음부터 -->
-                <!-- 3-3-3. 프로그래스 바 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp">
+                    <!-- 3-3-1. 시간 표시부 -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp">
+                        <!-- 3-3-1-1.분 -->
+                        <TextView
+                            android:id="@+id/timer_minute"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="00"
+                            android:fontFamily="@font/notosanskr_extrabold"
+                            android:includeFontPadding="false"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"/>
+                        <!-- 3-3-1-2. ":" -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" : "
+                            android:fontFamily="@font/notosanskr_extrabold"
+                            android:includeFontPadding="false"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"/>
+                        <!-- 3-3-1-3.초 -->
+                        <TextView
+                            android:id="@+id/timer_second"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="00"
+                            android:fontFamily="@font/notosanskr_extrabold"
+                            android:includeFontPadding="false"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"/>
+                        <!-- 3-3-1-4. 시작 -->
+                        <ImageButton
+                            android:id="@+id/timer_start_btn"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:scaleType="fitCenter"
+                            android:background="@color/clear"
+                            android:layout_gravity="center"
+                            android:src="@drawable/timer_start_btn_enabled"
+                            android:layout_marginLeft="10dp"/>
+                        <!-- 3-3-1-5. 일시정지 -->
+                        <ImageButton
+                            android:id="@+id/timer_pause_btn"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:scaleType="fitCenter"
+                            android:background="@color/clear"
+                            android:layout_gravity="center"
+                            android:src="@drawable/timer_pause_btn_disabled"
+                            android:layout_marginLeft="10dp"/>
+                        <!-- 3-3-1-6. 처음부터 -->
+                        <ImageButton
+                            android:id="@+id/timer_reset_btn"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:scaleType="fitCenter"
+                            android:background="@color/clear"
+                            android:layout_gravity="center"
+                            android:src="@drawable/timer_reset_btn"
+                            android:layout_marginLeft="10dp"/>
+                    </LinearLayout>
+
+                    <!-- 3-3-3. progress bar -->
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/recipe_progress_bar"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        app:trackCornerRadius="10dp"
+                        app:trackThickness="10dp"
+                        app:indicatorColor="@color/pc_yello"
+                        app:indicatorTrackGapSize="12dp"
+                        app:trackStopIndicatorSize="12dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"/>
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
@@ -112,7 +206,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:elevation="30dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

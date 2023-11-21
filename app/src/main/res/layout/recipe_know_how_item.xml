@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
+    <!-- 노하우 리스트 객체 1개 -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+        <!-- 노하우 이미지 -->
+        <ImageView
+            android:id="@+id/know_how_item_image"
+            android:layout_width="220dp"
+            android:layout_height="160dp"
+            android:background="@drawable/background_radius_for_image"
+            android:clipToOutline="true"
+            android:src="@drawable/recipe_list_test1"
+            android:scaleType="centerCrop"
+            tools:targetApi="s" />
+        <!-- 레시피 제목 -->
+        <TextView
+            android:id="@+id/know_how_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="~~제목~~"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:textColor="@color/btn_text"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+</LinearLayout>

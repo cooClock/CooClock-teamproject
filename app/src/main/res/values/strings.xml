@@ -33,4 +33,7 @@
     <string name="recipe_page_title_d1">인분 기준</string>
     <string name="recipe_page_title_d2">둘이 먹다 하나 죽어도 모르는 만둣국</string>
     <string name="recipe_page_ingredient_d0">재료</string>
+    <string name="recipe_step_d00">달걀은 흰자, 노른자를 분리하고 약간의 소금을 넣어 풀고 대파는 어슷하게 썰어주세요.</string>
+    <string name="recipe_page_d3">관련 노하우</string>
+    <string name="recipe_page_d4">후기</string>
 </resources>
