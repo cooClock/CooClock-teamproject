@@ -75,24 +75,83 @@
             android:orientation="vertical"
             android:paddingHorizontal="20dp">
 
+            <!-- 검색어 입력칸 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="15dp"
+                android:paddingLeft="15dp"
+                android:background="@drawable/search_edit_text_border">
 
-            <!-- 필터 타이틀 -->
-            <TextView
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/search_icon"
+                    android:layout_gravity="center"/>
+
+                <EditText
+                    android:id="@+id/search_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:layout_margin="1dp"
+                    android:hint="@string/main_pg_search_hint"
+                    android:textColorHint="@color/pc_yello"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:background="#FFFFFF" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/filter_d0"
-                android:textColor="@color/black"
-                android:textSize="17dp"
-                android:fontFamily="@font/notosanskr_medium"
-                android:includeFontPadding="false"
-                android:layout_marginBottom="10dp"/>
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+                <!-- 필터 타이틀 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/filter_d0"
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:includeFontPadding="false" />
+                <Button
+                    android:id="@+id/filter_select_initial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="초기화"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:textSize="13dp"
+                    android:includeFontPadding="false"
+                    android:backgroundTint="@color/buttonOffColor"
+                    android:textColor="@color/btn_text"
+                    android:layout_marginLeft="10dp"
+                    android:padding="5dp"/>
+                <Button
+                    android:id="@+id/filter_select_complete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="완료"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:textSize="13dp"
+                    android:includeFontPadding="false"
+                    android:backgroundTint="@color/buttonOffColor"
+                    android:textColor="@color/btn_text"
+                    android:layout_marginLeft="10dp"
+                    android:padding="5dp"
+                    android:onClick="filterSelectCompleteClicked"/>
+            </LinearLayout>
 
             <!-- 필터 설명 -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="30dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -120,33 +179,6 @@
                     android:includeFontPadding="false" />
             </LinearLayout>
 
-
-            <!-- 검색어 입력칸 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="30dp"
-                android:paddingLeft="15dp"
-                android:background="@drawable/search_edit_text_border">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/search_icon"
-                    android:layout_gravity="center"/>
-
-                <EditText
-                    android:id="@+id/search_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="10dp"
-                    android:layout_margin="1dp"
-                    android:hint="@string/main_pg_search_hint"
-                    android:textColorHint="@color/pc_yello"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/notosanskr_medium"
-                    android:background="#FFFFFF" />
-            </LinearLayout>
 
 
             <!--  요리시간  title    -->
@@ -215,208 +247,23 @@
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:fontFamily="@font/notosanskr_medium"
-                android:includeFontPadding="false"
-                android:layout_marginBottom="10dp" />
+                android:includeFontPadding="false" />
 
-            <!-- 나의 냉장고 재료 버튼 한줄에 4개씩 -->
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:gravity="center">-->
-<!--                <Button-->
-<!--                    android:layout_width="85dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="당근"-->
-<!--                    android:fontFamily="@font/notosanskr_medium"-->
-<!--                    android:textSize="13dp"-->
-<!--                    android:includeFontPadding="false"-->
-<!--                    android:backgroundTint="@color/btn_bg"-->
-<!--                    android:textColor="@color/btn_text"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:onClick="btnClicked"/>-->
-<!--                <Button-->
-<!--                    android:layout_width="85dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="양파"-->
-<!--                    android:fontFamily="@font/notosanskr_medium"-->
-<!--                    android:textSize="13dp"-->
-<!--                    android:includeFontPadding="false"-->
-<!--                    android:backgroundTint="@color/btn_bg"-->
-<!--                    android:textColor="@color/btn_text"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:onClick="btnClicked"/>-->
-<!--                <Button-->
-<!--                    android:layout_width="85dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="무"-->
-<!--                    android:fontFamily="@font/notosanskr_medium"-->
-<!--                    android:textSize="13dp"-->
-<!--                    android:includeFontPadding="false"-->
-<!--                    android:backgroundTint="@color/btn_bg"-->
-<!--                    android:textColor="@color/btn_text"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:onClick="btnClicked"/>-->
-<!--                <Button-->
-<!--                    android:layout_width="85dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="감자"-->
-<!--                    android:fontFamily="@font/notosanskr_medium"-->
-<!--                    android:textSize="13dp"-->
-<!--                    android:includeFontPadding="false"-->
-<!--                    android:backgroundTint="@color/btn_bg"-->
-<!--                    android:textColor="@color/btn_text"-->
-<!--                    android:onClick="btnClicked"/>-->
-<!--            </LinearLayout>-->
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:gravity="center">-->
-<!--                <Button-->
-<!--                    android:layout_width="85dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="대멸치"-->
-<!--                    android:fontFamily="@font/notosanskr_medium"-->
-<!--                    android:textSize="13dp"-->
-<!--                    android:includeFontPadding="false"-->
-<!--                    android:backgroundTint="@color/btn_bg"-->
-<!--                    android:textColor="@color/btn_text"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:padding="0dp"-->
-<!--                    android:onClick="btnClicked"/>-->
-<!--                <Button-->
-<!--                    android:layout_width="85dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="만두"-->
-<!--                    android:fontFamily="@font/notosanskr_medium"-->
-<!--                    android:textSize="13dp"-->
-<!--                    android:includeFontPadding="false"-->
-<!--                    android:backgroundTint="@color/btn_bg"-->
-<!--                    android:textColor="@color/btn_text"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:onClick="btnClicked"/>-->
-<!--                <Button-->
-<!--                    android:layout_width="85dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="어묵"-->
-<!--                    android:fontFamily="@font/notosanskr_medium"-->
-<!--                    android:textSize="13dp"-->
-<!--                    android:includeFontPadding="false"-->
-<!--                    android:backgroundTint="@color/btn_bg"-->
-<!--                    android:textColor="@color/btn_text"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:onClick="btnClicked"/>-->
-<!--                <Button-->
-<!--                    android:layout_width="85dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="조미김"-->
-<!--                    android:fontFamily="@font/notosanskr_medium"-->
-<!--                    android:textSize="13dp"-->
-<!--                    android:includeFontPadding="false"-->
-<!--                    android:backgroundTint="@color/btn_bg"-->
-<!--                    android:textColor="@color/btn_text"-->
-<!--                    android:onClick="btnClicked"/>-->
-<!--            </LinearLayout>-->
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:gravity="center">-->
-<!--                <Button-->
-<!--                    android:layout_width="85dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="김치"-->
-<!--                    android:fontFamily="@font/notosanskr_medium"-->
-<!--                    android:textSize="13dp"-->
-<!--                    android:includeFontPadding="false"-->
-<!--                    android:backgroundTint="@color/btn_bg"-->
-<!--                    android:textColor="@color/btn_text"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:padding="0dp"-->
-<!--                    android:onClick="btnClicked"/>-->
-<!--                <Button-->
-<!--                    android:layout_width="85dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="계란"-->
-<!--                    android:fontFamily="@font/notosanskr_medium"-->
-<!--                    android:textSize="13dp"-->
-<!--                    android:includeFontPadding="false"-->
-<!--                    android:backgroundTint="@color/btn_bg"-->
-<!--                    android:textColor="@color/btn_text"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:onClick="btnClicked"/>-->
-<!--                <Button-->
-<!--                    android:layout_width="85dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="양상추"-->
-<!--                    android:fontFamily="@font/notosanskr_medium"-->
-<!--                    android:textSize="13dp"-->
-<!--                    android:includeFontPadding="false"-->
-<!--                    android:backgroundTint="@color/btn_bg"-->
-<!--                    android:textColor="@color/btn_text"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:onClick="btnClicked"/>-->
-<!--                <Button-->
-<!--                    android:layout_width="85dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="파프리카"-->
-<!--                    android:fontFamily="@font/notosanskr_medium"-->
-<!--                    android:textSize="13dp"-->
-<!--                    android:includeFontPadding="false"-->
-<!--                    android:backgroundTint="@color/btn_bg"-->
-<!--                    android:textColor="@color/btn_text"-->
-<!--                    android:onClick="btnClicked"/>-->
-<!--            </LinearLayout>-->
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:gravity="left">-->
-<!--                <Button-->
-<!--                    android:layout_width="85dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="오이"-->
-<!--                    android:fontFamily="@font/notosanskr_medium"-->
-<!--                    android:textSize="13dp"-->
-<!--                    android:includeFontPadding="false"-->
-<!--                    android:backgroundTint="@color/btn_bg"-->
-<!--                    android:textColor="@color/btn_text"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:padding="0dp"-->
-<!--                    android:onClick="btnClicked"/>-->
-<!--                <Button-->
-<!--                    android:layout_width="85dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="소고기"-->
-<!--                    android:fontFamily="@font/notosanskr_medium"-->
-<!--                    android:textSize="13dp"-->
-<!--                    android:includeFontPadding="false"-->
-<!--                    android:backgroundTint="@color/btn_bg"-->
-<!--                    android:textColor="@color/btn_text"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:onClick="btnClicked"/>-->
-<!--                <Button-->
-<!--                    android:layout_width="85dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="삼겹살"-->
-<!--                    android:fontFamily="@font/notosanskr_medium"-->
-<!--                    android:textSize="13dp"-->
-<!--                    android:includeFontPadding="false"-->
-<!--                    android:backgroundTint="@color/btn_bg"-->
-<!--                    android:textColor="@color/btn_text"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:onClick="btnClicked"/>-->
-<!--            </LinearLayout>-->
-<!--            <androidx.recyclerview.widget.RecyclerView-->
-<!--                android:id="@+id/ingredient_btn_recyclerView"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"/>-->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/ingredient_btn_recyclerView"
+            <!-- 나의 냉장고 재료 버튼 한줄에 3개씩 -->
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/ingredient_btn_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/otherView"/>
+                <TextView
+                    android:id="@+id/otherView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp" />
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="match_parent"

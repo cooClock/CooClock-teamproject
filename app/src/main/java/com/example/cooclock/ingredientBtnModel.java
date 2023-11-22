@@ -1,7 +1,7 @@
 package com.example.cooclock;
 
 public class ingredientBtnModel {
-    private String buttonText;
+    String buttonText;
 
     public ingredientBtnModel(String buttonText) {
         this.buttonText = buttonText;
