@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,18 +21,20 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 public class recipe_page extends AppCompatActivity {
-
+    String TAG = "RECIPE";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_page);
-        updateIngredientList();
+        initializeRecipe();
+//        updateIngredientList();
     }
 
     /*
     레시피 기본 정보 수정(작성자, 몇 인분, 제목, 좋아요 상태, 후기
      */
     public void initializeRecipe(){
+        Log.d(TAG,"Aa");
         TextView recipe_writer = (TextView) findViewById(R.id.recipe_writer); // 작성자
         TextView recipe_servings = (TextView) findViewById(R.id.recipe_servings); // 기준 인원
         TextView recipe_title = (TextView) findViewById(R.id.recipe_title); // 제목
@@ -47,6 +50,22 @@ public class recipe_page extends AppCompatActivity {
 
         recipe_init_item item = new recipe_init_item("이재원","4","둘이 먹다 하나 죽어 그냥 몰라", true,3.6,15,5,4,3,2,1);
 
+        recipe_writer.setText(item.getRecipe_writer()); // 작성자 설정
+        recipe_servings.setText(item.getRecipe_servings()); // 기준 인원 설정
+        recipe_title.setText(item.getRecipe_title()); // 제목 설정
+        // 좋아요 버튼 설정
+        if (item.favorite)
+            is_favorite.setRating(1);
+        else
+            is_favorite.setRating(0);
+        rating_average.setText(String.valueOf(item.getRating_average())); // 평균 평점 설정
+        rating_average_star.setRating((int) item.getRating_average()); // 평균 평점 별표시 설정
+        rating_cnt.setText(String.valueOf(item.getRating_cnt())); // 리뷰 개수 설정
+        five_point.setProgress((int)((item.getFive_point()/item.getRating_cnt())*100)); // 5점 프로그래스바 설정
+        four_point.setProgress((int)((item.getFour_point()/item.getRating_cnt())*100)); // 4점 프로그래스바 설정
+        three_point.setProgress((int)((item.getThree_point()/item.getRating_cnt())*100)); // 3점 프로그래스바 설정
+        two_point.setProgress((int)((item.getTwo_point()/item.getRating_cnt())*100)); // 2점 프로그래스바 설정
+        one_point.setProgress((int)((item.getOne_point()/item.getRating_cnt())*100)); // 1점 프로그래스바 설정
     }
 
 

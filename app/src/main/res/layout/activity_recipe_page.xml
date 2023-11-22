@@ -357,10 +357,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="10dp"
+                            app:trackColor="@color/clear"
                             app:trackCornerRadius="10dp"
-                            app:trackThickness="0dp"
+                            app:trackThickness="10dp"
                             app:indicatorColor="@color/green"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:progress="25"/>
                     </LinearLayout>
                     <!-- 4개 -->
                     <LinearLayout
