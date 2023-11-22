@@ -53,6 +53,7 @@
                     android:orientation="horizontal">
                     <!-- 1-1-3-2-1. 유저 이름 -->
                     <TextView
+                        android:id="@+id/recipe_writer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/notosanskr_medium"
@@ -565,7 +566,6 @@
                 android:id="@+id/do_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:isIndicator="false"
                 app:srb_clickable="true"
                 app:srb_scrollable="true"
                 app:srb_numStars="5"
@@ -576,7 +576,8 @@
                 app:srb_drawableEmpty="@drawable/empty_star"
                 app:srb_drawableFilled="@drawable/fill_star"
                 app:srb_rating="5"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:contentDescription="평점 남기는 부분"/>
         </LinearLayout>
 
     </LinearLayout>

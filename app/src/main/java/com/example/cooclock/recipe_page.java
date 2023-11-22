@@ -10,7 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.willy.ratingbar.BaseRatingBar;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -20,7 +25,30 @@ public class recipe_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_page);
+        updateIngredientList();
     }
+
+    /*
+    레시피 기본 정보 수정(작성자, 몇 인분, 제목, 좋아요 상태, 후기
+     */
+    public void initializeRecipe(){
+        TextView recipe_writer = (TextView) findViewById(R.id.recipe_writer); // 작성자
+        TextView recipe_servings = (TextView) findViewById(R.id.recipe_servings); // 기준 인원
+        TextView recipe_title = (TextView) findViewById(R.id.recipe_title); // 제목
+        BaseRatingBar is_favorite = (BaseRatingBar) findViewById(R.id.recipe_add_favorite); // 좋아요 버튼
+        TextView rating_average = (TextView) findViewById(R.id.rating_average); // 평균 평점
+        BaseRatingBar rating_average_star = (BaseRatingBar) findViewById(R.id.raring_bar_average); // 평균 평점 별표시
+        TextView rating_cnt = (TextView) findViewById(R.id.rating_count); // 리뷰 개수
+        ProgressBar five_point = (ProgressBar) findViewById(R.id.rating_5); // 5점
+        ProgressBar four_point = (ProgressBar) findViewById(R.id.rating_4); // 4점
+        ProgressBar three_point = (ProgressBar) findViewById(R.id.rating_3); // 3점
+        ProgressBar two_point = (ProgressBar) findViewById(R.id.rating_2); // 2점
+        ProgressBar one_point = (ProgressBar) findViewById(R.id.rating_1); // 1점
+
+        recipe_init_item item = new recipe_init_item("이재원","4","둘이 먹다 하나 죽어 그냥 몰라", true,3.6,15,5,4,3,2,1);
+
+    }
+
 
     /*
     레시피 재료 리스트
@@ -80,4 +108,5 @@ public class recipe_page extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         IngredientList.setLayoutManager(layoutManager);
     }
+
 }
