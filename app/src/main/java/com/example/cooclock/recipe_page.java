@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -32,6 +33,7 @@ public class recipe_page extends AppCompatActivity {
         updateRecipeIngredientList();
         updateRecipeStepList();
         updateRecipeKnowHowList();
+
     }
 
     /*
@@ -156,6 +158,8 @@ public class recipe_page extends AppCompatActivity {
         private TextView recipe_step_minute;
         private TextView recipe_step_second;
         private ImageView recipe_step_image;
+        private ImageButton recipe_step_prev;
+        private  ImageButton recipe_step_next;
 
         public RecipeStepListCustomViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -164,6 +168,31 @@ public class recipe_page extends AppCompatActivity {
             recipe_step_minute = itemView.findViewById(R.id.timer_minute);
             recipe_step_second = itemView.findViewById(R.id.timer_second);
             recipe_step_image = itemView.findViewById(R.id.recipe_step_image);
+            recipe_step_next = itemView.findViewById(R.id.recipe_step_next);
+            recipe_step_prev = itemView.findViewById(R.id.recipe_step_prev);
+
+
+            // 다음 단계로 넘어가는 버튼
+            recipe_step_next.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION){
+
+                    }
+
+                }
+            });
+
+            // 이전 단계로 넘어가는 버튼
+            recipe_step_prev.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+
+                }
+            });
+
         }
     }
 
@@ -175,8 +204,6 @@ public class recipe_page extends AppCompatActivity {
             items = a_list;
         }
 
-        @NonNull
-        @Override
         public recipe_page.RecipeStepListCustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_step_item, parent, false);
             return new recipe_page.RecipeStepListCustomViewHolder(view);
@@ -215,6 +242,12 @@ public class recipe_page extends AppCompatActivity {
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
         RecipeStepList.setLayoutManager(layoutManager);
+
+        int firstVisibleItemPosition = ((LinearLayoutManager) layoutManager).findLastCompletelyVisibleItemPosition();
+        Log.d(TAG, String.valueOf(firstVisibleItemPosition));
+        int centerOfScreen = RecipeStepList.getWidth();
+        ((LinearLayoutManager) layoutManager).scrollToPositionWithOffset(firstVisibleItemPosition, centerOfScreen);
+
     }
 
 

@@ -8,12 +8,13 @@
     <!-- 레시피 단계  -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="344dp"
-        android:layout_height="560dp">
+        android:layout_height="520dp"
+        android:layout_margin="20dp">
         <!-- 1. 박스 (노란선) -->
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="340dp"
-            android:layout_height="460dp"
+            android:layout_height="440dp"
             android:background="@drawable/recipe_step_border"
             android:orientation="vertical"
             android:gravity="center"
@@ -38,7 +39,7 @@
                     android:orientation="horizontal">
                     <!-- 3-1-1. 이전 단계 -->
                     <ImageButton
-                        android:id="@+id/recipe_step_before"
+                        android:id="@+id/recipe_step_prev"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:background="@color/clear"
