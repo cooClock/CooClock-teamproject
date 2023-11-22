@@ -183,7 +183,7 @@
             <!-- 3-2. 재료 표시 부 -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recipe_ingredient_list"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
             </androidx.recyclerview.widget.RecyclerView>
@@ -332,7 +332,8 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_gravity="center">
                         <!-- "5" -->
                         <TextView
                             android:layout_width="wrap_content"
@@ -342,7 +343,8 @@
                             android:text="5"
                             android:textAlignment="center"
                             android:textColor="@color/black"
-                            android:textSize="20dp" />
+                            android:textSize="20dp"
+                            android:layout_gravity="center"/>
                         <!-- 별 모양 -->
                         <ImageView
                             android:layout_width="20dp"
@@ -356,13 +358,13 @@
                             android:id="@+id/rating_5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingTop="10dp"
+                            android:paddingLeft="10dp"
                             app:trackColor="@color/clear"
                             app:trackCornerRadius="10dp"
                             app:trackThickness="10dp"
                             app:indicatorColor="@color/green"
                             android:layout_gravity="center"
-                            android:progress="25"/>
+                            android:visibility="visible"/>
                     </LinearLayout>
                     <!-- 4개 -->
                     <LinearLayout
@@ -378,7 +380,8 @@
                             android:includeFontPadding="false"
                             android:textAlignment="center"
                             android:textColor="@color/black"
-                            android:textSize="20dp"/>
+                            android:textSize="20dp"
+                            android:layout_gravity="center"/>
                         <!-- 별 모양 -->
                         <ImageView
                             android:layout_width="20dp"
@@ -392,11 +395,13 @@
                             android:id="@+id/rating_4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingTop="10dp"
+                            android:paddingLeft="10dp"
+                            app:trackColor="@color/clear"
                             app:trackCornerRadius="10dp"
-                            app:trackThickness="0dp"
+                            app:trackThickness="10dp"
                             app:indicatorColor="@color/green"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
                     </LinearLayout>
                     <!-- 3개 -->
                     <LinearLayout
@@ -412,7 +417,8 @@
                             android:includeFontPadding="false"
                             android:textAlignment="center"
                             android:textColor="@color/black"
-                            android:textSize="20dp"/>
+                            android:textSize="20dp"
+                            android:layout_gravity="center"/>
                         <!-- 별 모양 -->
                         <ImageView
                             android:layout_width="20dp"
@@ -426,11 +432,13 @@
                             android:id="@+id/rating_3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingTop="10dp"
+                            android:paddingLeft="10dp"
+                            app:trackColor="@color/clear"
                             app:trackCornerRadius="10dp"
-                            app:trackThickness="0dp"
+                            app:trackThickness="10dp"
                             app:indicatorColor="@color/green"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
                     </LinearLayout>
                     <!-- 2개 -->
                     <LinearLayout
@@ -446,7 +454,8 @@
                             android:includeFontPadding="false"
                             android:textAlignment="center"
                             android:textColor="@color/black"
-                            android:textSize="20dp"/>
+                            android:textSize="20dp"
+                            android:layout_gravity="center"/>
                         <!-- 별 모양 -->
                         <ImageView
                             android:layout_width="20dp"
@@ -460,11 +469,13 @@
                             android:id="@+id/rating_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingTop="10dp"
+                            android:paddingLeft="10dp"
+                            app:trackColor="@color/clear"
                             app:trackCornerRadius="10dp"
-                            app:trackThickness="0dp"
+                            app:trackThickness="10dp"
                             app:indicatorColor="@color/green"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
                     </LinearLayout>
                     <!-- 1개 -->
                     <LinearLayout
@@ -480,7 +491,8 @@
                             android:includeFontPadding="false"
                             android:textAlignment="center"
                             android:textColor="@color/black"
-                            android:textSize="20dp"/>
+                            android:textSize="20dp"
+                            android:layout_gravity="center"/>
                         <!-- 별 모양 -->
                         <ImageView
                             android:layout_width="20dp"
@@ -494,11 +506,13 @@
                             android:id="@+id/rating_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingTop="10dp"
+                            android:paddingLeft="10dp"
+                            app:trackColor="@color/clear"
                             app:trackCornerRadius="10dp"
-                            app:trackThickness="0dp"
+                            app:trackThickness="10dp"
                             app:indicatorColor="@color/green"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
                     </LinearLayout>
                 </LinearLayout>
                 <!-- 오른족 통계 부분 -->

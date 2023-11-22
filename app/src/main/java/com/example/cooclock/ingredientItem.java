@@ -17,11 +17,4 @@ public class ingredientItem {
         return weight;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setWeight(String weight) {
-        this.weight = weight;
-    }
 }
