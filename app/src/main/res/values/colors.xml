@@ -12,10 +12,14 @@
     <color name="pc_yello">#FFD338</color>
     <color name="pc_orange">#FF400C</color>
     <color name="pc_unclicked">#9FA5C0</color>
+    <color name="pc_unable">#EEF1F4</color>
 
     <!-- filtering page btn color   -->
     <color name="btn_bg">#F5F5F5</color>
     <color name="btn_text">#798184</color>
+
+    <color name="buttonOnColor">#FFD338</color>
+    <color name="buttonOffColor">#F5F5F5</color>
 
     <color name="gray_main">#F8F8F8</color>
     <color name="green">#006D60</color>
