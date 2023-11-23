@@ -145,25 +145,26 @@ public class filtering_page extends AppCompatActivity {
     */
     public void filterSelectCompleteClicked(View view){
 //        Button clickedBtn = (Button) view;
-        if(isButton1On==true){
-            filterItem.add(cookTime1Btn.getText().toString());
-//            Log.d("logcat", filterItem.toString());
-//            Log.d("logcat", cookTime1Btn.getText().toString());
-        } else if(isButton2On==true){
-            filterItem.add(cookTime2Btn.getText().toString());
-//            Log.d("logcat", filterItem.toString());
-//            Log.d("logcat", cookTime2Btn.getText().toString());
-        } else if(isButton3On==true){
-            filterItem.add(cookTime3Btn.getText().toString());
-//            Log.d("logcat", filterItem.toString());
-//            Log.d("logcat", cookTime3Btn.getText().toString());
-        }
+//        if(isButton1On==true){
+//            filterItem.add(cookTime1Btn.getText().toString());
+////            Log.d("logcat", filterItem.toString());
+////            Log.d("logcat", cookTime1Btn.getText().toString());
+//        } else if(isButton2On==true){
+//            filterItem.add(cookTime2Btn.getText().toString());
+////            Log.d("logcat", filterItem.toString());
+////            Log.d("logcat", cookTime2Btn.getText().toString());
+//        } else if(isButton3On==true){
+//            filterItem.add(cookTime3Btn.getText().toString());
+////            Log.d("logcat", filterItem.toString());
+////            Log.d("logcat", cookTime3Btn.getText().toString());
+//        }
 
 //        if(filterItem.isEmpty()){
 //            Toast.makeText(getApplicationContext(), "선택된 필터가 없습니다.", Toast.LENGTH_SHORT).show();
 //        }else {
 //            Log.d("logcat", filterItem.toString());
 //        }
+        Toast.makeText(getApplicationContext(), "선택된 필터가 없습니다.", Toast.LENGTH_SHORT).show();
 
     }
 }
