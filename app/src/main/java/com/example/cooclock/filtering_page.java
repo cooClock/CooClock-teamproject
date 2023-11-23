@@ -110,6 +110,7 @@ public class filtering_page extends AppCompatActivity {
         if (isButton1On) {
             cookTime1Btn.setBackgroundColor(getResources().getColor(R.color.buttonOnColor));
             Log.d("logcat", cookTime1Btn.getText().toString());
+            Toast.makeText(getApplicationContext(),  cookTime1Btn.getText().toString(), Toast.LENGTH_SHORT).show();
         }
         if (isButton2On) {
             cookTime2Btn.setBackgroundColor(getResources().getColor(R.color.buttonOnColor));
