@@ -152,7 +152,6 @@ public class recipe_page extends AppCompatActivity {
     요리 단계 리스트
     */
 
-
     // 요리 단계 리스트 업데이트 코드
     private void updateRecipeStepList(){
         RecyclerView RecipeStepList = findViewById(R.id.recipe_step_list);
