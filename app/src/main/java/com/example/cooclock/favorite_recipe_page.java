@@ -21,4 +21,5 @@ public class favorite_recipe_page extends Fragment {
 
         return inflater.inflate(R.layout.activity_favorite_recipe_page,container,false);
     }
+
 }

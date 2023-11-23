@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -14,7 +15,10 @@
         <ImageView
             android:id="@+id/recipe_item_image"
             android:layout_width="match_parent"
-            android:layout_height="220dp"/>
+            android:layout_height="220dp"
+            android:background="@drawable/background_radius_for_image"
+            android:clipToOutline="true"
+            tools:targetApi="s" />
         <!-- 하단 설명부 -->
         <LinearLayout
             android:layout_width="match_parent"

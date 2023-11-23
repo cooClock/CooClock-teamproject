@@ -138,9 +138,9 @@
                     android:src="@drawable/search_icon"
                     android:layout_gravity="center"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/search_text"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingLeft="10dp"
                     android:layout_margin="1dp"
@@ -148,8 +148,9 @@
                     android:textColorHint="@color/pc_yello"
                     android:textSize="15sp"
                     android:fontFamily="@font/notosanskr_medium"
-                    android:background="#FFFFFF" />
+                    android:background="#FFFFFF"/>
             </LinearLayout>
+
         </LinearLayout>
 
         <!-- 카데고리 선택부 -->

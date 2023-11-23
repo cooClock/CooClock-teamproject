@@ -8,23 +8,15 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.GridLayout;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButtonToggleGroup;
 
@@ -41,7 +33,6 @@ public class main_page extends AppCompatActivity {
         MaterialButtonToggleGroup categorySelect = findViewById(R.id.category_select);
         Button foodType = findViewById(R.id.food_type);
         Button foodSituation = findViewById(R.id.food_situation);
-        Log.d(TAG,"asdaf");
         // 그리드 뷰 배치
         updateSubCategories();
         // 리스트 뷰 배치
@@ -120,6 +111,7 @@ public class main_page extends AppCompatActivity {
             Button btn2 = findViewById(R.id.food_situation);
             btn.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.pc_yello)));
             btn2.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.white)));
+
             items.add(new subCategroyItem("한식",R.drawable.food_type_korea));
             items.add(new subCategroyItem("일식",R.drawable.food_type_japan));
             items.add(new subCategroyItem("중식",R.drawable.food_type_china));
@@ -141,7 +133,7 @@ public class main_page extends AppCompatActivity {
             items.add(new subCategroyItem("데이트",R.drawable.food_situation_date));
             items.add(new subCategroyItem("보양식",R.drawable.food_situation_health));
             items.add(new subCategroyItem("도시락",R.drawable.food_situation_lunchbox));
-            items.add(new subCategroyItem("아이용",R.drawable.food_situation_child));
+            items.add(new subCategroyItem("아이용", R.drawable.food_situation_child));
             items.add(new subCategroyItem("이유식",R.drawable.food_situation_baby));
         }
 

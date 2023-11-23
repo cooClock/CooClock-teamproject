@@ -54,4 +54,14 @@
     <string name="write_the_recipe">레시피를 입력하세요.</string>
     <string name="add_the_recipe">레시피 추가하기</string>
     <string name="upload_recipe">레시피 업로드</string>
+    <string name="my_recipe_d0">내가 올린 레시피</string>
+    <string name="recipe_page_user_d1">님의 레시피</string>
+    <string name="recipe_page_user_d0">이재원</string>
+    <string name="recipe_page_title_d0">4</string>
+    <string name="recipe_page_title_d1">인분 기준</string>
+    <string name="recipe_page_title_d2">둘이 먹다 하나 죽어도 모르는 만둣국</string>
+    <string name="recipe_page_ingredient_d0">재료</string>
+    <string name="recipe_step_d00">달걀은 흰자, 노른자를 분리하고 약간의 소금을 넣어 풀고 대파는 어슷하게 썰어주세요.</string>
+    <string name="recipe_page_d3">관련 노하우</string>
+    <string name="recipe_page_d4">후기</string>
 </resources>
