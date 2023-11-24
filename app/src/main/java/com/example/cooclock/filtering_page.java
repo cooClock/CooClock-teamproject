@@ -131,12 +131,21 @@ public class filtering_page extends AppCompatActivity {
         if (isButtonOn == null || isButtonOn) {
             // Button is off, set it to on
             clickedBtn.setBackgroundColor(getResources().getColor(R.color.buttonOnColor));
+
+            //log 찍기
             Log.d("logcat", String.valueOf(isButtonOn)+clickedBtn.getText().toString());
-            Toast.makeText(getApplicationContext(), clickedBtn.getText().toString(), Toast.LENGTH_SHORT).show();
+
+            //filterItem에 필터값 추가
+            filterItem.add(new String(clickedBtn.getText().toString()));
             clickedBtn.setTag(false);
         } else {
             // Button is already on, set it to off
             clickedBtn.setBackgroundColor(getResources().getColor(R.color.buttonOffColor));
+
+            //filterItem에 필터값 삭제
+            if (filterItem.contains(clickedBtn.getText().toString())){
+                filterItem.remove(clickedBtn.getText().toString());
+            }
             clickedBtn.setTag(true);
         }
     }
@@ -144,9 +153,19 @@ public class filtering_page extends AppCompatActivity {
     /*
     complete btn
     */
+    //초기화 버튼 클릭시
     public void filterSelectInitial(View view){
+        cookTime1Btn.setBackgroundColor(getResources().getColor(R.color.buttonOffColor));
+        cookTime2Btn.setBackgroundColor(getResources().getColor(R.color.buttonOffColor));
+        cookTime3Btn.setBackgroundColor(getResources().getColor(R.color.buttonOffColor));
+        isButton1On = false;
+        isButton2On = false;
+        isButton3On = false;
 
+        filterItem = new ArrayList<>();
+        Toast.makeText(getApplicationContext(), "필터가 초기화되었습니다.", Toast.LENGTH_SHORT).show();
     }
+    //필터 선택 완료 버튼 클릭시
     public void filterSelectCompleteClicked(View view){
 //        Button clickedBtn = (Button) view;
         if(isButton1On==true){
@@ -159,6 +178,7 @@ public class filtering_page extends AppCompatActivity {
 
         if(filterItem.isEmpty()){
             Toast.makeText(getApplicationContext(), "선택된 필터가 없습니다.", Toast.LENGTH_SHORT).show();
+            Log.d("logcat", filterItem.toString());
         }else {
             Log.d("logcat", filterItem.toString());
         }
