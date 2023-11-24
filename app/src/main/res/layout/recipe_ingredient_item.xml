@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- 재료 아이템 한줄 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_gravity="center">
+        <!-- 재료 이름 -->
+        <TextView
+            android:id="@+id/recipe_ingredient_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="재료"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_weight="6"/>
+        <!-- 재료 수량 -->
+        <TextView
+            android:id="@+id/recipe_ingredient_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00.00"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:textAlignment="textEnd"
+            android:textColor="@color/grays"
+            android:textSize="20dp"/>
+        <!-- "kg" -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" kg"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:textAlignment="textEnd"
+            android:textColor="@color/grays"
+            android:textSize="20dp"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,9 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".recipe_write_page">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--    scrollView에서는 자식뷰가 하나여야함. -> linearlayout-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp">
+
+        <!--  나만의 레시피 작성 title -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recipe_write"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false" />
+        </LinearLayout>
+
+
+
+        <!--  사진 첨부(사진 입력 전)   -->
+        <LinearLayout
+            android:id="@+id/input_picture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/big_box_border_gray"
+            android:paddingVertical="10dp"
+            android:layout_marginBottom="20dp">
+            <ImageView
+                android:id="@+id/food_imageview_none"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/input_image_icon"/>
+            <TextView
+                android:id="@+id/food_imageview_none_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/picture"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
+                android:layout_marginBottom="15dp"/>
+        </LinearLayout>
+        <!--  사진 첨부(사진 입력 후)   -->
+        <ImageView
+            android:id="@+id/food_imageview"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
+            android:background="@drawable/big_box_border_gray"
+            android:visibility="gone"
+            android:layout_marginBottom="20dp"/>
+
+
+
+        <!--  음식 이름      -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/food_name"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginBottom="15dp"/>
+
+        <!-- 음식이름 입력칸 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="25dp"
+            android:paddingLeft="15dp"
+            android:background="@drawable/search_edit_text_border_gray">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="10dp"
+                android:layout_margin="1dp"
+                android:hint="@string/write_the_food_name"
+                android:textColorHint="@color/pc_unclicked"
+                android:textSize="15sp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:background="#FFFFFF" />
+        </LinearLayout>
+
+        <!--  카테고리      -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/food_category"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- 카테고리 선택칸 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="25dp"
+            android:paddingLeft="15dp"
+            android:background="@drawable/search_edit_text_border_gray">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="10dp"
+                android:layout_margin="1dp"
+                android:hint="@string/check_the_food_category"
+                android:textColorHint="@color/pc_unclicked"
+                android:textSize="15sp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:background="#FFFFFF" />
+        </LinearLayout>
+
+
+
+        <!--  요리시간  title    -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/coock_time"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginBottom="10dp"/>
+
+        <!--  요리시간  slider bar marker   -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="@string/time_step1"
+                android:textColor="@color/pc_yello"
+                android:textSize="15dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/time_step2"
+                android:textColor="@color/pc_yello"
+                android:textSize="15dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="@string/time_step3"
+                android:textColor="@color/pc_yello"
+                android:textSize="15dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false" />
+
+        </LinearLayout>
+        <!--  요리시간  slider bar    -->
+        <com.google.android.material.slider.Slider
+            android:id="@+id/slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="what"
+            app:trackHeight="8dp"
+
+            app:trackColorActive="@color/pc_yello"
+            app:trackColorInactive="@color/pc_unable"
+            app:thumbRadius="12dp"
+            app:thumbColor="@color/white"
+            app:thumbStrokeWidth="5dp"
+            app:thumbStrokeColor="@color/pc_yello"
+            app:labelBehavior="gone"
+            app:tickColor="@color/pc_unclicked"
+            android:value="30.0"
+            android:valueFrom="00.0"
+            android:valueTo="60.0"
+            android:stepSize="30.0"
+            android:layout_marginBottom="10dp"/>
+
+        <!--  재료      -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/food_ingredient"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginBottom="10dp"/>
+
+
+
+        <!--  레시피      -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recipe"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -8,23 +8,15 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.GridLayout;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButtonToggleGroup;
 
@@ -34,14 +26,13 @@ public class main_page extends AppCompatActivity {
     private String TAG = "MAIN_PAGE";
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
         // 카테고리 선택 버튼(라디오 그룹)
         MaterialButtonToggleGroup categorySelect = findViewById(R.id.category_select);
         Button foodType = findViewById(R.id.food_type);
         Button foodSituation = findViewById(R.id.food_situation);
-        Log.d(TAG,"asdaf");
         // 그리드 뷰 배치
         updateSubCategories();
         // 리스트 뷰 배치
@@ -55,6 +46,10 @@ public class main_page extends AppCompatActivity {
                 updateSubCategories();
             }
         });
+
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.main_FrameLayout, new home_page())
+//                .commit();
     }
 
 
@@ -64,8 +59,8 @@ public class main_page extends AppCompatActivity {
      */
     // 세부 카테고리 리사이클러 뷰를 위한 뷰 홀더
     public static class SubCategoryCustomViewHolder extends RecyclerView.ViewHolder {
-        private ImageView category_icon;
-        private TextView category_name;
+        ImageView category_icon;
+        TextView category_name;
         public SubCategoryCustomViewHolder(@NonNull View itemView) {
             super(itemView);
             category_icon = itemView.findViewById(R.id.subCategory_icon);
@@ -104,7 +99,7 @@ public class main_page extends AppCompatActivity {
     }
 
     // 세부 카테고리 업데이트 코드
-    private void updateSubCategories(){
+    public void updateSubCategories(){
         RecyclerView subCategory = findViewById(R.id.subCategory);
 //        myRefrigeratorCategory.removeAllViews();
 
@@ -116,6 +111,7 @@ public class main_page extends AppCompatActivity {
             Button btn2 = findViewById(R.id.food_situation);
             btn.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.pc_yello)));
             btn2.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.white)));
+
             items.add(new subCategroyItem("한식",R.drawable.food_type_korea));
             items.add(new subCategroyItem("일식",R.drawable.food_type_japan));
             items.add(new subCategroyItem("중식",R.drawable.food_type_china));
@@ -137,7 +133,7 @@ public class main_page extends AppCompatActivity {
             items.add(new subCategroyItem("데이트",R.drawable.food_situation_date));
             items.add(new subCategroyItem("보양식",R.drawable.food_situation_health));
             items.add(new subCategroyItem("도시락",R.drawable.food_situation_lunchbox));
-            items.add(new subCategroyItem("아이용",R.drawable.food_situation_child));
+            items.add(new subCategroyItem("아이용", R.drawable.food_situation_child));
             items.add(new subCategroyItem("이유식",R.drawable.food_situation_baby));
         }
 
@@ -156,10 +152,10 @@ public class main_page extends AppCompatActivity {
     */
     // 추천 레시피 리스트리사이클러 뷰를 위한 뷰 홀더
     public static class RecipeListCustomViewHolder extends RecyclerView.ViewHolder {
-        private ImageView recipe_image;
-        private TextView recipe_title;
-        private TextView recipe_time;
-        private TextView recipe_like;
+        ImageView recipe_image;
+        TextView recipe_title;
+        TextView recipe_time;
+        TextView recipe_like;
 
         public RecipeListCustomViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -226,8 +222,8 @@ public class main_page extends AppCompatActivity {
      */
     // 재료 카테고리 리사이클러 뷰를 위한 뷰 홀더
     public static class CustomViewHolder extends RecyclerView.ViewHolder {
-        private ImageView category_icon;
-        private TextView category_name;
+        ImageView category_icon;
+        TextView category_name;
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
             category_icon = itemView.findViewById(R.id.my_refrigerator_category_icon);

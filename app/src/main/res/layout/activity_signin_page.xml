@@ -86,28 +86,28 @@
         app:layout_constraintStart_toStartOf="@+id/et_id"
         app:layout_constraintTop_toBottomOf="@+id/et_id" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/Passwordcheck"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Password Check"-->
-<!--        android:textColor="#000000"-->
-<!--        android:textSize="20.7dp"-->
-<!--        tools:layout_editor_absoluteX="24dp"-->
-<!--        tools:layout_editor_absoluteY="523dp" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/Passwordcheck"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Password Check"-->
+    <!--        android:textColor="#000000"-->
+    <!--        android:textSize="20.7dp"-->
+    <!--        tools:layout_editor_absoluteX="24dp"-->
+    <!--        tools:layout_editor_absoluteY="523dp" />-->
 
     <!--    <EditText-->
-<!--        android:id="@+id/pw2"-->
-<!--        android:layout_width="371dp"-->
-<!--        android:layout_height="54.08dp"-->
-<!--        android:background="@drawable/login_editbox_background"-->
-<!--        android:hint="비밀번호 확인"-->
-<!--        android:paddingLeft="15dp"-->
-<!--        android:textColorHint="#818080"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.5"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        tools:layout_editor_absoluteY="551dp"></EditText>-->
+    <!--        android:id="@+id/pw2"-->
+    <!--        android:layout_width="371dp"-->
+    <!--        android:layout_height="54.08dp"-->
+    <!--        android:background="@drawable/login_editbox_background"-->
+    <!--        android:hint="비밀번호 확인"-->
+    <!--        android:paddingLeft="15dp"-->
+    <!--        android:textColorHint="#818080"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.5"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        tools:layout_editor_absoluteY="551dp"></EditText>-->
 
     <EditText
         android:id="@+id/et_pw"
