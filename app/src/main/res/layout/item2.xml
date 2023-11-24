@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="22dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/hotdog"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/hotdog"
+                tools:targetApi="s"
+                android:background="@drawable/itemrect"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:id="@+id/hotdog_item_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:includeFontPadding="false"
+                android:text="핫도그"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/toppokkki"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/toppokki"
+                android:background="@drawable/itemrect"
+                tools:targetApi="s"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:id="@+id/toppokki_item_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:includeFontPadding="false"
+                android:text="떡볶이"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/sandwich"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sandwich"
+                android:background="@drawable/itemrect"
+                tools:targetApi="s"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:id="@+id/pizza_item_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:includeFontPadding="false"
+                android:text="샌드위치"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/dots"
+                android:src="@drawable/dots"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:clipToOutline="true"
+                android:background="@drawable/itemrect"
+                android:scaleType="centerCrop"
+                tools:targetApi="s"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:id="@+id/dots"
+                android:layout_width="99dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:includeFontPadding="false"
+                android:text="더보기"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
