@@ -25,11 +25,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/pc_yello"
             android:paddingTop="20dp"
             android:paddingBottom="30dp"
             android:paddingHorizontal="20dp"
-            android:layout_marginBottom="20dp" >
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rect">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
