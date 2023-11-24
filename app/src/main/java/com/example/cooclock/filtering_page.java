@@ -52,9 +52,6 @@ public class filtering_page extends AppCompatActivity {
 
         //recycler view
         List<ingredientBtnModel> buttonList = new ArrayList<>();
-//        for (int i = 1; i <= 19; i++) {
-//            buttonList.add(new ingredientBtnModel("Button " + i));
-//        }
         buttonList.add(new ingredientBtnModel("당근"));
         buttonList.add(new ingredientBtnModel("양파"));
         buttonList.add(new ingredientBtnModel("무"));
@@ -73,6 +70,7 @@ public class filtering_page extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.ingredient_btn_recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
+
 
         IngredientButtonAdapter buttonAdapter = new IngredientButtonAdapter(buttonList);
         recyclerView.setNestedScrollingEnabled(false);
@@ -109,7 +107,7 @@ public class filtering_page extends AppCompatActivity {
         // Set the background color based on the button state
         if (isButton1On) {
             cookTime1Btn.setBackgroundColor(getResources().getColor(R.color.buttonOnColor));
-            Log.d("logcat", cookTime1Btn.getText().toString());
+            Log.d("logcat",   cookTime1Btn.getText().toString());
         }
         if (isButton2On) {
             cookTime2Btn.setBackgroundColor(getResources().getColor(R.color.buttonOnColor));
@@ -168,12 +166,23 @@ public class filtering_page extends AppCompatActivity {
     //필터 선택 완료 버튼 클릭시
     public void filterSelectCompleteClicked(View view){
 //        Button clickedBtn = (Button) view;
-        if(isButton1On==true){
+        if(isButton1On==true && !filterItem.contains(cookTime1Btn.getText().toString())){ //filterItem에 필터값 추가
+            Log.d("logcat", "15초");
             filterItem.add(new String(cookTime1Btn.getText().toString()));
-        } else if(isButton2On==true){
+        } else{ //filterItem에 필터값 삭제
+            filterItem.remove(cookTime1Btn.getText().toString());
+        }
+        if(isButton2On==true && !filterItem.contains(cookTime2Btn.getText().toString())){ //filterItem에 필터값 추가
+            Log.d("logcat", "30초");
             filterItem.add(new String(cookTime2Btn.getText().toString()));
-        } else if(isButton3On==true){
+        } else {//filterItem에 필터값 삭제
+            filterItem.remove(cookTime2Btn.getText().toString());
+        }
+        if(isButton3On==true && !filterItem.contains(cookTime3Btn.getText().toString())){ //filterItem에 필터값 추가
+            Log.d("logcat", "60초");
             filterItem.add(new String(cookTime3Btn.getText().toString()));
+        } else{ //filterItem에 필터값 삭제
+            filterItem.remove(cookTime3Btn.getText().toString());
         }
 
         if(filterItem.isEmpty()){
