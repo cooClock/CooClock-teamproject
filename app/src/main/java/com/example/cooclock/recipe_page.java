@@ -163,17 +163,20 @@ public class recipe_page extends AppCompatActivity {
         items.add(new recipeStepItem(4, "그릇에 만두국을 담고 채썬 황백지단을 올려 맛있게 즐겨주세요. (tip 기호에 따라 고명으로 김가루 또는 양념해서 볶은 쇠고기, 송송 썬 실파 등을 곁들여주세요.", 1,30,R.drawable.recipe_img_test));
 
 
-        RecipeStepListCustomAdapter rlAdapter = new RecipeStepListCustomAdapter(items);
+        RecipeStepListAdapter rlAdapter = new RecipeStepListAdapter(items);
         RecipeStepList.setAdapter(rlAdapter);
 
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
         RecipeStepList.setLayoutManager(layoutManager);
 
+
+
         int firstVisibleItemPosition = ((LinearLayoutManager) layoutManager).findLastCompletelyVisibleItemPosition();
         Log.d(TAG, String.valueOf(firstVisibleItemPosition));
         int centerOfScreen = RecipeStepList.getWidth();
-        ((LinearLayoutManager) layoutManager).scrollToPositionWithOffset(firstVisibleItemPosition, centerOfScreen);
+        RecipeStepList.setPadding(0,centerOfScreen,0,centerOfScreen);
+//        ((LinearLayoutManager) layoutManager).scrollToPositionWithOffset(firstVisibleItemPosition, centerOfScreen);
 
     }
 
