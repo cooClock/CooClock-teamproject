@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/nav_item_home"
+    android:enabled="true"
+    android:icon="@drawable/home_off"
+    android:title = "홈"/>
+<item
+    android:id="@+id/nav_item_write"
+    android:enabled="true"
+    android:icon="@drawable/write_off"
+    android:title = "레시피 작성"/>
+<item
+    android:id="@+id/nav_item_refrigerator"
+    android:enabled="true"
+    android:icon="@drawable/refrigerator_off"
+    android:title = "내 냉장고"/>
+<item
+    android:id="@+id/nav_item_heart"
+    android:enabled="true"
+    android:icon="@drawable/heart_off"
+    android:title = "즐겨찾기"/>
+<item
+    android:id="@+id/nav_item_profile"
+    android:enabled="true"
+    android:icon="@drawable/profile_off"
+    android:title = "마이페이지"/>
+</menu>

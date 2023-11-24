@@ -1,9 +1,275 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".filtering_page">-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".filtering_page">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pc_yello"
+            android:paddingTop="20dp"
+            android:paddingBottom="30dp"
+            android:paddingHorizontal="20dp"
+            android:layout_marginBottom="20dp" >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username"
+                    android:textColor="@color/pc_orange"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:includeFontPadding="false"
+                    android:textSize="22dp"
+                    android:layout_marginBottom="5dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/find_recipe"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/notosanskr_light"
+                    android:includeFontPadding="false"
+                    android:textSize="17dp"
+                    android:textFontWeight="700"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/avatar"
+                    android:scaleType="fitEnd"
+                    android:layout_centerVertical="true" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp">
+
+            <!-- 검색어 입력칸 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="15dp"
+                android:paddingLeft="15dp"
+                android:background="@drawable/search_edit_text_border">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/search_icon"
+                    android:layout_gravity="center"/>
+
+                <EditText
+                    android:id="@+id/search_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:layout_margin="1dp"
+                    android:hint="@string/main_pg_search_hint"
+                    android:textColorHint="@color/pc_yello"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:background="#FFFFFF" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+                <!-- 필터 타이틀 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/filter_d0"
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:includeFontPadding="false" />
+                <Button
+                    android:id="@+id/filter_select_initial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="초기화"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:textSize="13dp"
+                    android:includeFontPadding="false"
+                    android:backgroundTint="@color/buttonOffColor"
+                    android:textColor="@color/btn_text"
+                    android:layout_marginLeft="10dp"
+                    android:padding="5dp"/>
+                <Button
+                    android:id="@+id/filter_select_complete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="완료"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:textSize="13dp"
+                    android:includeFontPadding="false"
+                    android:backgroundTint="@color/buttonOffColor"
+                    android:textColor="@color/btn_text"
+                    android:layout_marginLeft="10dp"
+                    android:padding="5dp"
+                    android:onClick="filterSelectCompleteClicked"/>
+            </LinearLayout>
+
+            <!-- 필터 설명 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="30dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_d1"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false"
+                    android:paddingRight="3dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_d2"
+                    android:textColor="@color/pc_yello"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_d3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:includeFontPadding="false" />
+            </LinearLayout>
+
+
+
+            <!--  요리시간  title    -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/coock_time"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
+                android:layout_marginBottom="10dp"/>
+
+
+            <!-- 요리 시간 버튼 3개 -->
+            <LinearLayout
+                android:id="@+id/cookTimeRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="30dp">
+                <Button
+                    android:id="@+id/cookTime1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/coock_time1"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:textSize="13dp"
+                    android:includeFontPadding="false"
+                    android:backgroundTint="@color/buttonOffColor"
+                    android:textColor="@color/btn_text"
+                    android:layout_marginRight="10dp"
+                    android:padding="0dp"/>
+                <Button
+                    android:id="@+id/cookTime2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/coock_time2"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:textSize="13dp"
+                    android:includeFontPadding="false"
+                    android:backgroundTint="@color/buttonOffColor"
+                    android:textColor="@color/btn_text"
+                    android:layout_marginRight="10dp"/>
+                <Button
+                    android:id="@+id/cookTime3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/coock_time3"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:textSize="13dp"
+                    android:includeFontPadding="false"
+                    android:backgroundTint="@color/buttonOffColor"
+                    android:textColor="@color/btn_text"
+                    android:layout_marginRight="10dp"/>
+            </LinearLayout>
+
+            <!-- 나의 냉장고 타이틀 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_refrigerator_ingredient"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false" />
+
+            <!-- 나의 냉장고 재료 버튼 한줄에 3개씩 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/ingredient_btn_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/otherView"/>
+                <TextView
+                    android:id="@+id/otherView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

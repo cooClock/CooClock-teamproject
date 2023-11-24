@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".login_page"
-    android:background="#FFD338">
+    android:background="@drawable/login_button_gradient">
 
     <View
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:background="@drawable/login_rect"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="131dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="16dp" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -20,21 +20,26 @@
         android:layout_height="245dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.02"
         tools:srcCompat="@drawable/logo_1" />
 
     <TextView
         android:id="@+id/logintext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="300dp"
         android:text="로그인"
         android:textColor="#0A191E"
         android:textSize="38dp"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="217dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.818"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/logindetail"
@@ -43,51 +48,55 @@
         android:text="cooClock의 다양한 서비스를 경험하세요."
         android:textColor="#8F9698"
         android:textSize="18dp"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="272dp" />
+        app:layout_constraintStart_toStartOf="@+id/logintext"
+        app:layout_constraintTop_toBottomOf="@+id/logintext" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:text="Username"
         android:textColor="#000000"
         android:textSize="20.7dp"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="312dp" />
+        app:layout_constraintStart_toStartOf="@+id/logindetail"
+        app:layout_constraintTop_toBottomOf="@+id/logindetail" />
 
 
     <EditText
-        android:id="@+id/id"
+        android:id="@+id/et_id"
         android:layout_width="371dp"
         android:layout_height="54.08dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/login_editbox_background"
         android:hint="아이디"
         android:paddingLeft="15dp"
         android:textColorHint="#818080"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="340dp" />
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Password"
         android:textColor="#000000"
-        android:textSize="20.7dp"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="407dp" />
+        android:textSize="20.7sp"
+        app:layout_constraintStart_toStartOf="@+id/et_id"
+        app:layout_constraintTop_toBottomOf="@+id/et_id" />
 
     <EditText
-        android:id="@+id/pw"
+        android:id="@+id/et_pw"
         android:layout_width="371dp"
         android:layout_height="54.08dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/login_editbox_background"
         android:hint="비밀번호"
         android:paddingLeft="15dp"
         android:textColorHint="#818080"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="435dp"></EditText>
+        app:layout_constraintStart_toStartOf="@+id/Password"
+        app:layout_constraintTop_toBottomOf="@+id/Password"></EditText>
 
 
     <EditText
@@ -99,49 +108,56 @@
         android:text="비밀번호 찾기"
         android:textColor="#D12023"
         android:textSize="14sp"
-        tools:layout_editor_absoluteX="297dp"
-        tools:layout_editor_absoluteY="489dp" />
+        app:layout_constraintEnd_toEndOf="@+id/et_pw"
+        app:layout_constraintTop_toBottomOf="@+id/et_pw" />
 
     <Button
-        android:id="@+id/loginbtn"
+        android:id="@+id/btn_login"
         android:layout_width="371dp"
         android:layout_height="54.08dp"
         android:background="@drawable/login_button_gradient"
-        android:text="login"
+        android:text="로그인"
         android:textSize="20.7sp"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.784" />
+        app:layout_constraintEnd_toEndOf="@+id/et_pw"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toStartOf="@+id/et_pw"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText"
+        app:layout_constraintVertical_bias="0.0" />
+
 
     <Button
-        android:id="@+id/google"
+        android:id="@+id/btn_google_register"
         android:layout_width="371dp"
         android:layout_height="54.08dp"
+        android:layout_marginTop="10dp"
+        android:drawableStart="@drawable/drawable_google_ic"
         android:background="@drawable/login_btnbackground"
         android:text="구글 아이디로 회원가입"
         android:textColor="#000000"
         android:textSize="20.7sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="599dp" />
-
+        android:drawablePadding="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_login"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_login"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
     <Button
-        android:id="@+id/email"
+        android:id="@+id/btn_register"
         android:layout_width="371dp"
         android:layout_height="54.08dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/login_btnbackground"
         android:text="이메일로 회원가입"
         android:textColor="#000000"
         android:textSize="20.7sp"
+        android:drawableLeft="@drawable/drawable_mail_ic"
+        android:drawablePadding="8dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_google_register"
         app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="661dp" />
+        app:layout_constraintStart_toStartOf="@+id/btn_google_register"
+        app:layout_constraintTop_toBottomOf="@+id/btn_google_register" />
 </androidx.constraintlayout.widget.ConstraintLayout>
