@@ -51,7 +51,7 @@ public class login_page extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Intent intent = new Intent(login_page.this, main_page.class);
+                            Intent intent = new Intent(login_page.this, MainActivity.class);
                             startActivity(intent);
                             finish(); //현재 액티비티 파괴
                         } else{
