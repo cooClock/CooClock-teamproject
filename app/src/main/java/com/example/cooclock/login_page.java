@@ -36,8 +36,6 @@ public class login_page extends AppCompatActivity {
         mEtPwd = findViewById(R.id.et_pw);
 
 
-
-
         Button btn_login = findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener(){
 
@@ -61,7 +59,6 @@ public class login_page extends AppCompatActivity {
                 });
             }
         });
-
 
 
         Button btn_google_register = (Button) findViewById(R.id.btn_google_register);
