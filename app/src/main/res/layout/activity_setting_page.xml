@@ -4,6 +4,161 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".setting_page">
+    tools:context=".setting_page"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/next"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/imageView10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.213"
+        tools:srcCompat="@drawable/back2__2_"
+        android:layout_width="wrap_content" />
+
+    <TextView
+        android:id="@+id/account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="계정"
+        android:textColor="#0A191E"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="0dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/setting_rect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/account" />
+
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView5"
+        tools:srcCompat="@drawable/avatar" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="연동된 이메일"
+        android:textColor="#818181"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginBottom="52dp"
+        android:text="cooclock@gmail.com"
+        android:textColor="#0A191E"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+        app:layout_constraintStart_toEndOf="@+id/imageView4" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        android:clickable="true"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10">
+
+
+        <TextView
+            android:id="@+id/nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_margin="8dp"
+            android:onClick="onClickButton"
+            android:text="닉네임"
+            android:textColor="#101010"
+            android:textSize="17dp" />
+
+        <ImageView
+            android:id="@+id/settingline1"
+            android:layout_width="370dp"
+            android:layout_height="7dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/setting_lline" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_margin="8dp"
+            android:onClick="onClickButton"
+            android:text="이메일 변경"
+            android:textColor="#101010"
+            android:textSize="17dp" />
+
+        <ImageView
+            android:id="@+id/settingline2"
+            android:layout_width="370dp"
+            android:layout_height="7dp"
+            android:src="@drawable/setting_lline" />
+
+        <TextView
+            android:id="@+id/pw"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_margin="8dp"
+            android:onClick="onClickButton"
+            android:text="비밀번호 재설정"
+            android:textColor="#101010"
+            android:textSize="17dp" />
+
+        <ImageView
+            android:id="@+id/settingline3"
+            android:layout_width="370dp"
+            android:layout_height="7dp"
+            android:src="@drawable/setting_lline" />
+
+        <TextView
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_margin="8dp"
+            android:onClick="onClickButton"
+            android:text="계정 삭제하기"
+            android:textColor="#101010"
+            android:textSize="17dp" />
+
+        <ImageView
+            android:id="@+id/settingline4"
+            android:layout_width="370dp"
+            android:layout_height="7dp"
+            android:src="@drawable/setting_lline" />
+
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
