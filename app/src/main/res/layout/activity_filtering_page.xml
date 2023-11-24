@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    tools:context=".filtering_page">-->
-
-<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,7 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/pc_yello"
+            android:background="@drawable/rect"
             android:paddingTop="20dp"
             android:paddingBottom="30dp"
             android:paddingHorizontal="20dp"
@@ -178,7 +169,6 @@
                     android:fontFamily="@font/notosanskr_regular"
                     android:includeFontPadding="false" />
             </LinearLayout>
-
 
 
             <!--  요리시간  title    -->
