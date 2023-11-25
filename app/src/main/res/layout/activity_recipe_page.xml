@@ -226,45 +226,58 @@
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="20dp"/>
-                <!-- 4-2-2. n -->
+                <!-- 4-2-2. m -->
                 <TextView
-                    android:id="@+id/recipe_progress_percentage"
+                    android:id="@+id/recipe_progress_m"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="nn"
+                    android:text="m"
                     android:fontFamily="@font/notosanskr_medium"
                     android:includeFontPadding="false"
                     android:textAlignment="center"
                     android:textColor="@color/grays"
                     android:textSize="20dp"/>
-                <!-- 4-2-3. "%" -->
+                <!-- 4-2-3. "/" -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="%"
+                    android:text="/"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:includeFontPadding="false"
+                    android:textAlignment="center"
+                    android:textColor="@color/grays"
+                    android:textSize="20dp"/>
+                <!-- 4-2-4. n -->
+                <TextView
+                    android:id="@+id/recipe_progress_n"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="n"
                     android:fontFamily="@font/notosanskr_medium"
                     android:includeFontPadding="false"
                     android:textAlignment="center"
                     android:textColor="@color/grays"
                     android:textSize="20dp"/>
             </LinearLayout>
-            <!-- 4-3. progress bar -->
-            <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:id="@+id/recipe_progress_bar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                app:trackCornerRadius="10dp"
-                app:trackThickness="10dp"
-                app:indicatorColor="@color/pc_yello"/>
             <!-- 4-4. 타이머 부분 -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recipe_step_list"
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp">
-            </androidx.recyclerview.widget.RecyclerView>
+                android:layout_gravity="center"
+                android:background="@color/clear">
+                <fragment
+                    android:id="@+id/recipe_step"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:name="com.example.cooclock.Recipe_step"/>
+            </FrameLayout>
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/recipe_step_list"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_marginTop="20dp">-->
+<!--            </androidx.recyclerview.widget.RecyclerView>-->
         </LinearLayout>
         <!-- 5. 관련 노하우 부분 -->
         <LinearLayout

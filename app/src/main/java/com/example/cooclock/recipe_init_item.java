@@ -17,10 +17,11 @@ public class recipe_init_item {
     int three_point; // 3점
     int two_point; // 2점
     int one_point; // 1점
+    int total_step; // 전체 레시피 단계 수
 
     recipe_init_item(String recipe_writer, String recipe_servings, String recipe_title, boolean favorite,
                      double rating_average, int rating_cnt, int five_point, int four_point, int three_point,
-                     int two_point, int one_point){
+                     int two_point, int one_point, int total_step){
         this.recipe_writer = recipe_writer;
         this.recipe_servings = recipe_servings;
         this.recipe_title = recipe_title;
@@ -32,6 +33,7 @@ public class recipe_init_item {
         this.three_point = three_point;
         this.two_point = two_point;
         this.one_point = one_point;
+        this.total_step = total_step;
     }
 
     public String getRecipe_writer() {
@@ -76,4 +78,6 @@ public class recipe_init_item {
     public int getOne_point() {
         return one_point;
     }
+
+    public int getTotal_step() { return total_step; }
 }

@@ -64,4 +64,6 @@
     <string name="recipe_step_d00">달걀은 흰자, 노른자를 분리하고 약간의 소금을 넣어 풀고 대파는 어슷하게 썰어주세요.</string>
     <string name="recipe_page_d3">관련 노하우</string>
     <string name="recipe_page_d4">후기</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
