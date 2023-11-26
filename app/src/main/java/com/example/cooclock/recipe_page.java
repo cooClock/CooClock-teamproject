@@ -59,7 +59,6 @@ public class recipe_page extends AppCompatActivity {
         LinearProgressIndicator three_point = (LinearProgressIndicator) findViewById(R.id.rating_3); // 3점
         LinearProgressIndicator two_point = (LinearProgressIndicator) findViewById(R.id.rating_2); // 2점
         LinearProgressIndicator one_point = (LinearProgressIndicator) findViewById(R.id.rating_1); // 1점
-        TextView recipe_total_steps = (TextView) findViewById(R.id.recipe_progress_n);
 
         recipe_init_item item = new recipe_init_item("이재원", "4", "둘이 먹다 하나 죽어 그냥 몰라", true, 3.6, 15, 5, 4, 3, 2, 1, 4);
 
@@ -86,8 +85,6 @@ public class recipe_page extends AppCompatActivity {
         three_point.setProgress((int) ((float) three / tot * 100)); // 3점 프로그래스바 설정
         two_point.setProgress((int) ((float) two / tot * 100)); // 2점 프로그래스바 설정
         one_point.setProgress((int) ((float) one / tot * 100)); // 1점 프로그래스바 설정
-
-        recipe_total_steps.setText(String.valueOf(item.getTotal_step()));
     }
 
 
@@ -171,36 +168,6 @@ public class recipe_page extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.recipe_step, recipe_step).commit();
     }
-
-
-//    // 요리 단계 리스트 업데이트 코드
-//    private void updateRecipeStepList(){
-//        RecyclerView RecipeStepList = findViewById(R.id.recipe_step_list);
-//
-//        ArrayList<recipeStepItem> items = new ArrayList<recipeStepItem>();
-//        items.add(new recipeStepItem(1, "달걀은 흰자, 노른자를 분리하고 약간의 소금을 넣어 풀고 대파는 어슷하게 썰어주세요.", 3,0, R.drawable.recipe_img_test));
-//        items.add(new recipeStepItem(2, "달군 팬에 약간의 기름을 두르고 키친타월로 닦아 낸 후 달걀노른자와 흰자 순으로 약한 불에서 지단을 만들어 가늘게 채를 썰어주세요.", 3,0,R.drawable.recipe_img_test));
-//        items.add(new recipeStepItem(3, "냄비에 육수를 넣고 끓으면 국물 양념 재료와 만두를 넣어주세요. 만두가 익어 떠오르면 대파를 넣고 한소끔 끓이고 마지막에 약간의 소금과 후춧가루를 넣어 간을 맞춰주세요.", 5,0,R.drawable.recipe_img_test));
-//        items.add(new recipeStepItem(4, "그릇에 만두국을 담고 채썬 황백지단을 올려 맛있게 즐겨주세요. (tip 기호에 따라 고명으로 김가루 또는 양념해서 볶은 쇠고기, 송송 썬 실파 등을 곁들여주세요.", 1,30,R.drawable.recipe_img_test));
-
-//
-//        RecipeStepListAdapter rlAdapter = new RecipeStepListAdapter(items);
-//        RecipeStepList.setAdapter(rlAdapter);
-//
-//
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
-//        RecipeStepList.setLayoutManager(layoutManager);
-//
-//
-//
-//        int firstVisibleItemPosition = ((LinearLayoutManager) layoutManager).findLastCompletelyVisibleItemPosition();
-//        Log.d(TAG, String.valueOf(firstVisibleItemPosition));
-//        int centerOfScreen = RecipeStepList.getWidth();
-//        RecipeStepList.setPadding(0,centerOfScreen,0,centerOfScreen);
-//        ((LinearLayoutManager) layoutManager).scrollToPositionWithOffset(firstVisibleItemPosition, centerOfScreen);
-//
-//    }
-
 
 
     /*

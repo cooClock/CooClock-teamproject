@@ -68,6 +68,25 @@
                             android:textAlignment="textEnd"
                             android:textColor="@color/black"
                             android:textSize="25dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="/"
+                            android:fontFamily="@font/notosanskr_medium"
+                            android:includeFontPadding="false"
+                            android:layout_gravity="bottom"
+                            android:textColor="@color/grays"
+                            android:textSize="20dp"/>
+                        <TextView
+                            android:id="@+id/recipe_tot_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:text="1"
+                            android:fontFamily="@font/notosanskr_medium"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/grays"
+                            android:textSize="20dp"/>
                         <!-- 3-1-2-2. "번" -->
                         <TextView
                             android:layout_width="wrap_content"
@@ -196,7 +215,8 @@
                         app:trackCornerRadius="10dp"
                         app:trackThickness="10dp"
                         app:indicatorColor="@color/pc_yello"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:visibility="visible"/>
                 </LinearLayout>
             </LinearLayout>
 
