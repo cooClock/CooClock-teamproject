@@ -21,7 +21,7 @@ public class camera_scan_page extends AppCompatActivity {
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);  // 바코드 형식 설정
         integrator.setPrompt("Scan a barcode or QR code");  // 스캔 화면에 표시되는 메시지 설정
-        integrator.setCameraId(0);  // 후면 카메라 사용
+        integrator.setCameraId(1);  // 후면 카메라 사용
         integrator.setBeepEnabled(false);  // 스캔 소리 사용 여부
         integrator.setOrientationLocked(false);
 
@@ -43,7 +43,8 @@ public class camera_scan_page extends AppCompatActivity {
                 intent.putExtra("scannedCode", scannedCode);
                 setResult(Activity.RESULT_OK, intent);
             }
-            finish();
+            Intent intent = new Intent(getApplicationContext(),my_refrigerator_page.class);
+            startActivity(intent);
         }
     }
 }
