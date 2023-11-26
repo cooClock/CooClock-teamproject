@@ -18,7 +18,7 @@
         tools:srcCompat="@drawable/input_image_icon__1_" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/cam_button"
         android:layout_width="379dp"
         android:layout_height="57dp"
         android:backgroundTint="#FFD338"
