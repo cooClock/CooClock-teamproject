@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.FileNotFoundException;
@@ -49,19 +50,26 @@ public class recipe_write_page extends AppCompatActivity {
             }
         });
 
+        TextView categorySelectText = (TextView) findViewById(R.id.category_select_layout_text);
         LinearLayout categorySelect = (LinearLayout) findViewById(R.id.category_select_layout);
         categorySelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder dlg = new AlertDialog.Builder(recipe_write_page.this);
-                dlg.setTitle("계발에서 개발까지"); //제목
-                dlg.setMessage("안녕하세요 계발에서 개발까지 입니다."); // 메시지
-//                dlg.setIcon(R.drawable.deum); // 아이콘 설정
-//                버튼 클릭시 동작
+                dlg.setTitle("카테고리 선택"); //제목
+                final String[] versionArray = new String[] {"한식","일식","중식","양식","분식","간식","면류","반찬류","소준상","맥주상","대접용","데이트","보양식","도시락","아이용","이유식"};
+
+                dlg.setSingleChoiceItems(versionArray, 0, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        categorySelectText.setText(versionArray[which]);
+                    }
+                });
+
                 dlg.setPositiveButton("확인",new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog, int which) {
                         //토스트 메시지
-                        Toast.makeText(recipe_write_page.this,"확인을 눌르셨습니다.",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(recipe_write_page.this,categorySelectText.getText()+"가 선택되었습니다.",Toast.LENGTH_SHORT).show();
                     }
                 });
                 dlg.show();

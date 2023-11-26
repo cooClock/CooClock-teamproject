@@ -134,6 +134,7 @@
             android:background="@drawable/search_edit_text_border_gray">
 
             <TextView
+                android:id="@+id/category_select_layout_text"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingLeft="10dp"
