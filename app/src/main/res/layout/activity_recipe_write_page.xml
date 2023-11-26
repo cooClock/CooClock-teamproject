@@ -113,19 +113,32 @@
             android:layout_marginBottom="10dp"/>
 
         <!-- 카테고리 선택칸 -->
+<!--        <Button-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/check_the_food_category"-->
+<!--            android:fontFamily="@font/notosanskr_medium"-->
+<!--            android:textSize="13sp"-->
+<!--            android:includeFontPadding="false"-->
+<!--            android:textColor="@color/btn_text"-->
+<!--            android:background="@drawable/search_edit_text_border_gray"-->
+<!--            android:backgroundTint="@color/pc_yello"-->
+<!--            />-->
+
         <LinearLayout
+            android:id="@+id/category_select_layout"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="25dp"
             android:paddingLeft="15dp"
             android:background="@drawable/search_edit_text_border_gray">
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingLeft="10dp"
                 android:layout_margin="1dp"
-                android:hint="@string/check_the_food_category"
+                android:text="@string/check_the_food_category"
                 android:textColorHint="@color/pc_unclicked"
                 android:textSize="15sp"
                 android:fontFamily="@font/notosanskr_medium"

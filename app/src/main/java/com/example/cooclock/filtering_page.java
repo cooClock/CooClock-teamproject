@@ -2,16 +2,22 @@ package com.example.cooclock;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -26,12 +32,88 @@ public class filtering_page extends AppCompatActivity {
     private boolean isButton2On = false;
     private boolean isButton3On = false;
 
+    private EditText filterSearch;
+    private int editTextItemCount=0;
+
     public List<String> filterItem = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filtering_page);
+
+        // Assuming your EditText has an id of filter_search
+        filterSearch = findViewById(R.id.filter_search);
+
+        // Assuming your ImageView has an id of filter_search_icon
+        ImageView filterSearchIcon = findViewById(R.id.filter_search_icon);
+
+        // Set a click listener for the ImageView
+        filterSearchIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the text from the EditText
+                String searchText = filterSearch.getText().toString();
+
+                // Check if the EditText has text
+                if (!searchText.isEmpty()) {
+                    // Log the text
+                    Log.d("logcat", searchText);
+
+                    //filterItem에 필터값 추가
+                    filterItem.add(new String(searchText.toString()));
+                    editTextItemCount++;
+
+                    //create a new button
+                    Button dynamicButton = new Button(filtering_page.this);
+                    dynamicButton.setLayoutParams(new ViewGroup.LayoutParams(
+                            ViewGroup.LayoutParams.WRAP_CONTENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT));
+
+                    // Set margins
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.WRAP_CONTENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT);
+                    params.setMargins(15, 0, 15, 15); // left, top, right, bottom
+                    dynamicButton.setLayoutParams(params);
+
+                    // Round the corners using a GradientDrawable
+                    GradientDrawable gradientDrawable = new GradientDrawable();
+                    gradientDrawable.setCornerRadius(80); // Adjust the radius as needed
+                    gradientDrawable.setColor(ContextCompat.getColor(filtering_page.this, R.color.buttonOnColor)); // Replace with your actual color
+                    // Set the background of the Button
+                    dynamicButton.setBackground(gradientDrawable);
+
+
+                    dynamicButton.setPadding(5,0,5,0);
+                    dynamicButton.setText(searchText);
+                    dynamicButton.setTextSize(13); // textSize in sp
+                    dynamicButton.setTypeface(ResourcesCompat.getFont(filtering_page.this, R.font.notosanskr_medium));
+                    dynamicButton.setIncludeFontPadding(false);
+                    dynamicButton.setTextColor(ContextCompat.getColor(filtering_page.this, R.color.btn_text));
+                    dynamicButton.setTextColor(getResources().getColor(R.color.btn_text));
+
+
+                    //add the button to your layout
+                    if(editTextItemCount%3==1) {
+                        LinearLayout addItemBtnLayout = findViewById(R.id.addfilterItem_btn_layout_1);
+                        addItemBtnLayout.addView(dynamicButton);
+                    }else if(editTextItemCount%3==2) {
+                        LinearLayout addItemBtnLayout = findViewById(R.id.addfilterItem_btn_layout_2);
+                        addItemBtnLayout.addView(dynamicButton);
+                    }else{
+                        LinearLayout addItemBtnLayout = findViewById(R.id.addfilterItem_btn_layout_3);
+                        addItemBtnLayout.addView(dynamicButton);
+                    }
+
+
+                    // Clear the EditText
+                    filterSearch.setText("");
+                } else {
+                    Toast.makeText(getApplicationContext(), "내용을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         cookTime1Btn = findViewById(R.id.cookTime1);
         cookTime2Btn = findViewById(R.id.cookTime2);
@@ -167,19 +249,16 @@ public class filtering_page extends AppCompatActivity {
     public void filterSelectCompleteClicked(View view){
 //        Button clickedBtn = (Button) view;
         if(isButton1On==true && !filterItem.contains(cookTime1Btn.getText().toString())){ //filterItem에 필터값 추가
-            Log.d("logcat", "15초");
             filterItem.add(new String(cookTime1Btn.getText().toString()));
         } else{ //filterItem에 필터값 삭제
             filterItem.remove(cookTime1Btn.getText().toString());
         }
         if(isButton2On==true && !filterItem.contains(cookTime2Btn.getText().toString())){ //filterItem에 필터값 추가
-            Log.d("logcat", "30초");
             filterItem.add(new String(cookTime2Btn.getText().toString()));
         } else {//filterItem에 필터값 삭제
             filterItem.remove(cookTime2Btn.getText().toString());
         }
         if(isButton3On==true && !filterItem.contains(cookTime3Btn.getText().toString())){ //filterItem에 필터값 추가
-            Log.d("logcat", "60초");
             filterItem.add(new String(cookTime3Btn.getText().toString()));
         } else{ //filterItem에 필터값 삭제
             filterItem.remove(cookTime3Btn.getText().toString());

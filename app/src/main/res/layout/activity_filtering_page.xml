@@ -91,7 +91,8 @@
                     android:textColorHint="@color/pc_yello"
                     android:textSize="15sp"
                     android:fontFamily="@font/notosanskr_medium"
-                    android:background="#FFFFFF" />
+                    android:background="#FFFFFF"
+                    android:imeOptions="actionDone"/>
             </LinearLayout>
 
             <LinearLayout
@@ -145,7 +146,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="30dp">
+                android:layout_marginBottom="15dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -154,7 +155,7 @@
                     android:textSize="15dp"
                     android:fontFamily="@font/notosanskr_regular"
                     android:includeFontPadding="false"
-                    android:paddingRight="3dp"/>
+                    android:paddingRight="3dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -171,6 +172,39 @@
                     android:textSize="15dp"
                     android:fontFamily="@font/notosanskr_regular"
                     android:includeFontPadding="false" />
+            </LinearLayout>
+
+
+            <!--    edit text로 추가한 설명       -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="25dp">
+                <LinearLayout
+                    android:id="@+id/addfilterItem_btn_layout_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="left">
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/addfilterItem_btn_layout_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/addfilterItem_btn_layout_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="right">
+                </LinearLayout>
             </LinearLayout>
 
 
