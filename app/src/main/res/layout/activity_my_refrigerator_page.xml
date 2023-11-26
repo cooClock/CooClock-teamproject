@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    tools:context=".my_refrigerator_page"-->
-<!--    android:background="#42ed45">-->
-
-<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -72,5 +63,68 @@
 
             </LinearLayout>
         </LinearLayout>
+
+        <!-- "나의 냉장고" -->
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="32dp"
+            android:text="나의 냉장고"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:textColor="#3E5481"
+            android:textSize="20dp"
+            android:paddingLeft="15dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/my_refrigerator_ingredient_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="15dp"
+            android:paddingTop="20dp"
+            android:layout_gravity="center"/>
+
+        <!-- 버튼 2개 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="20dp"
+            android:layout_marginBottom="100dp">
+            <TextView
+                android:id="@+id/go_add_ingredient_self_page"
+                android:clickable="true"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="재료 추가하기"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:background="@drawable/recipe_page_title_border"
+                android:focusable="true" />
+            <TextView
+                android:id="@+id/go_photo_scan_page"
+                android:clickable="true"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:text="사진으로 추가하기"
+                android:gravity="center"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:background="@drawable/recipe_page_title_border"
+                android:layout_marginLeft="30dp"
+                android:focusable="true" />
+        </LinearLayout>
+
+
     </LinearLayout>
-</ScrollView>
+
+</androidx.core.widget.NestedScrollView>

@@ -138,11 +138,11 @@ public class recipe_page extends AppCompatActivity {
         RecyclerView IngredientList = findViewById(R.id.recipe_ingredient_list);
 
         ArrayList<ingredientItem> items = new ArrayList<ingredientItem>();
-        items.add(new ingredientItem("당근", "0.1"));
-        items.add(new ingredientItem("양파", "0.1"));
-        items.add(new ingredientItem("애호박", "0.1"));
-        items.add(new ingredientItem("만두", "0.1"));
-        items.add(new ingredientItem("소고기 국거리", "0.1"));
+        items.add(new ingredientItem("당근", "0.1","과일-채소"));
+        items.add(new ingredientItem("양파", "0.1","과일-채소"));
+        items.add(new ingredientItem("애호박", "0.1","과일-채소"));
+        items.add(new ingredientItem("만두", "0.1","기타"));
+        items.add(new ingredientItem("소고기 국거리", "0.1","육류"));
 
         recipe_page.RecipeIngredientListCustomAdapter rlAdapter = new recipe_page.RecipeIngredientListCustomAdapter(items);
         IngredientList.setAdapter(rlAdapter);

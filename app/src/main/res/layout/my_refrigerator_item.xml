@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:paddingTop="10dp">
+    <LinearLayout
+        android:layout_width="365dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@drawable/big_box_border_grays">
+        <!-- 색상 -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/my_refrigerator_ingredient_color"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@color/black"
+            android:layout_marginLeft="15dp"/>
+        <!-- 재료 명 -->
+        <TextView
+            android:id="@+id/my_refrigerator_ingredient_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="재료"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="10"/>
+        <!-- - 버튼 -->
+        <ImageView
+            android:id="@+id/my_refrigerator_ingredient_sub"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:clickable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/minus_btn"
+            android:layout_marginRight="30dp"/>
+        <!-- 수량 -->
+        <TextView
+            android:id="@+id/my_refrigerator_ingredient_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginRight="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kg"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
+        <!-- + 버튼 -->
+        <ImageView
+            android:id="@+id/my_refrigerator_ingredient_add"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:clickable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/plus_btn"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"/>
+    </LinearLayout>
+
+</LinearLayout>

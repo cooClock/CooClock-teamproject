@@ -76,11 +76,8 @@
         </activity>
         <activity
             android:name=".recipe_page"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false" >
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -113,13 +110,19 @@
             android:exported="false" />
         <activity
             android:name=".my_refrigerator_page"
-            android:exported="false" />
+            android:exported="false">
+
+        </activity>
         <activity
             android:name=".recipe_write_page"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" >
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
