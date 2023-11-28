@@ -4,6 +4,222 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".add_ingredient_self_page">
+
+
+    <!-- 상단 앱바  -->
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rect"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/ing_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
+                android:text="@string/username"
+                android:textColor="@color/pc_orange"
+                android:textSize="22dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanskr_light"
+                android:includeFontPadding="false"
+                android:text="@string/add_ingredient_page"
+                android:textColor="@color/black"
+                android:textFontWeight="700"
+                android:textSize="17dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:scaleType="fitEnd"
+                android:src="@drawable/avatar" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/ing_name"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_marginBottom="352dp"
+        android:hint="재료의 이름을 적어 주세요."
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/cam_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="432dp"
+        android:contextClickable="false"
+        android:text="수량"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/ing_num"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.526" />
+
+    <EditText
+        android:id="@+id/ing_num"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_marginBottom="60dp"
+        android:hint="재료의 이름을 적어 주세요."
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/cam_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/cam_button"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_marginBottom="76dp"
+        android:backgroundTint="#FFD338"
+        android:text="재료 등록하기"
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:layout_width="111dp"
+        android:layout_height="39dp"
+        android:contextClickable="false"
+        android:text="@string/add_ingredient_name"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/ing_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="카테고리"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ing_name"
+        app:layout_constraintVertical_bias="0.025" />
+
+    <TableLayout
+        android:id="@+id/table"
+        android:layout_width="409dp"
+        android:layout_height="147dp"
+        android:layout_centerHorizontal="true"
+        android:baselineAligned="true"
+        android:stretchColumns="0,1,2,3"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TableRow>
+
+            <Button
+                android:layout_width="53dp"
+                android:layout_column="0"
+                android:background="@color/btn_text"
+
+                android:text="과일채소"
+                android:textColor="@color/black"></Button>
+
+            <Button
+                android:layout_width="53dp"
+                android:layout_column="1"
+                android:text="육류"
+                android:textColor="@color/black"></Button>
+
+            <Button
+                android:id="@+id/fish"
+                android:layout_width="53dp"
+                android:layout_column="2"
+                android:background="#17F40000"
+                android:fitsSystemWindows="false"
+                android:text="어패류"
+                android:textColor="@color/black"></Button>
+
+            <Button
+                android:layout_width="53dp"
+                android:layout_column="3"
+                android:text="곡류"
+                android:textColor="@color/black"></Button>
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:layout_width="53dp"
+                android:layout_column="0"
+                android:text="난류"
+                android:textColor="@color/black"></Button>
+
+            <Button
+                android:layout_width="53dp"
+                android:layout_column="0"
+                android:text="유제품류"
+                android:textColor="@color/black"></Button>
+
+            <Button
+                android:layout_width="53dp"
+                android:layout_column="0"
+                android:text="기타"
+                android:textColor="@color/black"></Button>
+        </TableRow>
+
+    </TableLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

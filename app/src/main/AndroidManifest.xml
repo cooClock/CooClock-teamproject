@@ -101,10 +101,21 @@
             android:exported="false" />
         <activity
             android:name=".camera_scan_page"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".photo_scan_page"
-            android:exported="false" />
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".CameraScanPage"
+            android:exported="true" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".add_ingredient_self_page"
             android:exported="false" />
