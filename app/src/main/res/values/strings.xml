@@ -66,4 +66,5 @@
     <string name="recipe_page_d4">후기</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="photo_scan_page_d0">사진으로 바코드를 스캔하여 유통기한을 확인하세요.</string>
 </resources>
