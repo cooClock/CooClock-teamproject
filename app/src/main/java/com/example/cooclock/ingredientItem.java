@@ -1,11 +1,15 @@
 package com.example.cooclock;
 
-import java.math.BigDecimal;
-
 public class ingredientItem {
     String name;
     String weight;
     String kind;
+
+    ingredientItem(){
+        this.name = "";
+        this.weight = "";
+        this.kind = "";
+    }
 
     ingredientItem(String name, String weight,String kind){
         this.name = name;

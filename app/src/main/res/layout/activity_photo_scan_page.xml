@@ -91,7 +91,7 @@
         android:gravity="center"
         android:fontFamily="@font/notosanskr_medium"
         android:includeFontPadding="false"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20dp"
         android:background="@drawable/recipe_page_title_border"
         android:layout_marginTop="20dp"/>
