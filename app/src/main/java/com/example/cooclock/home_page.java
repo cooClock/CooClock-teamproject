@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 
 import java.util.ArrayList;
@@ -203,7 +204,8 @@ public class home_page extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull main_page.RecipeListCustomViewHolder holder, int position) {
             recipeItem item = items.get(position);
-            holder.recipe_image.setImageResource(item.getResId());
+//            holder.recipe_image.setImageResource(item.getResId());
+            Glide.with(holder.itemView).load(item.getResId()).into(holder.recipe_image);
             holder.recipe_title.setText(item.getTitle());
             holder.recipe_time.setText(String.valueOf(item.getTotalTime()));
             holder.recipe_like.setText(String.valueOf(item.getLikeCnt()));
@@ -223,8 +225,8 @@ public class home_page extends Fragment {
 //        myRefrigeratorCategory.removeAllViews();
 
         ArrayList<recipeItem> items = new ArrayList<recipeItem>();
-        items.add(new recipeItem("멸치 볶음", R.drawable.recipe_list_test2,20,100));
-        items.add(new recipeItem("된장 찌개", R.drawable.recipe_list_test1,30,500));
+//        items.add(new recipeItem("멸치 볶음", R.drawable.recipe_list_test2,20,100));
+//        items.add(new recipeItem("된장 찌개", R.drawable.recipe_list_test1,30,500));
 
 
         main_page.RecipeListCustomAdapter rlAdapter = new main_page.RecipeListCustomAdapter(items);
