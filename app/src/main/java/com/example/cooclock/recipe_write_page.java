@@ -1,5 +1,7 @@
 package com.example.cooclock;
 
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -31,6 +33,10 @@ public class recipe_write_page extends AppCompatActivity {
     ImageView imageView;
     LinearLayout get_picture;
 
+    int selectedPosition;
+    String itemRecipieName;
+    String itemCategory = NULL;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +48,6 @@ public class recipe_write_page extends AppCompatActivity {
         get_picture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Log.v("test","picture");
 
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
@@ -55,13 +60,16 @@ public class recipe_write_page extends AppCompatActivity {
         categorySelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder dlg = new AlertDialog.Builder(recipe_write_page.this);
+                AlertDialog.Builder dlg = new AlertDialog.Builder(recipe_write_page.this, R.style.MyAlertDialogStyle);
                 dlg.setTitle("카테고리 선택"); //제목
-                final String[] versionArray = new String[] {"한식","일식","중식","양식","분식","간식","면류","반찬류","소준상","맥주상","대접용","데이트","보양식","도시락","아이용","이유식"};
+                final String[] versionArray = new String[] {"한식","일식","중식","양식","분식","간식","면류","반찬류","소주상","맥주상","대접용","데이트","보양식","도시락","아이용","이유식"};
+
+                selectedPosition = 0; // Default selected position
 
                 dlg.setSingleChoiceItems(versionArray, 0, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        selectedPosition = which; // Update the selected position
                         categorySelectText.setText(versionArray[which]);
                     }
                 });
@@ -69,7 +77,20 @@ public class recipe_write_page extends AppCompatActivity {
                 dlg.setPositiveButton("확인",new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog, int which) {
                         //토스트 메시지
-                        Toast.makeText(recipe_write_page.this,categorySelectText.getText()+"가 선택되었습니다.",Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(recipe_write_page.this,categorySelectText.getText()+"가 선택되었습니다.",Toast.LENGTH_SHORT).show();
+                        if (selectedPosition == 0) {
+                            // No item selected, handle this case
+                            if(itemCategory.equals(NULL)){
+                                Toast.makeText(recipe_write_page.this, "카테고리가 선택되지 않았습니다.", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(recipe_write_page.this, itemCategory.toString() + "이(가) 선택되었습니다.", Toast.LENGTH_SHORT).show();
+                            }
+
+                        } else {
+                            // Item selected, handle it
+                            itemCategory = categorySelectText.getText().toString();
+                            Toast.makeText(recipe_write_page.this, categorySelectText.getText() + "이(가) 선택되었습니다.", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
                 dlg.show();

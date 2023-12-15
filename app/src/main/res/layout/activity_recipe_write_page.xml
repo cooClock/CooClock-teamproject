@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingHorizontal="20dp">
+        android:paddingHorizontal="20dp"
+        android:background="@color/white">
 
         <!--  나만의 레시피 작성 title -->
         <LinearLayout
@@ -40,7 +41,7 @@
             android:gravity="center"
             android:orientation="vertical"
             android:background="@drawable/big_box_border_gray"
-            android:paddingVertical="10dp"
+            android:padding="10dp"
             android:layout_marginBottom="20dp">
             <ImageView
                 android:id="@+id/food_imageview_none"
@@ -70,7 +71,7 @@
 
 
 
-        <!--  음식 이름      -->
+        <!--  레시피 이름 이름      -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,22 +82,22 @@
             android:includeFontPadding="false"
             android:layout_marginBottom="15dp"/>
 
-        <!-- 음식이름 입력칸 -->
+        <!-- 레시피 이름 입력칸 -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
-            android:paddingLeft="15dp"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="7dp"
             android:background="@drawable/search_edit_text_border_gray">
 
             <EditText
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingLeft="10dp"
-                android:layout_margin="1dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
                 android:hint="@string/write_the_food_name"
                 android:textColorHint="@color/pc_unclicked"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:fontFamily="@font/notosanskr_medium"
                 android:background="#FFFFFF" />
         </LinearLayout>
@@ -128,24 +129,23 @@
         <LinearLayout
             android:id="@+id/category_select_layout"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
             android:paddingLeft="15dp"
+            android:paddingVertical="7dp"
             android:background="@drawable/search_edit_text_border_gray">
 
             <TextView
                 android:id="@+id/category_select_layout_text"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingLeft="10dp"
-                android:layout_margin="1dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
                 android:text="@string/check_the_food_category"
                 android:textColorHint="@color/pc_unclicked"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:fontFamily="@font/notosanskr_medium"
                 android:background="#FFFFFF" />
         </LinearLayout>
-
 
 
         <!--  요리시간  title    -->
@@ -227,6 +227,25 @@
             android:includeFontPadding="false"
             android:layout_marginBottom="10dp"/>
 
+        <!-- 재료 입력칸 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="7dp"
+            android:background="@drawable/search_edit_text_border_gray">
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:hint="@string/write_the_ingridient_name"
+                android:textColorHint="@color/pc_unclicked"
+                android:textSize="15dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:background="#FFFFFF" />
+        </LinearLayout>
+
 
 
         <!--  레시피      -->
@@ -240,5 +259,59 @@
             android:includeFontPadding="false"
             android:layout_marginBottom="10dp"/>
 
+        <!-- 레시피 입력칸 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="7dp"
+            android:background="@drawable/search_edit_text_border_gray">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:hint="@string/write_the_recipie"
+                android:textColorHint="@color/pc_unclicked"
+                android:textSize="15dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:background="#FFFFFF" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/add_recipe_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/pc_yello"
+            android:text="레시피 추가하기"
+            android:fontFamily="@font/notosanskr_medium"
+            android:textSize = "17dp"
+            android:background="@drawable/button_border"
+            android:includeFontPadding="false"
+            android:textColor="@color/pc_unclicked"
+            android:onClick="add_recipe"
+            android:paddingVertical="15dp" />
+
+        <Button
+            android:id="@+id/write_recipe_complete_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/pc_yello"
+            android:text="레시피 업로드"
+            android:fontFamily="@font/notosanskr_medium"
+            android:textSize = "17dp"
+            android:includeFontPadding="false"
+            android:textColor="@color/white"
+            android:onClick="write_recipe_complete"
+            android:paddingVertical="15dp"
+            android:layout_marginTop="10dp"/>
+
+
+        <!--        빈 공간 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical">
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

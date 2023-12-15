@@ -21,4 +21,14 @@
         <item name="android:progressDrawable">@drawable/selector_star</item>
     </style>
 
+    <!--  레시피 작성 페이지 - 카테고리 선택  -->
+    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/pc_yello</item>
+<!--        <item name="android:textColorPrimary">@color/pc_yello</item>-->
+        <item name="buttonBarPositiveButtonStyle">@style/buttonBarButtonStylePositive</item>
+    </style>
+    <style name="buttonBarButtonStylePositive">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>
