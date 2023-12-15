@@ -272,13 +272,14 @@ public class filtering_page extends AppCompatActivity {
             Log.d("logcat", filterItem.toString());
 
             // activity 전환 + filterItem 내용 전달
-            Intent intent = new Intent(this, result_page.class);
-//            intent.putListExtra("filter",filterItem);
-            final String test = "테스트입니다.";
-            intent.putExtra("test",test);
-//            intent.putStringArrayListExtra("filter", new ArrayList<>(filterItem));
-            intent.putStringArrayListExtra("filter",filterItem);
-            startActivity(intent);
+            Intent resultIntent = new Intent(this, result_page.class);
+            resultIntent.putExtra("intentTitle","filtering_page");
+            resultIntent.putExtra("titleText","레시피를 확인해보세요.");
+            resultIntent.putStringArrayListExtra("filter",filterItem);
+            startActivity(resultIntent);
+
+            // Terminate the current activity
+            finish();
         }
     }
 }

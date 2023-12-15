@@ -211,9 +211,11 @@
             android:paddingHorizontal="20dp">
             <!-- 오늘의 추천 레시피 타이틀 -->
             <LinearLayout
+                android:id="@+id/goto_result_page"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:clickable="true" >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
