@@ -96,7 +96,6 @@ public class recipe_write_page extends AppCompatActivity {
                 dlg.show();
             }
         });
-
     }
 
     ActivityResultLauncher<Intent> startActivityResult = registerForActivityResult(
@@ -121,5 +120,14 @@ public class recipe_write_page extends AppCompatActivity {
             }
     );
 
+    public void add_ingredient(View v) {
+        Log.d("logcat", "add_ingredient");
+    };
+    public void add_recipe(View v) {
+        Log.d("logcat", "add_recipe");
+    };
+    public void write_recipe_complete(View v) {
+        Log.d("logcat", "write_recipe_complete");
+    };
 
 }

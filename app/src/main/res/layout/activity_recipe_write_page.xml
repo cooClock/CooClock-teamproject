@@ -42,7 +42,7 @@
             android:orientation="vertical"
             android:background="@drawable/big_box_border_gray"
             android:padding="10dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="30dp">
             <ImageView
                 android:id="@+id/food_imageview_none"
                 android:layout_width="60dp"
@@ -67,7 +67,7 @@
             android:scaleType="fitXY"
             android:background="@drawable/big_box_border_gray"
             android:visibility="gone"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="30dp"/>
 
 
 
@@ -86,7 +86,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="30dp"
             android:paddingHorizontal="15dp"
             android:paddingVertical="7dp"
             android:background="@drawable/search_edit_text_border_gray">
@@ -113,24 +113,12 @@
             android:includeFontPadding="false"
             android:layout_marginBottom="10dp"/>
 
-        <!-- 카테고리 선택칸 -->
-<!--        <Button-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/check_the_food_category"-->
-<!--            android:fontFamily="@font/notosanskr_medium"-->
-<!--            android:textSize="13sp"-->
-<!--            android:includeFontPadding="false"-->
-<!--            android:textColor="@color/btn_text"-->
-<!--            android:background="@drawable/search_edit_text_border_gray"-->
-<!--            android:backgroundTint="@color/pc_yello"-->
-<!--            />-->
 
         <LinearLayout
             android:id="@+id/category_select_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="30dp"
             android:paddingLeft="15dp"
             android:paddingVertical="7dp"
             android:background="@drawable/search_edit_text_border_gray">
@@ -214,7 +202,7 @@
             android:valueFrom="00.0"
             android:valueTo="60.0"
             android:stepSize="30.0"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="20dp"/>
 
         <!--  재료      -->
         <TextView
@@ -231,7 +219,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="15dp"
             android:paddingHorizontal="15dp"
             android:paddingVertical="7dp"
             android:background="@drawable/search_edit_text_border_gray">
@@ -246,6 +234,22 @@
                 android:background="#FFFFFF" />
         </LinearLayout>
 
+        <!--    재료 추가 버튼    -->
+        <Button
+            android:id="@+id/add_ingredient_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="재료 추가하기"
+            android:textSize = "17dp"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:textColor="@color/pc_unclicked"
+            android:onClick="add_ingredient"
+            android:paddingVertical="15dp"
+            android:layout_marginBottom="30dp"
+            app:cornerRadius="30dp"
+            app:strokeColor="@color/pc_add_btn"
+            app:strokeWidth="3dp" />
 
 
         <!--  레시피      -->
@@ -263,7 +267,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="15dp"
             android:paddingHorizontal="15dp"
             android:paddingVertical="7dp"
             android:background="@drawable/search_edit_text_border_gray">
@@ -278,20 +282,26 @@
                 android:fontFamily="@font/notosanskr_medium"
                 android:background="#FFFFFF" />
         </LinearLayout>
+
+        <!--   레시피 추가 버튼     -->
         <Button
             android:id="@+id/add_recipe_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/pc_yello"
             android:text="레시피 추가하기"
-            android:fontFamily="@font/notosanskr_medium"
             android:textSize = "17dp"
-            android:background="@drawable/button_border"
+            android:fontFamily="@font/notosanskr_medium"
             android:includeFontPadding="false"
             android:textColor="@color/pc_unclicked"
             android:onClick="add_recipe"
-            android:paddingVertical="15dp" />
+            android:paddingVertical="15dp"
+            android:layout_marginBottom="30dp"
+            app:cornerRadius="30dp"
+            app:strokeColor="@color/pc_add_btn"
+            app:strokeWidth="3dp" />
 
+
+        <!-- 레시피 업로드 버튼       -->
         <Button
             android:id="@+id/write_recipe_complete_btn"
             android:layout_width="match_parent"
@@ -310,7 +320,7 @@
         <!--        빈 공간 -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:orientation="vertical">
         </LinearLayout>
     </LinearLayout>

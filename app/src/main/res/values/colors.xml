@@ -13,6 +13,7 @@
     <color name="pc_orange">#FF400C</color>
     <color name="pc_unclicked">#9FA5C0</color>
     <color name="pc_unable">#EEF1F4</color>
+    <color name="pc_add_btn">#D0DBEA</color>
 
     <!-- filtering page btn color   -->
     <color name="btn_bg">#F5F5F5</color>
