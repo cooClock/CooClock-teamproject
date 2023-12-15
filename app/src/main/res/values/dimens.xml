@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="icon_margin_bottom">10dp</dimen>
+
+    <dimen name="dimeMargin5">5dp</dimen>
+    <dimen name="dimeMargin7">7dp</dimen>
+    <dimen name="dimeMargin10">10dp</dimen>
+    <dimen name="dimeMargin15">15dp</dimen>
+    <dimen name="dimeMargin17">17dp</dimen>
+    <dimen name="dimeMargin20">20dp</dimen>
 </resources>

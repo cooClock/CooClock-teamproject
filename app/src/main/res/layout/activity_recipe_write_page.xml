@@ -92,6 +92,7 @@
             android:background="@drawable/search_edit_text_border_gray">
 
             <EditText
+                android:id="@+id/itemTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
@@ -216,14 +217,19 @@
             android:layout_marginBottom="10dp"/>
 
         <!-- 재료 입력칸 -->
+    <LinearLayout
+        android:id="@+id/layout_ingridient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:paddingHorizontal="15dp"
-            android:paddingVertical="7dp"
+            android:padding="15dp"
             android:background="@drawable/search_edit_text_border_gray">
             <EditText
+                android:id="@+id/itemIngridient1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
@@ -231,8 +237,10 @@
                 android:textColorHint="@color/pc_unclicked"
                 android:textSize="15dp"
                 android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
                 android:background="#FFFFFF" />
         </LinearLayout>
+    </LinearLayout>
 
         <!--    재료 추가 버튼    -->
         <Button
@@ -265,22 +273,41 @@
 
         <!-- 레시피 입력칸 -->
         <LinearLayout
+            android:id="@+id/layout_recipie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:paddingHorizontal="15dp"
-            android:paddingVertical="7dp"
-            android:background="@drawable/search_edit_text_border_gray">
-
-            <EditText
+            android:orientation="vertical">
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
-                android:hint="@string/write_the_recipie"
-                android:textColorHint="@color/pc_unclicked"
-                android:textSize="15dp"
+                android:text="1단계"
+                android:textSize="16dp"
+                android:textColor="@color/black"
                 android:fontFamily="@font/notosanskr_medium"
-                android:background="#FFFFFF" />
+                android:includeFontPadding="false"
+                android:paddingBottom="7dp"
+                android:paddingLeft="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="15dp"
+                android:padding="15dp"
+                android:background="@drawable/search_edit_text_border_gray">
+
+                <EditText
+                    android:id="@+id/itemRecipie1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:hint="@string/write_the_recipie"
+                    android:textColorHint="@color/pc_unclicked"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:includeFontPadding="false"
+                    android:background="#FFFFFF" />
+            </LinearLayout>
         </LinearLayout>
 
         <!--   레시피 추가 버튼     -->
