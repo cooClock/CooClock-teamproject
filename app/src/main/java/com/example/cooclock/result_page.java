@@ -72,47 +72,6 @@ public class result_page extends AppCompatActivity {
         } else {
             Log.e("logcat", "Exception while processing Intent data");
         }
-        /*try {
-            // Check if "filter" extra is present in the Intent
-//            if (beforeIntent.hasExtra("filter")) {
-            if(beforeIntentTitle == "filtering_page"){
-                filterItem = beforeIntent.getStringArrayListExtra("filter");
-                if (filterItem != null) {
-                    String intentTitle = beforeIntent.getStringExtra("intentTitle");
-                    Log.d("logcat",intentTitle);
-                    Log.d("logcat",filterItem.toString());
-
-                    //recycler view
-                    List<filterItemBtnModel> buttonList = new ArrayList<>();
-                    // Iterate through filterItem and add each string to buttonList
-                    if (filterItem != null) {
-                        for (String item : filterItem) {
-                            buttonList.add(new filterItemBtnModel(item));
-                        }
-                    }
-
-                    RecyclerView recyclerView = findViewById(R.id.filter_item_recyclerView);
-                    recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
-
-                    filterItemButtonAdapter buttonAdapter = new filterItemButtonAdapter(buttonList);
-                    recyclerView.setNestedScrollingEnabled(false);
-                    recyclerView.setAdapter(buttonAdapter);
-
-                    // 레시피 리스트 뷰 배치
-                    updateRecommendedList();
-
-                } else {
-                    Log.e("logcat", "filterItem is null");
-                    // Handle the case where filterItem is null
-                }
-            } else { //filtering_page에서 넘어오지 않은 경우.
-                LinearLayout filterTitleLayout = (LinearLayout)findViewById(R.id.filter_item_layout);
-                filterTitleLayout.setVisibility(View.GONE);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.e("logcat", "Exception while processing Intent data");
-        }*/
 
 //        // 레시피 리스트 뷰 배치
 //        updateRecommendedList();
@@ -126,7 +85,7 @@ public class result_page extends AppCompatActivity {
         ArrayList<recipeItem> items = new ArrayList<recipeItem>();
         items.add(new recipeItem("멸치 볶음", R.drawable.recipe_list_test2,20,100));
         items.add(new recipeItem("된장 찌개", R.drawable.recipe_list_test1,30,500));
-        items.add(new recipeItem("젓갈", R.drawable.recipe_list_test2,40,240));
+//        items.add(new recipeItem("젓갈", R.drawable.recipe_list_test1,40,200));
 
         main_page.RecipeListCustomAdapter rlAdapter = new main_page.RecipeListCustomAdapter(items);
         recommendedList.setAdapter(rlAdapter);

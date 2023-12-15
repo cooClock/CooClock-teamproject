@@ -63,5 +63,35 @@
 
             </LinearLayout>
         </LinearLayout>
+
+        <!-- 오늘의 즐겨찾기 레시피 표시부 -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/favorite_list"
+            android:layout_width="wrap_content"
+            android:layout_height="530dp"
+            android:layout_marginHorizontal="10dp"
+            android:nestedScrollingEnabled="false">
+        </androidx.recyclerview.widget.RecyclerView>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:paddingHorizontal="20dp">-->
+
+<!--            &lt;!&ndash; 오늘의 즐겨찾기 레시피 표시부 &ndash;&gt;-->
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/favorite_list"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="530dp"-->
+<!--                android:paddingHorizontal="10dp"-->
+<!--                android:nestedScrollingEnabled="false">-->
+<!--            </androidx.recyclerview.widget.RecyclerView>-->
+<!--        </LinearLayout>-->
+        <!--        빈 공간 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical">
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

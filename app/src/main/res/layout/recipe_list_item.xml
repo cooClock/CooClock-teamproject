@@ -10,7 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginHorizontal="10dp">
         <!-- 레시피 이미지 -->
         <ImageView
             android:id="@+id/recipe_item_image"
@@ -22,19 +23,24 @@
         <!-- 하단 설명부 -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="0">
             <!-- 레시피 제목 -->
             <TextView
                 android:id="@+id/recipe_item_title"
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="0"
                 android:text="~~제목~~"
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
                 android:textColor="@color/btn_text"
                 android:textSize="20dp"/>
-
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
             <!-- 레시피 시간 -->
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -72,7 +78,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:paddingLeft="20dp">
+                android:paddingLeft="20dp"
+                android:layout_weight="0">
                 <!-- 좋아요 아이콘 -->
                 <ImageView
                     android:layout_width="20dp"

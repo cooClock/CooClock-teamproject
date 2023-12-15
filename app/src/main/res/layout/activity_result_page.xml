@@ -67,16 +67,12 @@
 
         <!--  필터링 item & 결과 list      -->
         <LinearLayout
+            android:id="@+id/filter_item_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginHorizontal="20dp" >
 
-            <LinearLayout
-                android:id="@+id/filter_item_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
             <!-- 필터링 item -->
             <TextView
                 android:layout_width="wrap_content"
@@ -94,19 +90,20 @@
                 android:id="@+id/filter_item_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            </LinearLayout>
-            <!-- 오늘의 추천 레시피 표시부 -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/result_list"
-                android:layout_width="wrap_content"
-                android:layout_height="530dp"
-                android:nestedScrollingEnabled="false">
-            </androidx.recyclerview.widget.RecyclerView>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp" />
         </LinearLayout>
+
+        <!-- 오늘의 추천 레시피 표시부 -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/result_list"
+            android:layout_width="wrap_content"
+            android:layout_height="530dp"
+            android:layout_marginHorizontal="10dp"
+            android:nestedScrollingEnabled="false">
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp" />
     </LinearLayout>
 </ScrollView>
