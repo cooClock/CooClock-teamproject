@@ -1,164 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".setting_page"
-    android:background="@color/white">
+    tools:context=".recipe_write_page">
 
-    <ImageButton
-        android:id="@+id/go_before"
-        android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-
-        app:layout_constraintBottom_toTopOf="@+id/imageView10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.213"
-        tools:srcCompat="@drawable/back2__2_"
-        android:layout_width="wrap_content" />
-
-    <TextView
-        android:id="@+id/account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="계정"
-        android:textColor="#0A191E"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="0dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="48dp"
-        android:background="@drawable/setting_rect"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/account" />
-
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="27dp"
-
-        app:layout_constraintBottom_toTopOf="@+id/profile_email"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/profile_email"
-        tools:srcCompat="@drawable/avatar" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="연동된 이메일"
-        android:textColor="#818181"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/profile_email"
-        app:layout_constraintStart_toStartOf="@+id/profile_email" />
-
-    <TextView
-        android:id="@+id/profile_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginBottom="52dp"
-        android:text="cooclock@gmail.com"
-        android:textColor="#0A191E"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView10"
-        app:layout_constraintStart_toEndOf="@+id/imageView4" />
-
-
+    <!--    scrollView에서는 자식뷰가 하나여야함. -> linearlayout-->
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="25dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        android:clickable="true"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10">
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <!--  계정 title -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="계정"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false" />
+        </LinearLayout>
+
+        <!--  user nickname & email      -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="20dp"
+            android:background="@color/pc_yello">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/avatar"
+                android:scaleType="fitStart"
+                android:layout_centerVertical="true" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginLeft="15dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="연동된 이메일"
+                    android:textColor="#818181"
+                    android:textSize="16dp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:includeFontPadding="false" />
+
+                <TextView
+                    android:id="@+id/user_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="cooclock@gmail.com"
+                    android:textColor="#0A191E"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:includeFontPadding="false" />
+
+            </LinearLayout>
+        </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/nickname"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_margin="8dp"
-            android:onClick="onClickButton"
-            android:text="닉네임"
-            android:textColor="#101010"
-            android:textSize="17dp" />
 
-        <ImageView
-            android:id="@+id/settingline1"
-            android:layout_width="370dp"
-            android:layout_height="7dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/setting_lline" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="25dp"
+            android:orientation="vertical"
+            android:clickable="true">
 
-        <TextView
-            android:id="@+id/change_email"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_margin="8dp"
-            android:onClick="onClickButton"
-            android:text="이메일 변경"
-            android:textColor="#101010"
-            android:textSize="17dp" />
+            <TextView
+                android:id="@+id/setting_change_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="닉네임"
+                android:textColor="#101010"
+                android:textSize="17dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false" />
 
-        <ImageView
-            android:id="@+id/settingline2"
-            android:layout_width="370dp"
-            android:layout_height="7dp"
-            android:src="@drawable/setting_lline" />
+            <ImageView
+                android:id="@+id/settingline1"
+                android:layout_width="match_parent"
+                android:layout_height="7dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/setting_lline" />
 
-        <TextView
-            android:id="@+id/reset_pw"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_margin="8dp"
-            android:onClick="onClickButton"
-            android:text="비밀번호 재설정"
-            android:textColor="#101010"
-            android:textSize="17dp" />
+            <TextView
+                android:id="@+id/setting_change_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="이메일 변경"
+                android:textColor="#101010"
+                android:textSize="17dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false" />
 
-        <ImageView
-            android:id="@+id/settingline3"
-            android:layout_width="370dp"
-            android:layout_height="7dp"
-            android:src="@drawable/setting_lline" />
+            <ImageView
+                android:id="@+id/settingline2"
+                android:layout_width="match_parent"
+                android:layout_height="7dp"
+                android:src="@drawable/setting_lline" />
 
-        <TextView
-            android:id="@+id/delete_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_margin="8dp"
-            android:onClick="onClickButton"
-            android:text="계정 삭제하기"
-            android:textColor="#101010"
-            android:textSize="17dp" />
+            <TextView
+                android:id="@+id/setting_change_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="비밀번호 재설정"
+                android:textColor="#101010"
+                android:textSize="17dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false" />
 
-        <ImageView
-            android:id="@+id/settingline4"
-            android:layout_width="370dp"
-            android:layout_height="7dp"
-            android:src="@drawable/setting_lline" />
+            <ImageView
+                android:id="@+id/settingline3"
+                android:layout_width="match_parent"
+                android:layout_height="7dp"
+                android:src="@drawable/setting_lline" />
 
+            <TextView
+                android:id="@+id/setting_delete_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="계정 삭제하기"
+                android:textColor="#101010"
+                android:textSize="17dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false" />
+
+            <ImageView
+                android:id="@+id/settingline4"
+                android:layout_width="match_parent"
+                android:layout_height="7dp"
+                android:src="@drawable/setting_lline" />
+        </LinearLayout>
 
     </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

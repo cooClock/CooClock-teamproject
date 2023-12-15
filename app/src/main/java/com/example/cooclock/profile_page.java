@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,16 @@ public class profile_page extends Fragment {
                 startActivity(intent);
             }
         });
+
+        LinearLayout goto_logout = ProfileRootView.findViewById(R.id.logout);
+        goto_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //!TODO 로그아웃 부분 코드 추가
+                Log.d("logcat", "logout");
+            }
+        });
+
         return ProfileRootView;
     }
 
