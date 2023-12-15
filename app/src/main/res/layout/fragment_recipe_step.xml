@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Recipe_step">
+
+
+    <!-- 레시피 단계  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="344dp"
+        android:layout_height="520dp"
+        android:layout_margin="20dp">
+        <!-- 1. 박스 (노란선) -->
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="340dp"
+            android:layout_height="440dp"
+            android:background="@drawable/recipe_step_border"
+            android:orientation="vertical"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            android:elevation="20dp">
+            <!-- 3. 레시피 단계 세부 내용 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_marginTop="110dp"
+                android:padding="10dp"
+                android:orientation="vertical">
+                <!-- 3-1. 상단부 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <!-- 3-1-1. 이전 단계 -->
+                    <ImageButton
+                        android:id="@+id/recipe_step_prev"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@color/clear"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/back_btn2"
+                        android:layout_gravity="left"
+                        android:contentDescription="이전 step으로 이동" />
+                    <!-- 3-1-2. 번호 -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_weight="2">
+                        <!-- 3-1-2-1. 레시피 단계 번호 -->
+                        <TextView
+                            android:id="@+id/recipe_step_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1"
+                            android:fontFamily="@font/notosanskr_medium"
+                            android:includeFontPadding="false"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="/"
+                            android:fontFamily="@font/notosanskr_medium"
+                            android:includeFontPadding="false"
+                            android:layout_gravity="bottom"
+                            android:textColor="@color/grays"
+                            android:textSize="20dp"/>
+                        <TextView
+                            android:id="@+id/recipe_tot_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:text="1"
+                            android:fontFamily="@font/notosanskr_medium"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/grays"
+                            android:textSize="20dp"/>
+                        <!-- 3-1-2-2. "번" -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="번"
+                            android:fontFamily="@font/notosanskr_medium"
+                            android:includeFontPadding="false"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"/>
+                    </LinearLayout>
+
+                    <!-- 3-1-3. 다음 단계 -->
+                    <ImageButton
+                        android:id="@+id/recipe_step_next"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@color/clear"
+                        android:scaleType="fitXY"
+                        android:rotation="180"
+                        android:src="@drawable/back_btn2"
+                        android:layout_gravity="right"
+                        android:contentDescription="다음 step으로 이동"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+                <!-- 3-2. 레시피 설명 텍스트 -->
+                <TextView
+                    android:id="@+id/recipe_step_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/recipe_step_d00"
+                    android:fontFamily="@font/notosanskr_light"
+                    android:includeFontPadding="false"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:isScrollContainer="true"/>
+                <!-- 3-3. 하단부(타이머 부분) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp">
+                    <!-- 3-3-1. 시간 표시부 -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp">
+                        <!-- 3-3-1-1.분 -->
+                        <TextView
+                            android:id="@+id/timer_minute"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="00"
+                            android:fontFamily="@font/notosanskr_extrabold"
+                            android:includeFontPadding="false"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/black"
+                            android:textSize="30dp"/>
+                        <!-- 3-3-1-2. ":" -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" : "
+                            android:fontFamily="@font/notosanskr_extrabold"
+                            android:includeFontPadding="false"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/black"
+                            android:textSize="30dp"/>
+                        <!-- 3-3-1-3.초 -->
+                        <TextView
+                            android:id="@+id/timer_second"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="00"
+                            android:fontFamily="@font/notosanskr_extrabold"
+                            android:includeFontPadding="false"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/black"
+                            android:textSize="30dp"/>
+                        <!-- 3-3-1-4. 시작 -->
+                        <ImageButton
+                            android:id="@+id/timer_start_btn"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:scaleType="fitCenter"
+                            android:background="@color/clear"
+                            android:layout_gravity="center"
+                            android:src="@drawable/timer_start_btn_enabled"
+                            android:layout_marginLeft="10dp"
+                            android:contentDescription="시작" />
+                        <!-- 3-3-1-5. 일시정지 -->
+                        <ImageButton
+                            android:id="@+id/timer_pause_btn"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:scaleType="fitCenter"
+                            android:background="@color/clear"
+                            android:layout_gravity="center"
+                            android:src="@drawable/timer_pause_btn_disabled"
+                            android:layout_marginLeft="10dp"
+                            android:contentDescription="일시정지" />
+                        <!-- 3-3-1-6. 처음부터 -->
+                        <ImageButton
+                            android:id="@+id/timer_reset_btn"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:scaleType="fitCenter"
+                            android:background="@color/clear"
+                            android:layout_gravity="center"
+                            android:src="@drawable/timer_reset_btn"
+                            android:layout_marginLeft="10dp"
+                            android:contentDescription="처음부터 시작" />
+                    </LinearLayout>
+
+                    <!-- 3-3-3. progress bar -->
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/recipe_progress_bar"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        app:trackCornerRadius="10dp"
+                        app:trackThickness="10dp"
+                        app:indicatorColor="@color/pc_yello"
+                        android:layout_gravity="center"
+                        android:visibility="visible"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 2. 레시피 단계 사진 -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/recipe_step_image"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="380dp"
+            android:src="@drawable/recipe_list_test1"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:elevation="30dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</FrameLayout>

@@ -1,5 +1,6 @@
 package com.example.cooclock;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +13,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class RecipeStepListCustomAdapter extends RecyclerView.Adapter<RecipeStepListCustomAdapter.RecipeStepListCustomViewHolder> {
+
+public class RecipeStepListAdapter extends RecyclerView.Adapter<RecipeStepListAdapter.RecipeStepListViewHolder> {
+    private static String TAG = "RecipeAdapter";
     ArrayList<recipeStepItem> items;
+
+    // OnItemClickListener 인터페이스 선언
+    public interface OnItemClickListener {
+        void onItemClicked(int position, String data);
+    }
+
+    // OnItemClickListener 참조 변수 선언
+    private OnItemClickListener itemClickListener;
+
+    // OnItemClickListener 전달 메소드
+    public void setOnItemClickListener (OnItemClickListener listener) {
+        itemClickListener = listener;
+    }
 
 
     // 요리 단계 리스트리사이클러 뷰를 위한 뷰 홀더
-    public static class RecipeStepListCustomViewHolder extends RecyclerView.ViewHolder {
+    public static class RecipeStepListViewHolder extends RecyclerView.ViewHolder {
         private TextView recipe_step_number;
         private TextView recipe_step_detail;
         private TextView recipe_step_minute;
@@ -26,7 +42,7 @@ public class RecipeStepListCustomAdapter extends RecyclerView.Adapter<RecipeStep
         private ImageButton recipe_step_prev;
         private  ImageButton recipe_step_next;
 
-        public RecipeStepListCustomViewHolder(@NonNull View itemView) {
+        public RecipeStepListViewHolder(@NonNull View itemView) {
             super(itemView);
             recipe_step_number = itemView.findViewById(R.id.recipe_step_number);
             recipe_step_detail = itemView.findViewById(R.id.recipe_step_detail);
@@ -41,9 +57,10 @@ public class RecipeStepListCustomAdapter extends RecyclerView.Adapter<RecipeStep
             recipe_step_next.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION){
+                    int position = getLayoutPosition();
+                    Log.d(TAG, ""+position);
 
+                    if (position != RecyclerView.NO_POSITION){
                     }
 
                 }
@@ -60,17 +77,17 @@ public class RecipeStepListCustomAdapter extends RecyclerView.Adapter<RecipeStep
 
         }
     }
-    public RecipeStepListCustomAdapter(ArrayList<recipeStepItem> a_list){
+    public RecipeStepListAdapter(ArrayList<recipeStepItem> a_list){
         items = a_list;
     }
 
-    public RecipeStepListCustomAdapter.RecipeStepListCustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecipeStepListAdapter.RecipeStepListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_step_item, parent, false);
-        return new RecipeStepListCustomAdapter.RecipeStepListCustomViewHolder(view);
+        return new RecipeStepListAdapter.RecipeStepListViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecipeStepListCustomAdapter.RecipeStepListCustomViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecipeStepListAdapter.RecipeStepListViewHolder holder, int position) {
         recipeStepItem item = items.get(position);
         holder.recipe_step_number.setText(String.valueOf(item.getNumber()));
         holder.recipe_step_detail.setText(item.getDescription());

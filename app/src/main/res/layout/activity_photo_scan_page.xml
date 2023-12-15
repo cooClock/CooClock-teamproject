@@ -1,87 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".photo_scan_page">
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="216dp"
-        android:layout_height="228dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.699"
-        tools:srcCompat="@drawable/input_image_icon__1_" />
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="379dp"
-        android:layout_height="57dp"
-        android:backgroundTint="#FFD338"
-        android:text="카메라로 스캔하기"
-        app:cornerRadius="22dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="645dp" />
+    <!-- 상단 앱바  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rect"
+        android:paddingTop="20dp"
+        android:paddingBottom="30dp"
+        android:paddingHorizontal="20dp"
+        android:layout_marginBottom="20dp" >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/username"
+                android:textColor="@color/pc_orange"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
+                android:textSize="22dp"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_refrigerator_page_text"
+                android:textColor="@color/black"
+                android:fontFamily="@font/notosanskr_light"
+                android:includeFontPadding="false"
+                android:textSize="17dp"
+                android:textFontWeight="700"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/avatar"
+                android:scaleType="fitEnd"
+                android:layout_centerVertical="true" />
+
+        </LinearLayout>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="300dp"
+        android:layout_width="330dp"
         android:layout_height="125dp"
         android:gravity="center"
-        android:text="사진으로 바코드를
-        스캔하여 유통기한을
-        확인하세요."
-        android:textColor="#000000"
+        android:text="@string/photo_scan_page_d0"
+        android:fontFamily="@font/notosanskr_bold"
+        android:includeFontPadding="false"
+        android:textColor="@color/black"
         android:textSize="30dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.318" />
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="132dp"
-        android:background="@drawable/rect" />
+
+    <ImageButton
+        android:id="@+id/add_ingredient_image"
+        android:layout_width="216dp"
+        android:layout_height="228dp"
+        android:scaleType="fitCenter"
+        android:background="@color/clear"
+        android:src="@drawable/input_image_icon__1_"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="287dp"
-        android:layout_height="wrap_content"
-        android:text="냉장고 속 재료를 추가하세요."
-        android:textColor="#071C24"
+        android:id="@+id/go_camera_scan_page"
+        android:clickable="true"
+        android:layout_width="379dp"
+        android:layout_height="57dp"
+        android:text="카메라로 스캔하기"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:fontFamily="@font/notosanskr_medium"
+        android:includeFontPadding="false"
+        android:textColor="@color/white"
         android:textSize="20dp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="71dp" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="김클락,님"
-        android:textColor="#FF400C"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.114"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.039" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="292dp"
-        tools:layout_editor_absoluteY="16dp"
-        tools:srcCompat="@drawable/avatar" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:background="@drawable/recipe_page_title_border"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>

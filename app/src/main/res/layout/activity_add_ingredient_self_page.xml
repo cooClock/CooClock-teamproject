@@ -1,9 +1,320 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".add_ingredient_self_page">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- 상단 앱바  -->
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rect"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/ing_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
+                android:text="@string/username"
+                android:textColor="@color/pc_orange"
+                android:textSize="22dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanskr_light"
+                android:includeFontPadding="false"
+                android:text="@string/add_ingredient_page"
+                android:textColor="@color/black"
+                android:textFontWeight="700"
+                android:textSize="17dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:scaleType="fitEnd"
+                android:src="@drawable/avatar" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <!-- 검색어 입력부 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="20dp">
+        <!-- "재료 입력" 타이틀 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="재료 이름"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginBottom="10dp"/>
+        <!-- 재료 입력 -->
+        <EditText
+            android:id="@+id/input_ingredient_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="20dp"
+            android:layout_margin="1dp"
+            android:hint="재료 이름을 입력하세요."
+            android:textColorHint="@color/grays"
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            android:fontFamily="@font/notosanskr_light"
+            android:background="@drawable/search_edit_text_border_gray"/>
+    </LinearLayout>
+
+
+    <!-- 카테고리 입력부 -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="20dp">
+        <!-- "재료 입력" 타이틀 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="카테고리"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginBottom="10dp"/>
+    </LinearLayout>
+
+    <!-- 카테고리 버튼 -->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp">
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:paddingBottom="10dp">
+            <Button
+                android:id="@+id/fruit"
+                android:layout_width="53dp"
+                android:layout_weight="1"
+                android:text="과일-채소"
+                android:fontFamily="@font/notosanskr_medium"
+                android:textSize="13dp"
+                android:includeFontPadding="false"
+                android:backgroundTint="@color/buttonOffColor"
+                android:textColor="@color/btn_text"
+                android:layout_marginRight="10dp"
+                android:padding="0dp" />
+            <Button
+                android:id="@+id/meat"
+                android:layout_width="53dp"
+                android:layout_weight="1"
+                android:text="육류"
+                android:fontFamily="@font/notosanskr_medium"
+                android:textSize="13dp"
+                android:includeFontPadding="false"
+                android:backgroundTint="@color/buttonOffColor"
+                android:textColor="@color/btn_text"
+                android:layout_marginRight="10dp"
+                android:padding="0dp"/>
+            <Button
+                android:id="@+id/fish"
+                android:layout_width="53dp"
+                android:layout_weight="1"
+                android:text="어패류"
+                android:fontFamily="@font/notosanskr_medium"
+                android:textSize="13dp"
+                android:includeFontPadding="false"
+                android:backgroundTint="@color/buttonOffColor"
+                android:textColor="@color/btn_text"
+                android:layout_marginRight="10dp"
+                android:padding="0dp"/>
+
+            <Button
+                android:id="@+id/grain"
+                android:layout_width="53dp"
+                android:layout_weight="1"
+                android:text="곡류"
+                android:fontFamily="@font/notosanskr_medium"
+                android:textSize="13dp"
+                android:includeFontPadding="false"
+                android:backgroundTint="@color/buttonOffColor"
+                android:textColor="@color/btn_text"
+                android:padding="0dp"/>
+        </TableRow>
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:paddingBottom="10dp">
+            <Button
+                android:id="@+id/egg"
+                android:layout_width="53dp"
+                android:layout_weight="1"
+                android:text="난류"
+                android:fontFamily="@font/notosanskr_medium"
+                android:textSize="13dp"
+                android:includeFontPadding="false"
+                android:backgroundTint="@color/buttonOffColor"
+                android:textColor="@color/btn_text"
+                android:layout_marginRight="10dp"
+                android:padding="0dp" />
+            <Button
+                android:id="@+id/milk"
+                android:layout_width="53dp"
+                android:layout_weight="1"
+                android:text="유제품류"
+                android:fontFamily="@font/notosanskr_medium"
+                android:textSize="13dp"
+                android:includeFontPadding="false"
+                android:backgroundTint="@color/buttonOffColor"
+                android:textColor="@color/btn_text"
+                android:layout_marginRight="10dp"
+                android:padding="0dp"/>
+            <Button
+                android:id="@+id/etc"
+                android:layout_width="53dp"
+                android:layout_weight="1"
+                android:text="기타"
+                android:fontFamily="@font/notosanskr_medium"
+                android:textSize="13dp"
+                android:includeFontPadding="false"
+                android:backgroundTint="@color/buttonOffColor"
+                android:textColor="@color/btn_text"
+                android:layout_marginRight="10dp"
+                android:padding="0dp"/>
+
+            <Button
+                android:layout_width="53dp"
+                android:layout_weight="1"
+                android:visibility="invisible"/>
+        </TableRow>
+    </TableLayout>
+
+    <!-- 수량 입력부 -->
+
+    <!-- 검색어 입력부 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="20dp">
+        <!-- "재료 입력" 타이틀 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수량"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginBottom="10dp"/>
+        <!-- 재료 입력 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center">
+            <!-- - 버튼 -->
+            <ImageView
+                android:id="@+id/ingredient_weight_sub"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/minus_btn"
+                android:background="@color/clear"
+                android:layout_gravity="center"/>
+            <!-- 수량 -->
+            <TextView
+                android:id="@+id/input_ingredient_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="5dp"
+                android:textSize="25dp"
+                android:fontFamily="@font/notosanskr_light"
+                android:text="0.1"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kg"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:fontFamily="@font/notosanskr_light"
+                android:includeFontPadding="false"
+                android:layout_gravity="center"
+                android:paddingRight="20dp"/>
+            <!-- + 버튼 -->
+            <ImageView
+                android:id="@+id/ingredient_weight_add"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/plus_btn"
+                android:background="@color/clear"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!-- 냉장고에 추가하기 버튼 -->
+    <TextView
+        android:id="@+id/add_ingredient"
+        android:clickable="true"
+        android:layout_width="379dp"
+        android:layout_height="57dp"
+        android:text="냉장고에 추가하기"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:fontFamily="@font/notosanskr_light"
+        android:includeFontPadding="false"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:background="@drawable/recipe_page_title_border"
+        android:layout_marginTop="50dp"/>
+</LinearLayout>

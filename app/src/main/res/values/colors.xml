@@ -25,6 +25,16 @@
     <color name="green">#006D60</color>
     <color name="clear">#00000000</color>
     <color name="grays">#9FA5C0</color>
+    
+    <color name="fruite">#62DF16</color>
+    <color name="meat">#FF400C</color>
+    <color name="fish">#059BF0</color>
+    <color name="grain">#BB8700</color>
+    <color name="eggs">#FFD600</color>
+    <color name="milk">#FFFFFF</color>
+    <color name="etc">#000000</color>
+    
+    
     <color name="selected_button_color">#FFD338</color>
     <color name="default_button_color">#FFFFFF</color>
 </resources>
