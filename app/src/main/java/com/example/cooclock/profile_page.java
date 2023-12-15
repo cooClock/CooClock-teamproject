@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,9 +26,18 @@ public class profile_page extends Fragment {
 
         updateRecipeShortList();
         updateCurrentShortList();
+
+
+        LinearLayout gotoAccount = ProfileRootView.findViewById(R.id.go_account);
+        gotoAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(requireContext(), setting_page.class);
+                startActivity(intent);
+            }
+        });
         return ProfileRootView;
     }
-
 
 
     /*
