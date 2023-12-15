@@ -1,9 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".result_page">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".home_page">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--ScrollView는 자식이 하나만. -> LinearLayout 으로 자식의 자식  설정 해야함.-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 상단 앱바  -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingBottom="30dp"
+            android:paddingHorizontal="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rect">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username"
+                    android:textColor="@color/pc_orange"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:includeFontPadding="false"
+                    android:textSize="22dp"
+                    android:layout_marginBottom="5dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="레시피를 확인해보세요"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/notosanskr_light"
+                    android:includeFontPadding="false"
+                    android:textSize="17dp"
+                    android:textFontWeight="700"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/avatar"
+                    android:scaleType="fitEnd"
+                    android:layout_centerVertical="true" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--  필터링 item & 결과 list      -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="20dp" >
+
+            <!-- 필터링 item -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="검색 결과"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- 필터링 item 버튼 한줄에 4개씩 -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/filter_item_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- 오늘의 추천 레시피 표시부 -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/result_list"
+                android:layout_width="wrap_content"
+                android:layout_height="530dp"
+                android:nestedScrollingEnabled="false">
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

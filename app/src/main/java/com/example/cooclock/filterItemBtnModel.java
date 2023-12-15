@@ -1,9 +1,9 @@
 package com.example.cooclock;
 
-public class ingredientBtnModel {
+public class filterItemBtnModel {
     String buttonText;
 
-    public ingredientBtnModel(String buttonText) {
+    public filterItemBtnModel(String buttonText) {
         this.buttonText = buttonText;
     }
 
