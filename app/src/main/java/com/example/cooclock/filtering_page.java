@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,7 +36,7 @@ public class filtering_page extends AppCompatActivity {
     private EditText filterSearch;
     private int editTextItemCount=0;
 
-    public List<String> filterItem = new ArrayList<>();
+    public ArrayList<String> filterItem = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -269,6 +270,15 @@ public class filtering_page extends AppCompatActivity {
             Log.d("logcat", filterItem.toString());
         }else {
             Log.d("logcat", filterItem.toString());
+
+            // activity 전환 + filterItem 내용 전달
+            Intent intent = new Intent(this, result_page.class);
+//            intent.putListExtra("filter",filterItem);
+            final String test = "테스트입니다.";
+            intent.putExtra("test",test);
+//            intent.putStringArrayListExtra("filter", new ArrayList<>(filterItem));
+            intent.putStringArrayListExtra("filter",filterItem);
+            startActivity(intent);
         }
     }
 }

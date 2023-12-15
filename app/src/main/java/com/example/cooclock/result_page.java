@@ -5,17 +5,29 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class result_page extends AppCompatActivity {
+
+    public ArrayList<String> filterItem = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_page);
+
+        //필터페이지에서 넘겨받음.
+        Intent filterintent = getIntent();
+        String te = filterintent.getStringExtra("test");
+        Log.d("logcat",te);
+        filterItem = filterintent.getStringArrayListExtra("filter");
+        Log.d("logcat",filterItem.toString());
 
         //recycler view
         List<filterItemBtnModel> buttonList = new ArrayList<>();
