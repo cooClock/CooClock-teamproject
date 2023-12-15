@@ -69,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:orientation="horizontal"
-            android:paddingLeft="15dp">
+            android:paddingLeft="20dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -77,7 +77,7 @@
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:layout_gravity="center_vertical"/>
             <ImageView
                 android:id="@+id/go_my_recipe_list"
@@ -94,16 +94,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="20dp"
+            android:paddingTop="8dp"
             android:paddingLeft="15dp"
-            android:paddingBottom="20dp"/>
+            android:paddingBottom="30dp"/>
 
         <!-- 최근 본 레시피 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:orientation="horizontal"
-            android:paddingLeft="15dp">
+            android:paddingLeft="20dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -111,7 +111,7 @@
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:layout_gravity="center_vertical"/>
             <ImageView
                 android:id="@+id/go_current_recipe_list"
@@ -123,30 +123,31 @@
                 android:background="@color/clear"
                 android:layout_marginLeft="10dp"/>
         </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/current_recipe_short_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="20dp"
+            android:paddingTop="8dp"
             android:paddingLeft="15dp"
-            android:paddingBottom="20dp"/>
+            android:paddingBottom="25dp"/>
 
         <!-- 중간 선 -->
         <ImageView
-            android:layout_width="370dp"
+            android:layout_width="match_parent"
             android:layout_height="7dp"
-            android:layout_marginBottom="26dp"
-            android:paddingLeft="15dp"
+            android:layout_marginBottom="20dp"
+            android:paddingHorizontal="20dp"
             android:src="@drawable/setting_lline"/>
 
         <!-- 계정 -->
         <LinearLayout
             android:id="@+id/go_account"
-            android:layout_width="370dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginLeft="15dp"
+            android:layout_marginHorizontal="20dp"
             android:gravity="center_vertical"
             android:clickable="true"
             android:paddingBottom="20dp">
@@ -178,19 +179,20 @@
         <!-- 나가기 -->
         <LinearLayout
             android:id="@+id/logout"
-            android:layout_width="370dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginLeft="15dp"
+            android:layout_marginHorizontal="20dp"
             android:gravity="center_vertical"
             android:clickable="true"
             android:paddingBottom="150dp">
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:scaleType="fitCenter"
                 android:background="@color/clear"
-                android:src="@drawable/logout__1__1"/>
+                android:src="@drawable/logout__1__1"
+                android:layout_marginLeft="5dp"/>
             <TextView
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
