@@ -3,6 +3,7 @@ package com.example.cooclock;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +20,26 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButtonToggleGroup;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class home_page extends Fragment {
     View rootView;
+    private DatabaseReference mDatabaseRef;
+    private FirebaseAuth mAuth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                          Bundle savedInstanceState){
         rootView = inflater.inflate(R.layout.activity_home_page,container,false);
+
         // 카테고리 선택 버튼(라디오 그룹)
         MaterialButtonToggleGroup categorySelect = rootView.findViewById(R.id.category_select);
         Button foodType = rootView.findViewById(R.id.food_type);
@@ -40,8 +51,8 @@ public class home_page extends Fragment {
         updateRecommendedList();
         // 리사이클러뷰 배치
         updateMyRefrigeratorCategoryList();
-
-
+        // 유저 정보 업데이트
+        updataUserInfo();
         categorySelect.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
             @Override
             public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
@@ -123,6 +134,38 @@ public class home_page extends Fragment {
         }
     }
 
+
+    public void updataUserInfo() {
+        // 유저이름 반영하기
+        mAuth = FirebaseAuth.getInstance();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("cooclock").child("UserAccount");
+
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            String currentUserId = currentUser.getUid();
+            TextView username = rootView.findViewById(R.id.user_name);
+            mDatabaseRef.child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        UserAccount userAccount = dataSnapshot.getValue(UserAccount.class);
+                        if (userAccount != null) {
+                            String userName = userAccount.getUsername();
+                            username.setText(userName);
+                            Log.d("Firebase_user",userName);
+
+                        }
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // onCancelled 메서드를 구현하여 오류 처리
+                    Log.w("Firebase", "loadPost:onCancelled", databaseError.toException());
+                    // 오류 처리를 추가하거나 필요한 작업 수행
+                }
+            });
+        }
+    }
     // 세부 카테고리 업데이트 코드
     public void updateSubCategories(){
         RecyclerView subCategory = rootView.findViewById(R.id.subCategory);

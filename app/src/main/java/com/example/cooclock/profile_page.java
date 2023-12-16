@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -24,7 +29,26 @@ public class profile_page extends Fragment {
                              Bundle savedInstanceState){
 
         ProfileRootView = inflater.inflate(R.layout.activity_profile_page,container,false);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // User is signed in
+            Log.d("DB", user.toString()); // 디버그 로그에 DatabaseReference 출력
+            Log.d("DB", "team"); // 디버그 로그에 DatabaseReference 출력
+            String name = user.getDisplayName();
+            String email = user.getEmail();
+            Uri photoUrl = user.getPhotoUrl();
+            Log.d("Name",name);
+            Log.d("email",email);
+        } else {
+            // No user is signed in
+            Log.d("DB", "Fail"); // 디버그 로그에 DatabaseReference 출력
 
+        }
+//        database = FirebaseDatabase.getInstance(); // firebase 연동
+//        databaseReference = database.getReference("cooclock").child("ingredientItem");  // DB테이블 연결
+//        String databaseReferenceString = databaseReference.toString(); // DatabaseReference를 문자열로 변환
+//
+//        Log.d("DB", databaseReferenceString); // 디버그 로그에 DatabaseReference 출력
         updateRecipeShortList();
         updateCurrentShortList();
 

@@ -93,6 +93,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/login_editbox_background"
         android:hint="비밀번호"
+        android:inputType="textPassword"
         android:paddingLeft="15dp"
         android:textColorHint="#818080"
         app:layout_constraintStart_toStartOf="@+id/Password"
