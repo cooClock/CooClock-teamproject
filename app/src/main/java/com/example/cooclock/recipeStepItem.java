@@ -4,14 +4,12 @@ public class recipeStepItem {
     int resId;
     int number;
     String description;
-    int minute;
-    int second;
+    String time;
 
-    recipeStepItem(int number, String description, int minute, int second, int resId){
+    recipeStepItem(int number, String description, String time, int resId){
         this.number = number;
         this.description = description;
-        this.minute = minute;
-        this.second = second;
+        this.time = time;
         this.resId = resId;
     }
 
@@ -23,12 +21,16 @@ public class recipeStepItem {
         return description;
     }
 
+    public String getTime() {
+        return time;
+    }
+
     public int getMinute() {
-        return minute;
+        return Integer.parseInt(time);
     }
 
     public int getSecond() {
-        return second;
+        return (int) ((Double.parseDouble(time)-Integer.parseInt(time))*100);
     }
 
     public int getResId() {

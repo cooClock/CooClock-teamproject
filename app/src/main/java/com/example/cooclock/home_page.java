@@ -251,7 +251,7 @@ public class home_page extends Fragment {
 
         ArrayList<recipeItem> items = new ArrayList<recipeItem>();
         items.add(new recipeItem("멸치 볶음", R.drawable.recipe_list_test2,20,100));
-        items.add(new recipeItem("된장 찌개", R.drawable.recipe_list_test1,30,500));
+        items.add(new recipeItem("된장찌개", R.drawable.recipe_list_test1,30,500));
 
 
         home_page.RecipeListCustomAdapter rlAdapter = new home_page.RecipeListCustomAdapter(items);
