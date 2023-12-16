@@ -1,14 +1,13 @@
 package com.example.cooclock;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
@@ -42,7 +41,7 @@ public class favorite_recipe_page extends Fragment {
         items.add(new recipeItem("된장 찌개", R.drawable.recipe_list_test1,30,500));
 
 
-        main_page.RecipeListCustomAdapter rlAdapter = new main_page.RecipeListCustomAdapter(items);
+        home_page.RecipeListCustomAdapter rlAdapter = new home_page.RecipeListCustomAdapter(items);
         recommendedList.setAdapter(rlAdapter);
 
 

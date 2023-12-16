@@ -1,13 +1,5 @@
 package com.example.cooclock;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
@@ -19,7 +11,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.button.MaterialButtonToggleGroup;
 
 import java.util.ArrayList;
@@ -30,9 +28,6 @@ public class home_page extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                          Bundle savedInstanceState){
-//        ((main_page)getActivity()).updateSubCategories();
-//        return inflater.inflate(R.layout.activity_main_page,container,false);
-
         rootView = inflater.inflate(R.layout.activity_home_page,container,false);
         // 카테고리 선택 버튼(라디오 그룹)
         MaterialButtonToggleGroup categorySelect = rootView.findViewById(R.id.category_select);
@@ -101,7 +96,7 @@ public class home_page extends Fragment {
     }
 
     // 세부 카테고리 관리할 adapter
-    public static class SubCategoryCustomAdapter extends RecyclerView.Adapter<main_page.SubCategoryCustomViewHolder> {
+    public static class SubCategoryCustomAdapter extends RecyclerView.Adapter<home_page.SubCategoryCustomViewHolder> {
         ArrayList<subCategroyItem> items;
 
         public SubCategoryCustomAdapter(ArrayList<subCategroyItem> a_list){
@@ -110,13 +105,13 @@ public class home_page extends Fragment {
 
         @NonNull
         @Override
-        public main_page.SubCategoryCustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public home_page.SubCategoryCustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.subcategroy_item, parent, false);
-            return new main_page.SubCategoryCustomViewHolder(view);
+            return new home_page.SubCategoryCustomViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull main_page.SubCategoryCustomViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull home_page.SubCategoryCustomViewHolder holder, int position) {
             subCategroyItem item = items.get(position);
             holder.category_icon.setImageResource(item.getResId());
             holder.category_name.setText(item.getSubCategoryName());
@@ -126,14 +121,11 @@ public class home_page extends Fragment {
         public int getItemCount() {
             return items.size();
         }
-
-        // 어댑터의 내용...
     }
 
     // 세부 카테고리 업데이트 코드
     public void updateSubCategories(){
         RecyclerView subCategory = rootView.findViewById(R.id.subCategory);
-//        myRefrigeratorCategory.removeAllViews();
 
         ArrayList<subCategroyItem> items = new ArrayList<subCategroyItem>();
         MaterialButtonToggleGroup categoryToggleGroup = rootView.findViewById(R.id.category_select);
@@ -168,7 +160,7 @@ public class home_page extends Fragment {
             items.add(new subCategroyItem("이유식",R.drawable.food_situation_baby));
         }
 
-        main_page.SubCategoryCustomAdapter scAdapter = new main_page.SubCategoryCustomAdapter(items);
+        home_page.SubCategoryCustomAdapter scAdapter = new home_page.SubCategoryCustomAdapter(items);
         subCategory.setAdapter(scAdapter);
 
 
@@ -198,7 +190,7 @@ public class home_page extends Fragment {
     }
 
     // 추천 레시피 리스트를 관리할 adapter
-    public static class RecipeListCustomAdapter extends RecyclerView.Adapter<main_page.RecipeListCustomViewHolder> {
+    public static class RecipeListCustomAdapter extends RecyclerView.Adapter<home_page.RecipeListCustomViewHolder> {
         ArrayList<recipeItem> items;
 
         public RecipeListCustomAdapter(ArrayList<recipeItem> a_list){
@@ -207,16 +199,16 @@ public class home_page extends Fragment {
 
         @NonNull
         @Override
-        public main_page.RecipeListCustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public home_page.RecipeListCustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_list_item, parent, false);
-            return new main_page.RecipeListCustomViewHolder(view);
+            return new home_page.RecipeListCustomViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull main_page.RecipeListCustomViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull home_page.RecipeListCustomViewHolder holder, int position) {
             recipeItem item = items.get(position);
-//            holder.recipe_image.setImageResource(item.getResId());
-            Glide.with(holder.itemView).load(item.getResId()).into(holder.recipe_image);
+            holder.recipe_image.setImageResource(item.getResId());
+//            Glide.with(holder.itemView).load(item.getResId()).into(holder.recipe_image);
             holder.recipe_title.setText(item.getTitle());
             holder.recipe_time.setText(String.valueOf(item.getTotalTime()));
             holder.recipe_like.setText(String.valueOf(item.getLikeCnt()));
@@ -227,20 +219,18 @@ public class home_page extends Fragment {
             return 2;
         }
 
-        // 어댑터의 내용...
     }
 
     // 추천 레시피 리스트 업데이트 코드
     private void updateRecommendedList(){
         RecyclerView recommendedList = rootView.findViewById(R.id.recommend_list);
-//        myRefrigeratorCategory.removeAllViews();
 
         ArrayList<recipeItem> items = new ArrayList<recipeItem>();
-//        items.add(new recipeItem("멸치 볶음", R.drawable.recipe_list_test2,20,100));
-//        items.add(new recipeItem("된장 찌개", R.drawable.recipe_list_test1,30,500));
+        items.add(new recipeItem("멸치 볶음", R.drawable.recipe_list_test2,20,100));
+        items.add(new recipeItem("된장 찌개", R.drawable.recipe_list_test1,30,500));
 
 
-        main_page.RecipeListCustomAdapter rlAdapter = new main_page.RecipeListCustomAdapter(items);
+        home_page.RecipeListCustomAdapter rlAdapter = new home_page.RecipeListCustomAdapter(items);
         recommendedList.setAdapter(rlAdapter);
 
 
@@ -264,7 +254,7 @@ public class home_page extends Fragment {
     }
 
     // 재료 카테고리 관리할 adapter
-    public static class CustomAdapter extends RecyclerView.Adapter<main_page.CustomViewHolder> {
+    public static class CustomAdapter extends RecyclerView.Adapter<home_page.CustomViewHolder> {
         ArrayList<myRefrigeratorCategoryItem> items;
 
         public CustomAdapter(ArrayList<myRefrigeratorCategoryItem> a_list){
@@ -273,13 +263,13 @@ public class home_page extends Fragment {
 
         @NonNull
         @Override
-        public main_page.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public home_page.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_refrigerator_category_item, parent, false);
-            return new main_page.CustomViewHolder(view);
+            return new home_page.CustomViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull main_page.CustomViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull home_page.CustomViewHolder holder, int position) {
             myRefrigeratorCategoryItem item = items.get(position);
             holder.category_icon.setImageResource(item.getResID());
             holder.category_name.setText(item.getCategoryName());
@@ -289,8 +279,6 @@ public class home_page extends Fragment {
         public int getItemCount() {
             return items.size();
         }
-
-        // 어댑터의 내용...
     }
 
     // 재료 카테고리 업데이트 코드
@@ -308,12 +296,10 @@ public class home_page extends Fragment {
         items.add(new myRefrigeratorCategoryItem("유제품",R.drawable.refrigerator_dairys));
         items.add(new myRefrigeratorCategoryItem("기타",R.drawable.refrigerator_etc));
 
-        main_page.CustomAdapter rAdapter = new main_page.CustomAdapter(items);
+        home_page.CustomAdapter rAdapter = new home_page.CustomAdapter(items);
         myRefrigeratorCategory.setAdapter(rAdapter);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false);
         myRefrigeratorCategory.setLayoutManager(layoutManager);
     }
-
-
 }

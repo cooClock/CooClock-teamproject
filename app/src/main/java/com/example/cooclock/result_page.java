@@ -1,10 +1,5 @@
 package com.example.cooclock;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,8 +7,12 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class result_page extends AppCompatActivity {
@@ -87,7 +86,7 @@ public class result_page extends AppCompatActivity {
         items.add(new recipeItem("된장 찌개", R.drawable.recipe_list_test1,30,500));
 //        items.add(new recipeItem("젓갈", R.drawable.recipe_list_test1,40,200));
 
-        main_page.RecipeListCustomAdapter rlAdapter = new main_page.RecipeListCustomAdapter(items);
+        home_page.RecipeListCustomAdapter rlAdapter = new home_page.RecipeListCustomAdapter(items);
         recommendedList.setAdapter(rlAdapter);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);

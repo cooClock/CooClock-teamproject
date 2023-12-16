@@ -2,7 +2,7 @@ package com.example.cooclock;
 
 public class recipeItem {
     String title;
-    String resId;
+    int resId;
     int totalTime;
     int likeCnt;
     // 기본 생성자
@@ -11,7 +11,7 @@ public class recipeItem {
     }
 
 
-    public recipeItem(String title, String resId, int totalTime, int likeCnt){
+    public recipeItem(String title, int resId, int totalTime, int likeCnt){
         this.title = title;
         this.resId = resId;
         this.totalTime = totalTime;
@@ -22,7 +22,7 @@ public class recipeItem {
         return title;
     }
 
-    public String getResId(){
+    public int getResId(){
         return resId;
     }
 
@@ -37,7 +37,7 @@ public class recipeItem {
     public void setTitle(String title) {
         this.title = title;
     }
-    public void setResId(String resId){
+    public void setResId(int resId){
         this.resId = resId;
     }
 
