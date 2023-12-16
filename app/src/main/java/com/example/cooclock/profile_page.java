@@ -28,6 +28,27 @@ public class profile_page extends Fragment {
         updateRecipeShortList();
         updateCurrentShortList();
 
+        LinearLayout goto_result_page_MyRecipie = ProfileRootView.findViewById(R.id.layout_MyRecipie);
+        goto_result_page_MyRecipie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent resultIntent = new Intent(requireContext(), result_page.class);
+                resultIntent.putExtra("intentTitle","profile_page_myRecipie");
+                resultIntent.putExtra("titleText","내가 올린 레시피입니다.");
+                startActivity(resultIntent);
+            }
+        });
+
+        LinearLayout goto_result_page_RecentView = ProfileRootView.findViewById(R.id.layout_RecentViewRecipie);
+        goto_result_page_RecentView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent resultIntent = new Intent(requireContext(), result_page.class);
+                resultIntent.putExtra("intentTitle","profile_page_RecentView");
+                resultIntent.putExtra("titleText","최근 본 레시피입니다.");
+                startActivity(resultIntent);
+            }
+        });
 
         LinearLayout gotoAccount = ProfileRootView.findViewById(R.id.go_account);
         gotoAccount.setOnClickListener(new View.OnClickListener() {

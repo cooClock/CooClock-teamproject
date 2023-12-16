@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    BottomNavigationView bottomNavigationView; //바텀 네비게이션 뷰
+    BottomNavigationView bottomNavigationView; //바텀 네비게이션9 뷰
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

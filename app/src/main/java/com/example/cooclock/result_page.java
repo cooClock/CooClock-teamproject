@@ -69,6 +69,20 @@ public class result_page extends AppCompatActivity {
 
             // 레시피 리스트 뷰 배치
             updateRecommendedList();
+        } else if(beforeIntentTitle.equals("profile_page_myRecipie")) { //filtering_page에서 넘어오지 않은 경우.
+            Log.d("logcat", beforeIntentTitle);
+            LinearLayout filterTitleLayout = (LinearLayout)findViewById(R.id.filter_item_layout);
+            filterTitleLayout.setVisibility(View.GONE);
+
+            // 레시피 리스트 뷰 배치
+            updateRecommendedList();
+        }  else if(beforeIntentTitle.equals("profile_page_RecentView")) { //filtering_page에서 넘어오지 않은 경우.
+            Log.d("logcat", beforeIntentTitle);
+            LinearLayout filterTitleLayout = (LinearLayout)findViewById(R.id.filter_item_layout);
+            filterTitleLayout.setVisibility(View.GONE);
+
+            // 레시피 리스트 뷰 배치
+            updateRecommendedList();
         } else {
             Log.e("logcat", "Exception while processing Intent data");
         }
@@ -85,7 +99,7 @@ public class result_page extends AppCompatActivity {
         ArrayList<recipeItem> items = new ArrayList<recipeItem>();
         items.add(new recipeItem("멸치 볶음", R.drawable.recipe_list_test2,20,100));
         items.add(new recipeItem("된장 찌개", R.drawable.recipe_list_test1,30,500));
-//        items.add(new recipeItem("젓갈", R.drawable.recipe_list_test1,40,200));
+        items.add(new recipeItem("젓갈", R.drawable.recipe_list_test1,40,200));
 
         main_page.RecipeListCustomAdapter rlAdapter = new main_page.RecipeListCustomAdapter(items);
         recommendedList.setAdapter(rlAdapter);
