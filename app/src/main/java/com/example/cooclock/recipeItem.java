@@ -5,8 +5,13 @@ public class recipeItem {
     int resId;
     int totalTime;
     int likeCnt;
+    // 기본 생성자
+    public recipeItem() {
+        // 기본 생성자 내용 (필요 시 추가)
+    }
 
-    recipeItem(String title, int resId, int totalTime, int likeCnt){
+
+    public recipeItem(String title, int resId, int totalTime, int likeCnt){
         this.title = title;
         this.resId = resId;
         this.totalTime = totalTime;
