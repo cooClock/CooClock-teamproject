@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_item_write:
                         Intent intent = new Intent(MainActivity.this, recipe_write_page.class);
                         startActivity(intent);
+                        finish();
                         //nav_item_write를 false로 바꾸는 코드 추가
                         bottomNavigationView.setSelectedItemId(R.id.nav_item_home); // Set home as selected
                         getSupportFragmentManager().beginTransaction().replace(R.id.main_FrameLayout, new home_page()).commit();
