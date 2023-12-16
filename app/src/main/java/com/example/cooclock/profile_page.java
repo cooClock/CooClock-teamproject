@@ -236,15 +236,16 @@ public class profile_page extends Fragment {
                         userAccount.setUsername(dataSnapshot.child("username").getValue(String.class));
 
                         // Recipe 데이터 가져오기
-                        ArrayList<knowHowItem> recipes = new ArrayList<>();
+                        ArrayList<knowHowItem> recipes = new ArrayList<knowHowItem>();
                         DataSnapshot recipeSnapshot = dataSnapshot.child("Recipe");
                         for (DataSnapshot itemSnapshot : recipeSnapshot.getChildren()) {
                             knowHowItem recipeItem = new knowHowItem();
 
                             // 각 레시피 아이템 설정
-                            int resId =Integer.parseInt(itemSnapshot.child("resId").getValue(String.class));
-                            recipeItem.setTitle(itemSnapshot.child("title").getValue(String.class));
-                            recipeItem.setResId(resId);
+//                            int resId =Integer.parseInt(itemSnapshot.child("resId").getValue(String.class));
+//                            recipeItem.setTitle(itemSnapshot.child("title").getValue(String.class));
+//                            recipeItem.setResId(String.valueOf(itemSnapshot.child("resId")));
+                            // string을 int로
 
                             recipes.add(recipeItem);
                         }

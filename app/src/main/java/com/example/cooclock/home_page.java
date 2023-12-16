@@ -148,11 +148,11 @@ public class home_page extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
-                        UserAccount userAccount = dataSnapshot.getValue(UserAccount.class);
-                        if (userAccount != null) {
-                            String userName = userAccount.getUsername();
-                            username.setText(userName);
-                            Log.d("Firebase_user",userName);
+//                        UserAccount userAccount = dataSnapshot.getValue(UserAccount.class);
+                        String usernamestr = dataSnapshot.child("username").getValue(String.class);
+                        if (usernamestr != null) {
+                            username.setText(usernamestr + "님");
+                            Log.d("Firebase_user",usernamestr);
 
                         }
                     }
