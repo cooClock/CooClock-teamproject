@@ -61,25 +61,24 @@ public class result_page extends AppCompatActivity {
                 Log.e("logcat", "filterItem is null");
                 // Handle the case where filterItem is null
             }
-        } else if(beforeIntentTitle.equals("home_page")) { //filtering_page에서 넘어오지 않은 경우.
+        } else if(beforeIntentTitle.equals("home_page")) { // 추천 레시피
             Log.d("logcat", beforeIntentTitle);
             LinearLayout filterTitleLayout = (LinearLayout)findViewById(R.id.filter_item_layout);
             filterTitleLayout.setVisibility(View.GONE);
 
             // 레시피 리스트 뷰 배치
             updateRecommendedList();
-        } else if(beforeIntentTitle.equals("profile_page_myRecipie")) { //filtering_page에서 넘어오지 않은 경우.
+        } else if(beforeIntentTitle.equals("profile_page_myRecipie")) { // 내가 올린 레시피
             Log.d("logcat", beforeIntentTitle);
             LinearLayout filterTitleLayout = (LinearLayout)findViewById(R.id.filter_item_layout);
             filterTitleLayout.setVisibility(View.GONE);
 
             // 레시피 리스트 뷰 배치
             updateRecommendedList();
-        }  else if(beforeIntentTitle.equals("profile_page_RecentView")) { //filtering_page에서 넘어오지 않은 경우.
+        }  else if(beforeIntentTitle.equals("profile_page_RecentView")) { // 최근 본 레시피
             Log.d("logcat", beforeIntentTitle);
             LinearLayout filterTitleLayout = (LinearLayout)findViewById(R.id.filter_item_layout);
             filterTitleLayout.setVisibility(View.GONE);
-
             // 레시피 리스트 뷰 배치
             updateRecommendedList();
         } else {
@@ -98,9 +97,9 @@ public class result_page extends AppCompatActivity {
         ArrayList<recipeItem> items = new ArrayList<recipeItem>();
         items.add(new recipeItem("멸치 볶음", R.drawable.recipe_list_test2,20,100));
         items.add(new recipeItem("된장 찌개", R.drawable.recipe_list_test1,30,500));
-        items.add(new recipeItem("젓갈", R.drawable.recipe_list_test1,40,200));
+        items.add(new recipeItem("젓갈", R.drawable.recipe_list_test2,40,200));
 
-        home_page.RecipeListCustomAdapter rlAdapter = new home_page.RecipeListCustomAdapter(items);
+        BasicRecipeListAdapter rlAdapter = new BasicRecipeListAdapter(items);
         recommendedList.setAdapter(rlAdapter);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);

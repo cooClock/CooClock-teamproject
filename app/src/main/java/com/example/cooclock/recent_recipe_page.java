@@ -1,12 +1,5 @@
 package com.example.cooclock;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -116,8 +114,8 @@ public class recent_recipe_page extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull recent_recipe_page.RecipeListCustomViewHolder holder, int position) {
             recipeItem item = items.get(position);
-//            holder.recipe_image.setImageResource(item.getResId());
-            Glide.with(holder.itemView).load(item.getResId()).into(holder.recipe_image);
+            holder.recipe_image.setImageResource(item.getResId());
+//            Glide.with(holder.itemView).load(item.getResId()).into(holder.recipe_image);
             holder.recipe_title.setText(item.getTitle());
             holder.recipe_time.setText(String.valueOf(item.getTotalTime()));
             holder.recipe_like.setText(String.valueOf(item.getLikeCnt()));
