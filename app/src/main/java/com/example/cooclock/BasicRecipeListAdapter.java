@@ -1,5 +1,6 @@
 package com.example.cooclock;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +56,15 @@ public class BasicRecipeListAdapter extends RecyclerView.Adapter<BasicRecipeList
         holder.recipe_like.setText(String.valueOf(item.getLikeCnt()));
         holder.recipe_time.setText(String.valueOf(item.getTotalTime()));
         holder.recipe_title.setText(item.getTitle());
+        holder.recipe_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String recipeTitle = (String) holder.recipe_title.getText();
+                Intent recipeIntent = new Intent(v.getContext(), recipe_page.class);
+                recipeIntent.putExtra("recipeTitle",recipeTitle);
+                v.getContext().startActivity(recipeIntent);
+            }
+        });
     }
 
     @Override

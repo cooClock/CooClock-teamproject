@@ -1,28 +1,26 @@
 package com.example.cooclock;
 
-import androidx.annotation.LongDef;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.android.material.progressindicator.LinearProgressIndicator;
-import com.willy.ratingbar.BaseRatingBar;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.willy.ratingbar.BaseRatingBar;
 
 import java.util.ArrayList;
 
@@ -36,8 +34,6 @@ public class recipe_page extends AppCompatActivity {
         setContentView(R.layout.activity_recipe_page);
         initializeRecipe();
         updateRecipeIngredientList();
-
-        updateRecipeKnowHowList();
 
         InitialRecipeStepList(); // 레시피 단계 나타내기
     }
@@ -62,6 +58,7 @@ public class recipe_page extends AppCompatActivity {
 
         recipe_init_item item = new recipe_init_item("이재원", "4", "둘이 먹다 하나 죽어 그냥 몰라", true, 3.6, 15, 5, 4, 3, 2, 1, 4);
 
+        recipe_writer.setText(item.getRecipe_writer()); // 레시피 작성자 설정
         recipe_servings.setText(item.getRecipe_servings()); // 기준 인원 설정
         recipe_title.setText(item.getRecipe_title()); // 제목 설정
         // 좋아요 버튼 설정
@@ -138,6 +135,7 @@ public class recipe_page extends AppCompatActivity {
         RecyclerView IngredientList = findViewById(R.id.recipe_ingredient_list);
 
         ArrayList<ingredientItem> items = new ArrayList<ingredientItem>();
+
         items.add(new ingredientItem("당근", "0.1","과일-채소"));
         items.add(new ingredientItem("양파", "0.1","과일-채소"));
         items.add(new ingredientItem("애호박", "0.1","과일-채소"));
@@ -158,6 +156,7 @@ public class recipe_page extends AppCompatActivity {
     */
 
     public void InitialRecipeStepList() {
+
         ArrayList<recipeStepItem> items = new ArrayList<recipeStepItem>();
         items.add(new recipeStepItem(1, "달걀은 흰자, 노른자를 분리하고 약간의 소금을 넣어 풀고 대파는 어슷하게 썰어주세요.", 3, 0, R.drawable.recipe_img_test));
         items.add(new recipeStepItem(2, "달군 팬에 약간의 기름을 두르고 키친타월로 닦아 낸 후 달걀노른자와 흰자 순으로 약한 불에서 지단을 만들어 가늘게 채를 썰어주세요.", 3, 0, R.drawable.recipe_img_test));
@@ -170,9 +169,60 @@ public class recipe_page extends AppCompatActivity {
     }
 
 
+
+    /*
+    파이어베이스에서 찾아서 가져오기
+     */
+    private void fetchFirebaseData(String title) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance(); // firebase 연동
+        DatabaseReference mDatabase = database.getReference("cooclock").child("Recipe").child(title);  // DB테이블 연결
+//        String databaseReferenceString = databaseReference.toString(); // DatabaseReference를 문자열로 변환
+
+
+        // ingredient
+        mDatabase.child("ingredient");
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot sp : snapshot.getChildren()){
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d(TAG, String.valueOf(error.toException()));
+            }
+        });
+
+
+
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                items.clear(); // 기존 데이터 초기화
+                Log.d("Children", String.valueOf(dataSnapshot.getChildrenCount()));
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Log.d("SnapshotKey", snapshot.getKey()); // 해당 스냅샷의 키를 출력
+                    Log.d("SnapshotValue", snapshot.getValue().toString()); // 해당 스냅샷의 값을 출력
+                    recipeItem recipe = snapshot.getValue(recipeItem.class);
+                    items.add(recipe); // Firebase에서 가져온 데이터를 ArrayList에 추가
+                    Log.d("item", "item added");
+                }
+                adapter.notifyDataSetChanged(); // 데이터가 변경되었음을 알려 RecyclerView 갱신
+                Log.d("TAG", "recent_recipe_page");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("recent_recipe_page", String.valueOf(error.toException()));
+            }
+        });
+    }
+
     /*
     노하우 리스트
-    */
     // 노하우 리스트리사이클러 뷰를 위한 뷰 홀더
     public static class RecipeKnowHowListCustomViewHolder extends RecyclerView.ViewHolder {
         private TextView know_how_title;
@@ -205,6 +255,15 @@ public class recipe_page extends AppCompatActivity {
             knowHowItem item = items.get(position);
             holder.know_how_title.setText(item.getTitle());
             holder.know_how_image.setImageResource(item.getResId());
+            holder.know_how_image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String recipeTitle = (String) holder.know_how_title.getText();
+                    Intent recipeIntent = new Intent(v.getContext(), .class);
+                    recipeIntent.putExtra("recipeTitle",recipeTitle);
+                    v.getContext().startActivity(recipeIntent);
+                }
+            });
         }
 
         @Override
@@ -228,5 +287,5 @@ public class recipe_page extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
         KnowHowList.setLayoutManager(layoutManager);
     }
-
+    */
 }

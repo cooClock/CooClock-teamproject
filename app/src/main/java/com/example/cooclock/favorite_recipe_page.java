@@ -14,11 +14,6 @@ import java.util.ArrayList;
 public class favorite_recipe_page extends Fragment {
     View rootView;
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_favorite_recipe_page);
-//    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
@@ -41,7 +36,7 @@ public class favorite_recipe_page extends Fragment {
         items.add(new recipeItem("된장 찌개", R.drawable.recipe_list_test1,30,500));
 
 
-        home_page.RecipeListCustomAdapter rlAdapter = new home_page.RecipeListCustomAdapter(items);
+        BasicRecipeListAdapter rlAdapter = new BasicRecipeListAdapter(items);
         recommendedList.setAdapter(rlAdapter);
 
 
