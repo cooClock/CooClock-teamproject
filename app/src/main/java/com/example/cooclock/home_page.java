@@ -24,6 +24,9 @@ import java.util.ArrayList;
 
 public class home_page extends Fragment {
     View rootView;
+    private static String TAG = "HOME_PAGE";
+    public ArrayList<String> filterItem = new ArrayList<>();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -96,7 +99,7 @@ public class home_page extends Fragment {
     }
 
     // 세부 카테고리 관리할 adapter
-    public static class SubCategoryCustomAdapter extends RecyclerView.Adapter<home_page.SubCategoryCustomViewHolder> {
+    public class SubCategoryCustomAdapter extends RecyclerView.Adapter<home_page.SubCategoryCustomViewHolder> {
         ArrayList<subCategroyItem> items;
 
         public SubCategoryCustomAdapter(ArrayList<subCategroyItem> a_list){
@@ -115,6 +118,19 @@ public class home_page extends Fragment {
             subCategroyItem item = items.get(position);
             holder.category_icon.setImageResource(item.getResId());
             holder.category_name.setText(item.getSubCategoryName());
+            holder.category_icon.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    String subCategoryName = (String) holder.category_name.getText();
+                    filterItem.add(subCategoryName);
+                    Intent resultIntent = new Intent(requireContext(), result_page.class);
+                    resultIntent.putExtra("intentTitle","home_page_category");
+                    resultIntent.putExtra("titleText",subCategoryName+"를 확인해보세요.");
+                    resultIntent.putStringArrayListExtra("filter", filterItem);
+                    startActivity(resultIntent);
+                    filterItem.clear();
+                }
+            });
         }
 
         @Override
@@ -163,7 +179,6 @@ public class home_page extends Fragment {
         home_page.SubCategoryCustomAdapter scAdapter = new home_page.SubCategoryCustomAdapter(items);
         subCategory.setAdapter(scAdapter);
 
-
         // fix to grid
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(requireContext(), 4);
         subCategory.setLayoutManager(layoutManager);
@@ -190,7 +205,7 @@ public class home_page extends Fragment {
     }
 
     // 추천 레시피 리스트를 관리할 adapter
-    public static class RecipeListCustomAdapter extends RecyclerView.Adapter<home_page.RecipeListCustomViewHolder> {
+    public class RecipeListCustomAdapter extends RecyclerView.Adapter<home_page.RecipeListCustomViewHolder> {
         ArrayList<recipeItem> items;
 
         public RecipeListCustomAdapter(ArrayList<recipeItem> a_list){
@@ -212,6 +227,15 @@ public class home_page extends Fragment {
             holder.recipe_title.setText(item.getTitle());
             holder.recipe_time.setText(String.valueOf(item.getTotalTime()));
             holder.recipe_like.setText(String.valueOf(item.getLikeCnt()));
+            holder.recipe_image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String recipeTitle = (String) holder.recipe_title.getText();
+                    Intent recipeIntent = new Intent(requireContext(), recipe_page.class);
+                    recipeIntent.putExtra("recipeTitle",recipeTitle);
+                    startActivity(recipeIntent);
+                }
+            });
         }
 
         @Override
@@ -227,7 +251,7 @@ public class home_page extends Fragment {
 
         ArrayList<recipeItem> items = new ArrayList<recipeItem>();
         items.add(new recipeItem("멸치 볶음", R.drawable.recipe_list_test2,20,100));
-        items.add(new recipeItem("된장 찌개", R.drawable.recipe_list_test1,30,500));
+        items.add(new recipeItem("된장찌개", R.drawable.recipe_list_test1,30,500));
 
 
         home_page.RecipeListCustomAdapter rlAdapter = new home_page.RecipeListCustomAdapter(items);
@@ -302,4 +326,5 @@ public class home_page extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false);
         myRefrigeratorCategory.setLayoutManager(layoutManager);
     }
+
 }
