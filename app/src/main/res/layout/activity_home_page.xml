@@ -273,6 +273,7 @@
             android:paddingHorizontal="20dp">
             <!-- 나의 냉장고 타이틀 -->
             <LinearLayout
+                android:id="@+id/go_my_refrigerator"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -285,7 +286,6 @@
                     android:fontFamily="@font/notosanskr_medium"
                     android:includeFontPadding="false"/>
                 <ImageView
-                    android:id="@+id/go_my_refrigerator"
                     android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:src="@drawable/go_icon"

@@ -62,27 +62,24 @@ public class home_page extends Fragment {
         });
 
         LinearLayout goto_result_page = rootView.findViewById(R.id.goto_result_page);
-        goto_result_page.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent resultIntent = new Intent(requireContext(), result_page.class);
-                resultIntent.putExtra("intentTitle","home_page");
-                resultIntent.putExtra("titleText","오늘의 추천 레시피입니다.");
-                startActivity(resultIntent);
-            }
+        goto_result_page.setOnClickListener(view -> {
+            Intent resultIntent = new Intent(requireContext(), result_page.class);
+            resultIntent.putExtra("intentTitle","home_page");
+            resultIntent.putExtra("titleText","오늘의 추천 레시피입니다.");
+            startActivity(resultIntent);
         });
 
-//        ImageView goto_my_refrigerator = rootView.findViewById(R.id.go_my_refrigerator);
-//        goto_my_refrigerator.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
+        LinearLayout goto_my_refrigerator = rootView.findViewById(R.id.go_my_refrigerator);
+        goto_my_refrigerator.setOnClickListener(view -> {
+            // activity 전환 + filterItem 내용 전달
+            Intent resultIntent = new Intent(requireContext(), MainActivity.class);
+            resultIntent.putExtra("goto","refrigerator");
+            startActivity(resultIntent);
+            getActivity().finish();
+        });
 
         return rootView;
     }
-
 
     /*
     세부 카테고리
