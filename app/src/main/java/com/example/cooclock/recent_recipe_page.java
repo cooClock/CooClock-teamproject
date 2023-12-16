@@ -44,12 +44,13 @@ public class recent_recipe_page extends AppCompatActivity {
         recentRecipeList.setAdapter(adapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recentRecipeList.setLayoutManager(layoutManager);
-        fetchFirebaseData();
+        fetchFirebaseData("Recipe");
     }
 
-    private void fetchFirebaseData() {
+    // 데이터 리스트 조회
+    private void fetchFirebaseData(String txt) {
         database = FirebaseDatabase.getInstance(); // firebase 연동
-        databaseReference = database.getReference("cooclock").child("Recipe");  // DB테이블 연결
+        databaseReference = database.getReference("cooclock").child(txt);  // DB테이블 연결
         String databaseReferenceString = databaseReference.toString(); // DatabaseReference를 문자열로 변환
 
         Log.d("DB", databaseReferenceString); // 디버그 로그에 DatabaseReference 출력
