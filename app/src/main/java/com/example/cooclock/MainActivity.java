@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
+                        Log.d("MAIN","aaa");
                     } else {
                         Intent intent = new Intent(MainActivity.this, login_page.class);
                         startActivity(intent);

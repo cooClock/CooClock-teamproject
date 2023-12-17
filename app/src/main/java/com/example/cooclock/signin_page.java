@@ -80,7 +80,8 @@ public class signin_page extends AppCompatActivity {
                                     }
                                 } else {
                                     if (task.getException() != null) {
-                                        Toast.makeText(signin_page.this, "회원가입에 실패하셨습니다. " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(signin_page.this, "회원가입에 실패하셨습니다. " , Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(signin_page.this,  task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             }
