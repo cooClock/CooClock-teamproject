@@ -117,6 +117,7 @@ public class my_refrigerator_page extends Fragment {
     파이어베이스에서 찾아서 가져오기
      */
     private void getMyIngredient() {
+        myIngredient.clear();
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         FirebaseDatabase database = FirebaseDatabase.getInstance(); // firebase 연동
@@ -125,7 +126,11 @@ public class my_refrigerator_page extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // 즐겨찾는 레시피 추가
+                int cnt = (int) dataSnapshot.child("UserAccount").child(currentUser.getUid()).child("myIngredient").getChildrenCount();
+                int i = 0;
                 for (DataSnapshot snapshot : dataSnapshot.child("UserAccount").child(currentUser.getUid()).child("myIngredient").getChildren()) {
+                    if (cnt == i)
+                        break;
                     ingredientItem item = new ingredientItem();
                     ArrayList<String> tmp = ((ArrayList<String>) snapshot.getValue());
                     item.setName(tmp.get(0));
@@ -133,7 +138,7 @@ public class my_refrigerator_page extends Fragment {
                     item.setKind(tmp.get(2));
                     myIngredient.add(item);
                     Log.d("MY", snapshot.getKey() + " : " + item.kind);
-
+                    ++i;
                 }
                 initializeIngredients();
             }
