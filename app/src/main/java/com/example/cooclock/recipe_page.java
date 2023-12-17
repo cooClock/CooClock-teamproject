@@ -170,11 +170,6 @@ public class recipe_page extends AppCompatActivity {
             items.add(new recipeStepItem(i+1, (String) step.get(0), (String)step.get(1),R.drawable.recipe_img_test ));
         }
 
-//        items.add(new recipeStepItem(1, "달걀은 흰자, 노른자를 분리하고 약간의 소금을 넣어 풀고 대파는 어슷하게 썰어주세요.", 3, 0, R.drawable.recipe_img_test));
-//        items.add(new recipeStepItem(2, "달군 팬에 약간의 기름을 두르고 키친타월로 닦아 낸 후 달걀노른자와 흰자 순으로 약한 불에서 지단을 만들어 가늘게 채를 썰어주세요.", 3, 0, R.drawable.recipe_img_test));
-//        items.add(new recipeStepItem(3, "냄비에 육수를 넣고 끓으면 국물 양념 재료와 만두를 넣어주세요. 만두가 익어 떠오르면 대파를 넣고 한소끔 끓이고 마지막에 약간의 소금과 후춧가루를 넣어 간을 맞춰주세요.", 5, 0, R.drawable.recipe_img_test));
-//        items.add(new recipeStepItem(4, "그릇에 만두국을 담고 채썬 황백지단을 올려 맛있게 즐겨주세요. (tip 기호에 따라 고명으로 김가루 또는 양념해서 볶은 쇠고기, 송송 썬 실파 등을 곁들여주세요.", 1, 30, R.drawable.recipe_img_test));
-
         recipe_step = new Recipe_step(items);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.recipe_step, recipe_step).commit();
@@ -188,22 +183,20 @@ public class recipe_page extends AppCompatActivity {
     private void fetchFirebaseData(String title) {
         FirebaseDatabase database = FirebaseDatabase.getInstance(); // firebase 연동
         DatabaseReference mDatabase = database.getReference("cooclock").child("Recipe").child(title);  // DB테이블 연결
-
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.d(TAG, "Tot Data: " + dataSnapshot.getValue().toString());
+//                Log.d(TAG, "Tot Data: " + dataSnapshot.getValue().toString());
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Log.d(TAG, "snap Data: " + snapshot.getKey() + " " + snapshot.getValue());
-
+//                    Log.d(TAG, "snap Data: " + snapshot.getKey() + " " + snapshot.getValue());
                     if (snapshot.getKey().equals("title")) {
                         recipe.setTitle(snapshot.getValue().toString());
-                        Log.d(TAG, "Raw Data: " + snapshot.getValue());
+//                        Log.d(TAG, "Raw Data: " + snapshot.getValue());
                     }
                     else if(snapshot.getKey().equals("category")) {
                         recipe.setCategory(snapshot.getValue().toString());
-                        Log.d(TAG, "Raw Data: " + snapshot.getValue());
+//                        Log.d(TAG, "Raw Data: " + snapshot.getValue());
                     }
                     else if (snapshot.getKey().equals("servings"))
                         recipe.setServings((Long) snapshot.getValue());
@@ -219,7 +212,7 @@ public class recipe_page extends AppCompatActivity {
                         recipe.setRecipeStep((List<List<String>>) snapshot.getValue());
                 }
 
-                if (recipe == null) {
+                if (recipe == null || recipe.getTitle().isEmpty()) {
                     Log.e(TAG, "Recipe is null");
                 }
                 else {

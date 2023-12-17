@@ -111,24 +111,12 @@
                 android:textColorHint="#818080" />
         </LinearLayout>
 
-        <!-- 4. 비밀번호 찾기 -->
-        <TextView
-            android:id="@+id/editTextText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="비밀번호 찾기"
-            android:clickable="true"
-            android:textColor="#D12023"
-            android:textSize="14sp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
-
-        <!-- 5. 버튼 -->
+        <!-- 4. 버튼 -->
         <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="로그인"
             android:textSize="20dp"
             app:cornerRadius="30dp"
@@ -138,30 +126,13 @@
             android:includeFontPadding="false"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:paddingVertical="10dp"/>
-
-        <Button
-            android:id="@+id/btn_google_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:drawableLeft="@drawable/drawable_google_ic"
-            android:text="구글 아이디로 회원가입"
-            android:textSize="20dp"
-            android:fontFamily="@font/notosanskr_light"
-            android:includeFontPadding="false"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            app:cornerRadius="30dp"
-            app:strokeColor="@color/pc_add_btn"
-            app:strokeWidth="1dp"
-            android:paddingVertical="8dp"/>
+            android:paddingVertical="15dp"/>
 
         <Button
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:paddingVertical="8dp"
             android:drawableLeft="@drawable/drawable_mail_ic"
             android:drawablePadding="8dp"

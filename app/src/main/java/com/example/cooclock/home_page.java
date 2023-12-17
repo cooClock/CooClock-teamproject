@@ -178,6 +178,11 @@ public class home_page extends Fragment {
                 }
             });
         }
+        else{
+            Intent intent = new Intent(requireContext(), login_page.class);
+            startActivity(intent);
+            getActivity().finish();
+        }
     }
     // 세부 카테고리 업데이트 코드
     public void updateSubCategories(){
