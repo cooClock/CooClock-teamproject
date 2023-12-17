@@ -27,21 +27,21 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class profile_page extends Fragment {
+    private static String TAG = "PROFILE";
     View ProfileRootView;
     private DatabaseReference mDatabaseRef;
     private FirebaseAuth mAuth;
     SharedPreferences sharedPreferences;
     UserAccount userAccount = new UserAccount();
-
+    ArrayList<knowHowItem> myRecipe = new ArrayList<knowHowItem>();
+    ArrayList<knowHowItem> recentRecipe = new ArrayList<knowHowItem>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
 
         ProfileRootView = inflater.inflate(R.layout.activity_profile_page,container,false);
         updateUserInfo();
-        updateRecipeShortList();
-        // updateCurrentShortList();
-
+        getRecipeLists();
 
         LinearLayout goto_result_page_MyRecipie = ProfileRootView.findViewById(R.id.layout_MyRecipie);
         goto_result_page_MyRecipie.setOnClickListener(new View.OnClickListener() {
@@ -138,11 +138,7 @@ public class profile_page extends Fragment {
 
         RecyclerView RecipeShortList = ProfileRootView.findViewById(R.id.my_recipe_short_list);
 
-        ArrayList<knowHowItem> items = new ArrayList<knowHowItem>();
-        items.add(new knowHowItem("카레",R.drawable.curry));
-        items.add(new knowHowItem("팬케이크" ,R.drawable.pancakes));
-        items.add(new knowHowItem("피자",R.drawable.pizza));
-        items.add(new knowHowItem("더보기" ,R.drawable.dots));
+        ArrayList<knowHowItem> items = myRecipe;
 
         profile_page.MyRecipeListAdapter rlAdapter = new profile_page.MyRecipeListAdapter(items);
         RecipeShortList.setAdapter(rlAdapter);
@@ -203,11 +199,7 @@ public class profile_page extends Fragment {
 
         RecyclerView RecipeShortList = ProfileRootView.findViewById(R.id.current_recipe_short_list);
 
-        ArrayList<knowHowItem> items = new ArrayList<knowHowItem>();
-        items.add(new knowHowItem("핫도그",R.drawable.hotdog));
-        items.add(new knowHowItem("떡볶이" ,R.drawable.toppokki));
-        items.add(new knowHowItem("샌드위치",R.drawable.sandwich));
-        items.add(new knowHowItem("더보기" ,R.drawable.dots));
+        ArrayList<knowHowItem> items = recentRecipe;
 
         profile_page.CurrentRecipeListAdapter rlAdapter = new profile_page.CurrentRecipeListAdapter(items);
         RecipeShortList.setAdapter(rlAdapter);
@@ -215,6 +207,73 @@ public class profile_page extends Fragment {
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false);
         RecipeShortList.setLayoutManager(layoutManager);
+    }
+
+    /*
+    파이어베이스에서 찾아서 가져오기
+     */
+    private void getRecipeLists() {
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance(); // firebase 연동
+        DatabaseReference mDatabase = database.getReference("cooclock");  // DB테이블 연결
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // 나의 레시피 추가
+                ArrayList<String> tmp = new ArrayList<String>();
+                for (DataSnapshot snapshot : dataSnapshot.child("UserAccount").child(currentUser.getUid()).child("myRecipe").getChildren()) {
+                    Log.d(TAG, snapshot.getKey());
+                    tmp.add((String) snapshot.getValue());
+                }
+                for (int i = 0; i < tmp.size(); ++i) {
+                    String name = tmp.get(i);
+                    for (DataSnapshot snapshot : dataSnapshot.child("Recipe").getChildren()) {
+                        if (snapshot.getKey().equals(name)) {
+                            knowHowItem item = new knowHowItem();
+                            for (DataSnapshot detail : snapshot.getChildren()) {
+                                Log.d(TAG, i + " " + detail.getKey());
+                                if (detail.getKey().equals("title"))
+                                    item.setTitle(name);
+                                // 사진 추가
+                            }
+                            item.setResId(R.drawable.sample_img);
+                            myRecipe.add(item);
+                        }
+                    }
+                }
+
+                // 최근 본 레시피 추가
+                ArrayList<String> tmp2 = new ArrayList<String>();
+                for (DataSnapshot snapshot : dataSnapshot.child("UserAccount").child(currentUser.getUid()).child("recentRecipe").getChildren()) {
+                    Log.d(TAG, snapshot.getKey());
+                    tmp2.add((String) snapshot.getValue());
+                }
+                for (int i = 0; i < tmp2.size(); ++i) {
+                    String name = tmp2.get(i);
+                    for (DataSnapshot snapshot : dataSnapshot.child("Recipe").getChildren()) {
+                        if (snapshot.getKey().equals(name)) {
+                            knowHowItem item = new knowHowItem();
+                            for (DataSnapshot detail : snapshot.getChildren()) {
+                                Log.d(TAG, i + " " + detail.getKey());
+                                if (detail.getKey().equals("title"))
+                                    item.setTitle(name);
+                                // 사진 추가
+                            }
+                            item.setResId(R.drawable.sample_img);
+                            recentRecipe.add(item);
+                        }
+                    }
+                }
+                updateRecipeShortList();
+                updateCurrentShortList();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w(TAG, "Failed to read value.", databaseError.toException());
+            }
+        });
     }
 
     public void updateUserInfo() {

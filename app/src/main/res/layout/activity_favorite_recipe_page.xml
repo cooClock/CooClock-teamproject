@@ -70,16 +70,16 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/favorite_list"
             android:layout_width="wrap_content"
-            android:layout_height="530dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:nestedScrollingEnabled="false">
         </androidx.recyclerview.widget.RecyclerView>
 
 
-        <!--        빈 공간 -->
+        <!--  빈 공간 -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="100dp"
             android:orientation="vertical">
         </LinearLayout>
     </LinearLayout>

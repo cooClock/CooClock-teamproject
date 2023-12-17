@@ -3,6 +3,10 @@ package com.example.cooclock;
 public class ingredientBtnModel {
     String buttonText;
 
+    public ingredientBtnModel() {
+        this.buttonText = "";
+    }
+
     public ingredientBtnModel(String buttonText) {
         this.buttonText = buttonText;
     }
