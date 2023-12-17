@@ -42,6 +42,7 @@ public class filtering_page extends AppCompatActivity {
     private int editTextItemCount=0;
 
     public ArrayList<String> filterItem = new ArrayList<>();
+    public ArrayList<String> filterTimeItem = new ArrayList<>();
     private DatabaseReference mDatabaseRef;
     private FirebaseAuth mAuth;
 
@@ -246,23 +247,23 @@ public class filtering_page extends AppCompatActivity {
     //필터 선택 완료 버튼 클릭시
     public void filterSelectCompleteClicked(View view){
 //        Button clickedBtn = (Button) view;
-        if(isButton1On==true && !filterItem.contains(cookTime1Btn.getText().toString())){ //filterItem에 필터값 추가
-            filterItem.add(new String(cookTime1Btn.getText().toString()));
+        if(isButton1On==true && !filterTimeItem.contains(cookTime1Btn.getText().toString())){ //filterItem에 필터값 추가
+            filterTimeItem.add(new String(cookTime1Btn.getText().toString()));
         } else{ //filterItem에 필터값 삭제
-            filterItem.remove(cookTime1Btn.getText().toString());
+            filterTimeItem.remove(cookTime1Btn.getText().toString());
         }
-        if(isButton2On==true && !filterItem.contains(cookTime2Btn.getText().toString())){ //filterItem에 필터값 추가
-            filterItem.add(new String(cookTime2Btn.getText().toString()));
+        if(isButton2On==true && !filterTimeItem.contains(cookTime2Btn.getText().toString())){ //filterItem에 필터값 추가
+            filterTimeItem.add(new String(cookTime2Btn.getText().toString()));
         } else {//filterItem에 필터값 삭제
-            filterItem.remove(cookTime2Btn.getText().toString());
+            filterTimeItem.remove(cookTime2Btn.getText().toString());
         }
-        if(isButton3On==true && !filterItem.contains(cookTime3Btn.getText().toString())){ //filterItem에 필터값 추가
-            filterItem.add(new String(cookTime3Btn.getText().toString()));
+        if(isButton3On==true && !filterTimeItem.contains(cookTime3Btn.getText().toString())){ //filterItem에 필터값 추가
+            filterTimeItem.add(new String(cookTime3Btn.getText().toString()));
         } else{ //filterItem에 필터값 삭제
-            filterItem.remove(cookTime3Btn.getText().toString());
+            filterTimeItem.remove(cookTime3Btn.getText().toString());
         }
 
-        if(filterItem.isEmpty()){
+        if(filterItem.isEmpty() && filterTimeItem.isEmpty()){
             Toast.makeText(getApplicationContext(), "선택된 필터가 없습니다.", Toast.LENGTH_SHORT).show();
             Log.d("logcat", filterItem.toString());
         }else {
@@ -273,7 +274,9 @@ public class filtering_page extends AppCompatActivity {
             resultIntent.putExtra("intentTitle","filtering_page");
             resultIntent.putExtra("titleText","레시피를 확인해보세요.");
             resultIntent.putStringArrayListExtra("filter",filterItem);
+            resultIntent.putStringArrayListExtra("filter_time",filterTimeItem);
             startActivity(resultIntent);
+
 
             // Terminate the current activity
             finish();

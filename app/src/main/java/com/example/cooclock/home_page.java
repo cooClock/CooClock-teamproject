@@ -33,7 +33,7 @@ import java.util.ArrayList;
 public class home_page extends Fragment {
     View rootView;
     private static String TAG = "HOME_PAGE";
-    public ArrayList<String> filterItem = new ArrayList<>();
+    public ArrayList<String> filterCategoryItem = new ArrayList<>();
     ArrayList<Integer> showList  = new ArrayList<Integer>();
     ArrayList<recipeItem> recipeList = new ArrayList<recipeItem>();
     private DatabaseReference mDatabaseRef;
@@ -70,14 +70,6 @@ public class home_page extends Fragment {
                 Intent intent = new Intent(requireContext(), filtering_page.class);
                 startActivity(intent);
             }
-        });
-
-        LinearLayout goto_result_page = rootView.findViewById(R.id.goto_result_page);
-        goto_result_page.setOnClickListener(view -> {
-            Intent resultIntent = new Intent(requireContext(), result_page.class);
-            resultIntent.putExtra("intentTitle","home_page");
-            resultIntent.putExtra("titleText","오늘의 추천 레시피입니다.");
-            startActivity(resultIntent);
         });
 
         LinearLayout goto_my_refrigerator = rootView.findViewById(R.id.go_my_refrigerator);
@@ -130,13 +122,13 @@ public class home_page extends Fragment {
                 @Override
                 public void onClick(View v) {
                     String subCategoryName = (String) holder.category_name.getText();
-                    filterItem.add(subCategoryName);
+                    filterCategoryItem.add(subCategoryName);
                     Intent resultIntent = new Intent(requireContext(), result_page.class);
                     resultIntent.putExtra("intentTitle","home_page_category");
                     resultIntent.putExtra("titleText",subCategoryName+"를 확인해보세요.");
-                    resultIntent.putStringArrayListExtra("filter", filterItem);
+                    resultIntent.putStringArrayListExtra("filterCategoryItem", filterCategoryItem);
                     startActivity(resultIntent);
-                    filterItem.clear();
+                    filterCategoryItem.clear();
                 }
             });
         }

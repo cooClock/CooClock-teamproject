@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.progressindicator.LinearProgressIndicator;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,17 +31,87 @@ public class recipe_page extends AppCompatActivity {
     static String TAG = "RECIPE";
     Recipe_step recipe_step;
     Recipe recipe = new Recipe();
-
+    private DatabaseReference mDatabaseRef;
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_page);
+        BaseRatingBar is_favorite = (BaseRatingBar) findViewById(R.id.recipe_add_favorite); // 좋아요 버튼
 
         Intent intent = getIntent();
         String recipeTitle = intent.getStringExtra("recipeTitle");
         Log.d(TAG , recipeTitle);
         fetchFirebaseData(recipeTitle);
+        is_favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth = FirebaseAuth.getInstance();
+                FirebaseUser currentUser = mAuth.getCurrentUser();
+                FirebaseDatabase database = FirebaseDatabase.getInstance(); // firebase 연동
+                DatabaseReference mDatabase = database.getReference("cooclock");  // DB테이블 연결
+                DatabaseReference myfavorite = database.getReference("cooclock").child("UserAccount").child(currentUser.getUid()).child("favoriteRecipe");  // DB테이블 연결
+                DatabaseReference recipe = database.getReference("cooclock").child("Recipe").child(recipeTitle).child("likeCnt");  // DB테이블 연결
 
+                mDatabase.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        // 즐겨찾는 레시피 추가
+                        ArrayList<String> tmp = new ArrayList<String>();
+                        for (DataSnapshot snapshot : dataSnapshot.child("UserAccount").child(currentUser.getUid()).child("favoriteRecipe").getChildren()) {
+                            tmp.add((String) snapshot.getValue());
+                        }
+                        boolean check = true;
+
+                        for (int i = 0; i < tmp.size(); ++i) {
+                            String name = tmp.get(i);
+                            if (recipeTitle.equals(name)) {
+                                tmp.remove(name);
+                                myfavorite.removeValue();
+                                myfavorite.push().setValue(tmp);
+                                Long cnt = 0L;
+                                for (DataSnapshot snapshot : dataSnapshot.child("Recipe").getChildren()) {
+                                    if (snapshot.getKey().equals(name)) {
+                                        for (DataSnapshot detail : snapshot.getChildren()) {
+                                            if (detail.getKey().equals("likeCnt")) {
+                                                cnt = (Long) detail.getValue();
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                                recipe.removeValue();
+                                recipe.push().setValue(cnt - 1L);
+                                check = false;
+                            }
+                        }
+                        if(check) {
+                            tmp.add(recipeTitle);
+                            myfavorite.removeValue();
+                            myfavorite.push().setValue(tmp);
+                            Log.d(TAG,tmp.get(1));
+                            Long cnt = 0L;
+                            for (DataSnapshot snapshot : dataSnapshot.child("Recipe").getChildren()) {
+                                if (snapshot.getKey().equals(recipeTitle)) {
+                                    for (DataSnapshot detail : snapshot.getChildren()) {
+                                        if (detail.getKey().equals("likeCnt")) {
+                                            cnt = (Long) detail.getValue();
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            recipe.removeValue();
+                            recipe.push().setValue(cnt+1L);
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+
+            }
+        });
     }
 
     /*
@@ -66,12 +138,31 @@ public class recipe_page extends AppCompatActivity {
         recipe_servings.setText(String.valueOf(recipe.getServings())); // 기준 인원 설정
         recipe_title.setText(recipe.getTitle()); // 제목 설정
         // 좋아요 버튼 설정
-        is_favorite.setRating(1);
-//        if (recipe.getFavorite())
-//            is_favorite.setRating(1);
-//        else
-//            is_favorite.setRating(0);
-//
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance(); // firebase 연동
+        DatabaseReference myfavorite = database.getReference("cooclock").child("UserAccount").child(currentUser.getUid()).child("favoriteRecipe");  // DB테이블 연결
+        is_favorite.setRating(0);
+
+        myfavorite.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // 즐겨찾는 레시피 추가
+                for (DataSnapshot snapshot : dataSnapshot.child("UserAccount").child(currentUser.getUid()).child("favoriteRecipe").getChildren()) {
+                    if (recipe_title.equals((String) snapshot.getValue())){
+                        is_favorite.setRating(1);
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         List<Long> rating = recipe.getRating();
         long five = rating.get(4);
         long four = rating.get(3);
