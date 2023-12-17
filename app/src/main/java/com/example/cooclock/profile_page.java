@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,10 +16,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.Map;
 
 public class profile_page extends Fragment {
     View ProfileRootView;
+    private DatabaseReference mDatabaseRef;
+    private FirebaseAuth mAuth;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
@@ -26,7 +39,8 @@ public class profile_page extends Fragment {
         ProfileRootView = inflater.inflate(R.layout.activity_profile_page,container,false);
 
         updateRecipeShortList();
-        updateCurrentShortList();
+        // updateCurrentShortList();
+        updateUserInfo();
 
         LinearLayout goto_result_page_MyRecipie = ProfileRootView.findViewById(R.id.layout_MyRecipie);
         goto_result_page_MyRecipie.setOnClickListener(new View.OnClickListener() {
@@ -197,5 +211,65 @@ public class profile_page extends Fragment {
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false);
         RecipeShortList.setLayoutManager(layoutManager);
+    }
+
+    public void updateUserInfo() {
+        // 유저이름 반영하기
+        mAuth = FirebaseAuth.getInstance();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("cooclock").child("UserAccount");
+
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            String currentUserId = currentUser.getUid();
+            TextView username = ProfileRootView.findViewById(R.id.username);
+            RecyclerView RecipeShortList = ProfileRootView.findViewById(R.id.current_recipe_short_list);
+
+            mDatabaseRef.child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        UserAccount userAccount = new UserAccount();
+
+                        // 기본 필드 설정
+                        userAccount.setIdToken(dataSnapshot.child("idToken").getValue(String.class));
+                        userAccount.setEmailId(dataSnapshot.child("emailId").getValue(String.class));
+                        userAccount.setUsername(dataSnapshot.child("username").getValue(String.class));
+
+                        // Recipe 데이터 가져오기
+                        ArrayList<knowHowItem> recipes = new ArrayList<knowHowItem>();
+                        DataSnapshot recipeSnapshot = dataSnapshot.child("Recipe");
+                        for (DataSnapshot itemSnapshot : recipeSnapshot.getChildren()) {
+                            knowHowItem recipeItem = new knowHowItem();
+
+                            // 각 레시피 아이템 설정
+//                            int resId =Integer.parseInt(itemSnapshot.child("resId").getValue(String.class));
+//                            recipeItem.setTitle(itemSnapshot.child("title").getValue(String.class));
+//                            recipeItem.setResId(String.valueOf(itemSnapshot.child("resId")));
+                            // string을 int로
+
+                            recipes.add(recipeItem);
+                        }
+
+                        // UserAccount에 레시피 목록 설정
+                        userAccount.setMyRecipes(recipes);
+                        profile_page.CurrentRecipeListAdapter rlAdapter = new profile_page.CurrentRecipeListAdapter(userAccount.getMyRecipes());
+                        RecipeShortList.setAdapter(rlAdapter);
+
+
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false);
+                        RecipeShortList.setLayoutManager(layoutManager);
+
+
+
+                        }
+                    }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // onCancelled 메서드를 구현하여 오류 처리
+                    Log.w("Firebase", "loadPost:onCancelled", databaseError.toException());
+                    // 오류 처리를 추가하거나 필요한 작업 수행
+                }
+            });
+        }
     }
 }

@@ -24,7 +24,7 @@ public class signin_page extends AppCompatActivity {
 
     private FirebaseAuth mFirebaseAuth; // 파이어베이스 인증
     private DatabaseReference mDatabaseRef; // 실시간 데이터베이스 연동
-    private EditText mEtID, mEtPwd; // 회원가입 입력필드
+    private EditText mEtID, mEtPwd,mEtName; // 회원가입 입력필드
     private Button mBtnRegister;    //회원가입 버튼
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,7 @@ public class signin_page extends AppCompatActivity {
 
         mEtID = findViewById(R.id.et_id);
         mEtPwd = findViewById(R.id.et_pw);
+        mEtName = findViewById(R.id.et_name);
         mBtnRegister = findViewById(R.id.btn_register);
 
         mBtnRegister.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +45,7 @@ public class signin_page extends AppCompatActivity {
                 // 회원가입 처리 시작
                 String strID = mEtID.getText().toString().trim();
                 String strPW = mEtPwd.getText().toString().trim();
+                String strName = mEtName.getText().toString().trim();
 
                 if (TextUtils.isEmpty(strID) || TextUtils.isEmpty(strPW)) {
                     Toast.makeText(signin_page.this, "이메일과 비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show();
@@ -61,8 +63,10 @@ public class signin_page extends AppCompatActivity {
                                         UserAccount account = new UserAccount();
                                         account.setIdToken(firebaseUser.getUid());
                                         account.setEmailId(firebaseUser.getEmail());
+                                         account.setUsername(strName);
                                         // 비밀번호를 저장하지 않음 (Firebase Authentication에서 관리)
 
+                                        // mDatabaseRef.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
                                         mDatabaseRef.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
 
                                         Toast.makeText(signin_page.this, "회원가입에 성공하셨습니다.", Toast.LENGTH_SHORT).show();
