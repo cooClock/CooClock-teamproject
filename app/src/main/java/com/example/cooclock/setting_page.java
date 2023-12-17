@@ -115,7 +115,6 @@ public class setting_page extends AppCompatActivity {
         });
 
         emailChange.setOnClickListener(view -> {
-            Log.d("logcat","click setting_change_nickname");
             emailEditLayout.setVisibility(View.VISIBLE);
             changeEmailButton.setVisibility(View.VISIBLE);
         });
@@ -133,14 +132,6 @@ public class setting_page extends AppCompatActivity {
             }
         });
 
-//
-//        TextView password = (TextView) findViewById(R.id.setting_change_password);
-//        password.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.d("logcat","click setting_change_password");
-//            }
-//        });
 
         TextView delete_user = (TextView) findViewById(R.id.setting_delete_user);
         delete_user.setOnClickListener(new View.OnClickListener() {
@@ -159,9 +150,6 @@ public class setting_page extends AppCompatActivity {
                     userRef.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            // Deletion successful
-                            Log.d("logcat", "User data deleted successfully");
-                            // Add any additional logic if needed
                             Toast.makeText(getApplicationContext(),"계정이 삭제 되어 로그아웃되었습니다.",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(setting_page.this, login_page.class);
                             startActivity(intent);
@@ -219,18 +207,6 @@ public class setting_page extends AppCompatActivity {
                             knowHowItem recipeItem = new knowHowItem();
                             recipes.add(recipeItem);
                         }
-
-//                        // UserAccount에 레시피 목록 설정
-//                        userAccount.setMyRecipes(recipes);
-//                        profile_page.CurrentRecipeListAdapter rlAdapter = new profile_page.CurrentRecipeListAdapter(userAccount.getMyRecipes());
-//                        MyRecipeList.setAdapter(rlAdapter);
-//
-//
-//                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false);
-//                        RecipeShortList.setLayoutManager(layoutManager);
-
-
-
                     }
                 }
                 @Override

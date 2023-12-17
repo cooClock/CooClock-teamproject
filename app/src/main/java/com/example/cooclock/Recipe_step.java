@@ -1,10 +1,6 @@
 package com.example.cooclock;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,8 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.progressindicator.LinearProgressIndicator;
 
@@ -83,7 +80,6 @@ public class Recipe_step extends Fragment {
             @Override
             public void onClick(View v) {
                 currentStepIndex++;
-                Log.d(TAG, "" + currentStepIndex);
                 if (currentStepIndex >= items.size())
                     currentStepIndex--;
                 updateStep();
@@ -134,7 +130,6 @@ public class Recipe_step extends Fragment {
     public void updateStep() {
         if (!items.isEmpty()) {
             recipeStepItem item = items.get(currentStepIndex);
-            Log.d(TAG, "update " + currentStepIndex);
             recipe_step_number.setText(String.valueOf(item.getNumber()));
             recipe_step_detail.setText(item.getDescription());
 
@@ -179,7 +174,6 @@ public class Recipe_step extends Fragment {
         else {
             time = tmpTime;
         }
-        Log.d(TAG, "timer " + String.valueOf(time));
 
         recipe_step_progess.setProgress(i);
 

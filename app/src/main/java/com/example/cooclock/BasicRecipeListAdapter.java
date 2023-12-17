@@ -16,16 +16,6 @@ public class BasicRecipeListAdapter extends RecyclerView.Adapter<BasicRecipeList
     private static String TAG = "BasicRecipeListAdapter";
     static ArrayList<recipeItem> items;
 
-    public interface OnItemClickListener{
-        void onItemClicked(int position, String data);
-    }
-
-    private OnItemClickListener itemClickListener;
-
-    public void setOnItemClickListener(OnItemClickListener listener){
-        itemClickListener = listener;
-    }
-
     public class BasicRecipeListViewHolder extends RecyclerView.ViewHolder {
         private ImageView recipe_image;
         private TextView recipe_title;

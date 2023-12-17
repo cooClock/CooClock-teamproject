@@ -131,8 +131,6 @@ public class recipe_page extends AppCompatActivity {
         LinearProgressIndicator two_point = (LinearProgressIndicator) findViewById(R.id.rating_2); // 2점
         LinearProgressIndicator one_point = (LinearProgressIndicator) findViewById(R.id.rating_1); // 1점
 
-//        recipe_init_item item = new recipe_init_item("이재원", "4", "둘이 먹다 하나 죽어 그냥 몰라", true, 3.6, 15, 5, 4, 3, 2, 1, 4);
-
 
         recipe_writer.setText(recipe.getWriter()); // 레시피 작성자 설정
         recipe_servings.setText(String.valueOf(recipe.getServings())); // 기준 인원 설정
@@ -198,8 +196,6 @@ public class recipe_page extends AppCompatActivity {
             super(itemView);
             ingredient_name = itemView.findViewById(R.id.recipe_ingredient_name);
             ingredient_weight = itemView.findViewById(R.id.recipe_ingredient_weight);
-            Log.d(TAG, "ingredient_name: " + ingredient_name);
-            Log.d(TAG, "ingredient_weight: " + ingredient_weight);
         }
     }
 
@@ -246,7 +242,6 @@ public class recipe_page extends AppCompatActivity {
         IngredientList.setLayoutManager(layoutManager);
     }
 
-
     /*
     요리 단계 리스트
     */
@@ -277,17 +272,13 @@ public class recipe_page extends AppCompatActivity {
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                Log.d(TAG, "Tot Data: " + dataSnapshot.getValue().toString());
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    Log.d(TAG, "snap Data: " + snapshot.getKey() + " " + snapshot.getValue());
                     if (snapshot.getKey().equals("title")) {
                         recipe.setTitle(snapshot.getValue().toString());
-//                        Log.d(TAG, "Raw Data: " + snapshot.getValue());
                     }
                     else if(snapshot.getKey().equals("category")) {
                         recipe.setCategory(snapshot.getValue().toString());
-//                        Log.d(TAG, "Raw Data: " + snapshot.getValue());
                     }
                     else if (snapshot.getKey().equals("servings"))
                         recipe.setServings((Long) snapshot.getValue());
@@ -322,71 +313,4 @@ public class recipe_page extends AppCompatActivity {
         });
     }
 
-    /*
-    노하우 리스트
-    // 노하우 리스트리사이클러 뷰를 위한 뷰 홀더
-    public static class RecipeKnowHowListCustomViewHolder extends RecyclerView.ViewHolder {
-        private TextView know_how_title;
-        private ImageView know_how_image;
-
-        public RecipeKnowHowListCustomViewHolder(@NonNull View itemView) {
-            super(itemView);
-            know_how_title = itemView.findViewById(R.id.know_how_item_title);
-            know_how_image = itemView.findViewById(R.id.know_how_item_image);
-        }
-    }
-
-    // 노하우 리스트를 관리할 adapter
-    public static class RecipeKnowHowListCustomAdapter extends RecyclerView.Adapter<recipe_page.RecipeKnowHowListCustomViewHolder> {
-        ArrayList<knowHowItem> items;
-
-        public RecipeKnowHowListCustomAdapter(ArrayList<knowHowItem> a_list){
-            items = a_list;
-        }
-
-        @NonNull
-        @Override
-        public recipe_page.RecipeKnowHowListCustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_know_how_item, parent, false);
-            return new recipe_page.RecipeKnowHowListCustomViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull recipe_page.RecipeKnowHowListCustomViewHolder holder, int position) {
-            knowHowItem item = items.get(position);
-            holder.know_how_title.setText(item.getTitle());
-            holder.know_how_image.setImageResource(item.getResId());
-            holder.know_how_image.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String recipeTitle = (String) holder.know_how_title.getText();
-                    Intent recipeIntent = new Intent(v.getContext(), .class);
-                    recipeIntent.putExtra("recipeTitle",recipeTitle);
-                    v.getContext().startActivity(recipeIntent);
-                }
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            return items.size();
-        }
-    }
-
-    // 노하우 리스트 업데이트 코드
-    private void updateRecipeKnowHowList(){
-        RecyclerView KnowHowList = findViewById(R.id.know_how_list);
-
-        ArrayList<knowHowItem> items = new ArrayList<knowHowItem>();
-        items.add(new knowHowItem("달걀 지단 만드는 법",R.drawable.knowhow_test_img0));
-        items.add(new knowHowItem("달걀 보관법" ,R.drawable.knowhow_test_img1));
-
-        recipe_page.RecipeKnowHowListCustomAdapter rlAdapter = new recipe_page.RecipeKnowHowListCustomAdapter(items);
-        KnowHowList.setAdapter(rlAdapter);
-
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
-        KnowHowList.setLayoutManager(layoutManager);
-    }
-    */
 }

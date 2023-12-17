@@ -188,15 +188,12 @@ public class filtering_page extends AppCompatActivity {
         // Set the background color based on the button state
         if (isButton1On) {
             cookTime1Btn.setBackgroundColor(getResources().getColor(R.color.buttonOnColor));
-            Log.d("logcat",   cookTime1Btn.getText().toString());
         }
         if (isButton2On) {
             cookTime2Btn.setBackgroundColor(getResources().getColor(R.color.buttonOnColor));
-            Log.d("logcat", cookTime2Btn.getText().toString());
         }
         if (isButton3On) {
             cookTime3Btn.setBackgroundColor(getResources().getColor(R.color.buttonOnColor));
-            Log.d("logcat", cookTime3Btn.getText().toString());
         }
     }
 
@@ -210,9 +207,6 @@ public class filtering_page extends AppCompatActivity {
         if (isButtonOn == null || isButtonOn) {
             // Button is off, set it to on
             clickedBtn.setBackgroundColor(getResources().getColor(R.color.buttonOnColor));
-
-            //log 찍기
-            Log.d("logcat", String.valueOf(isButtonOn)+clickedBtn.getText().toString());
 
             //filterItem에 필터값 추가
             filterItem.add(new String(clickedBtn.getText().toString()));
@@ -265,10 +259,7 @@ public class filtering_page extends AppCompatActivity {
 
         if(filterItem.isEmpty() && filterTimeItem.isEmpty()){
             Toast.makeText(getApplicationContext(), "선택된 필터가 없습니다.", Toast.LENGTH_SHORT).show();
-            Log.d("logcat", filterItem.toString());
         }else {
-            Log.d("logcat", filterItem.toString());
-
             // activity 전환 + filterItem 내용 전달
             Intent resultIntent = new Intent(this, result_page.class);
             resultIntent.putExtra("intentTitle","filtering_page");
@@ -277,8 +268,6 @@ public class filtering_page extends AppCompatActivity {
             resultIntent.putStringArrayListExtra("filter_time",filterTimeItem);
             startActivity(resultIntent);
 
-
-            // Terminate the current activity
             finish();
         }
     }
@@ -289,7 +278,6 @@ public class filtering_page extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance(); // firebase 연동
         DatabaseReference mDatabase = database.getReference("cooclock");  // DB테이블 연결
         mDatabase.addValueEventListener(new ValueEventListener() {
-            //                    items.add(new ingredientItem("소고기 국거리", "0.1","육류"));
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // 즐겨찾는 레시피 추가

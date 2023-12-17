@@ -52,8 +52,6 @@ public class result_page extends AppCompatActivity {
             filterTimeItem = beforeIntent.getStringArrayListExtra("filter_time");
             if (filterTimeItem != null || filterItem != null) {
                 String intentTitle = beforeIntent.getStringExtra("intentTitle");
-                Log.d("logcat",intentTitle);
-                Log.d("logcat",filterItem.toString());
 
                 //recycler view
                 List<filterItemBtnModel> buttonList = new ArrayList<>();
@@ -92,19 +90,14 @@ public class result_page extends AppCompatActivity {
 
             } else {
                 Log.e("logcat", "filterItem is null");
-                // Handle the case where filterItem is null
             }
         }
         else if(beforeIntentTitle.equals("home_page_category")){
             filterCategoryItem = beforeIntent.getStringArrayListExtra("filterCategoryItem");
             if (filterItem != null) {
                 String intentTitle = beforeIntent.getStringExtra("intentTitle");
-                Log.d("logcat",intentTitle);
-                Log.d("logcat",filterItem.toString());
 
-                //recycler view
                 List<filterItemBtnModel> buttonList = new ArrayList<>();
-                // Iterate through filterItem and add each string to buttonList
                 if (filterCategoryItem != null && !filterCategoryItem.isEmpty()) {
                     buttonList.add(new filterItemBtnModel(filterCategoryItem.get(0)));
                 }
@@ -123,13 +116,11 @@ public class result_page extends AppCompatActivity {
                 // Handle the case where filterItem is null
             }
         } else if(beforeIntentTitle.equals("myRecipe")) { // 내가 올린 레시피
-            Log.d("logcat", beforeIntentTitle);
             LinearLayout filterTitleLayout = (LinearLayout)findViewById(R.id.filter_item_layout);
             filterTitleLayout.setVisibility(View.GONE);
             getmyRecipeList();
 
         }  else if(beforeIntentTitle.equals("recentRecipe")) { // 최근 본 레시피
-            Log.d("logcat", beforeIntentTitle);
             LinearLayout filterTitleLayout = (LinearLayout)findViewById(R.id.filter_item_layout);
             filterTitleLayout.setVisibility(View.GONE);
             getRecentRecipeList();
@@ -137,9 +128,6 @@ public class result_page extends AppCompatActivity {
             Log.e("logcat", "Exception while processing Intent data");
         }
 
-
-//        // 레시피 리스트 뷰 배치
-//        updateRecommendedList();
     }
 
     // 레시피 리스트 업데이트 코드
@@ -309,40 +297,6 @@ public class result_page extends AppCompatActivity {
                         recipeList.add(item);
                     }
                 }
-//
-//
-//
-//                // 나의 레시피 추가
-//                for (DataSnapshot snapshot : dataSnapshot.child("Recipe").getChildren()) {
-//                    int k = 1;
-//                    for (int i=0; i<filterItem.size(); ++i) {
-//                        if(k-1 != i)
-//                            break;
-//                        for (DataSnapshot detail : snapshot.child("recipeIngredient").getChildren()) {
-//                            List<String> tmp = (List<String>) detail.getValue();
-//                            String ing_name = tmp.get(0);
-//                            if (filterItem.get(i).equals(ing_name)) {
-//                                k++;
-//                                break;
-//                            }
-//
-//                        }
-//                    }
-//                    if (k == filterItem.size()){
-//                        recipeItem item = new recipeItem();
-//                        for (DataSnapshot detail : snapshot.getChildren()) {
-//                            if (detail.getKey().equals("title"))
-//                                item.setTitle(detail.getValue().toString());
-//                            else if (detail.getKey().equals("totaltime"))
-//                                item.setTotalTime((Long) detail.getValue());
-//                            else if (detail.getKey().equals("likeCnt"))
-//                                item.setLikeCnt((Long) detail.getValue());
-//                            // 사진 추가
-//                        }
-//                        item.setResId(R.drawable.sample_img);
-//                        recipeList.add(item);
-//                    }
-//                }
                 // 레시피 리스트 뷰 배치
                 updateRecommendedList();
             }

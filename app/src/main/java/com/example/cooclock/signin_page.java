@@ -68,7 +68,6 @@ public class signin_page extends AppCompatActivity {
                                         account.setUsername(strName);
                                         // 비밀번호를 저장하지 않음 (Firebase Authentication에서 관리)
 
-                                        // mDatabaseRef.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
                                         mDatabaseRef.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
 
                                         Toast.makeText(signin_page.this, "회원가입에 성공하셨습니다.", Toast.LENGTH_SHORT).show();

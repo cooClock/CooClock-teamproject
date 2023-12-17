@@ -151,8 +151,6 @@ public class profile_page extends Fragment {
     }
 
 
-
-
     /*
     최근 본 레시피
     */
@@ -225,7 +223,6 @@ public class profile_page extends Fragment {
                 // 나의 레시피 추가
                 ArrayList<String> tmp = new ArrayList<String>();
                 for (DataSnapshot snapshot : dataSnapshot.child("UserAccount").child(currentUser.getUid()).child("myRecipe").getChildren()) {
-                    Log.d(TAG, snapshot.getKey());
                     tmp.add((String) snapshot.getValue());
                 }
                 for (int i = 0; i < tmp.size(); ++i) {
@@ -234,7 +231,6 @@ public class profile_page extends Fragment {
                         if (snapshot.getKey().equals(name)) {
                             knowHowItem item = new knowHowItem();
                             for (DataSnapshot detail : snapshot.getChildren()) {
-                                Log.d(TAG, i + " " + detail.getKey());
                                 if (detail.getKey().equals("title"))
                                     item.setTitle(name);
                                 // 사진 추가
@@ -248,7 +244,6 @@ public class profile_page extends Fragment {
                 // 최근 본 레시피 추가
                 ArrayList<String> tmp2 = new ArrayList<String>();
                 for (DataSnapshot snapshot : dataSnapshot.child("UserAccount").child(currentUser.getUid()).child("recentRecipe").getChildren()) {
-                    Log.d(TAG, snapshot.getKey());
                     tmp2.add((String) snapshot.getValue());
                 }
                 for (int i = 0; i < tmp2.size(); ++i) {
@@ -257,7 +252,6 @@ public class profile_page extends Fragment {
                         if (snapshot.getKey().equals(name)) {
                             knowHowItem item = new knowHowItem();
                             for (DataSnapshot detail : snapshot.getChildren()) {
-                                Log.d(TAG, i + " " + detail.getKey());
                                 if (detail.getKey().equals("title"))
                                     item.setTitle(name);
                                 // 사진 추가
@@ -296,16 +290,12 @@ public class profile_page extends Fragment {
                         String usernamestr = dataSnapshot.child("username").getValue(String.class);
                         if (usernamestr != null) {
                             username.setText(usernamestr + "님");
-                            Log.d("Firebase_user", usernamestr);
-
                         }
                     }
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    // onCancelled 메서드를 구현하여 오류 처리
                     Log.w("Firebase", "loadPost:onCancelled", databaseError.toException());
-                    // 오류 처리를 추가하거나 필요한 작업 수행
                 }
             });
         }

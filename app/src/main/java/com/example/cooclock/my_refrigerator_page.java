@@ -122,7 +122,6 @@ public class my_refrigerator_page extends Fragment {
         FirebaseDatabase database = FirebaseDatabase.getInstance(); // firebase 연동
         DatabaseReference mDatabase = database.getReference("cooclock");  // DB테이블 연결
         mDatabase.addValueEventListener(new ValueEventListener() {
-//                    items.add(new ingredientItem("소고기 국거리", "0.1","육류"));
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // 즐겨찾는 레시피 추가
@@ -136,7 +135,6 @@ public class my_refrigerator_page extends Fragment {
                     Log.d("MY", snapshot.getKey() + " : " + item.kind);
 
                 }
-                Log.d("MY", String.valueOf(myIngredient.size()));
                 initializeIngredients();
             }
 

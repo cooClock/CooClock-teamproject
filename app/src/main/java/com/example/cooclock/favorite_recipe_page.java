@@ -35,23 +35,17 @@ public class favorite_recipe_page extends Fragment {
 
         updataUserInfo();
         getRecipeLists();
-
-
-        //return inflater.inflate(R.layout.activity_favorite_recipe_page,container,false);
         return rootView;
     }
 
     // 추천 레시피 리스트 업데이트 코드
     private void updateFavoriteList(){
         RecyclerView favoriteList = rootView.findViewById(R.id.favorite_list);
-//        myRefrigeratorCategory.removeAllViews();
 
         ArrayList<recipeItem> items = favoriteRecipe;
 
-
         BasicRecipeListAdapter rlAdapter = new BasicRecipeListAdapter(items);
         favoriteList.setAdapter(rlAdapter);
-
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL,false);
         favoriteList.setLayoutManager(layoutManager);
@@ -59,7 +53,6 @@ public class favorite_recipe_page extends Fragment {
 
 
     public void updataUserInfo() {
-
         // 유저이름 반영하기
         mAuth = FirebaseAuth.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("cooclock").child("UserAccount");
@@ -77,15 +70,12 @@ public class favorite_recipe_page extends Fragment {
                         if (usernamestr != null) {
                             username.setText(usernamestr + "님");
                             Log.d("Firebase_user",usernamestr);
-
                         }
                     }
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    // onCancelled 메서드를 구현하여 오류 처리
                     Log.w("Firebase", "loadPost:onCancelled", databaseError.toException());
-                    // 오류 처리를 추가하거나 필요한 작업 수행
                 }
             });
         }

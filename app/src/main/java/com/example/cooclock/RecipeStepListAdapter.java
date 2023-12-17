@@ -18,20 +18,6 @@ public class RecipeStepListAdapter extends RecyclerView.Adapter<RecipeStepListAd
     private static String TAG = "RecipeAdapter";
     ArrayList<recipeStepItem> items;
 
-    // OnItemClickListener 인터페이스 선언
-    public interface OnItemClickListener {
-        void onItemClicked(int position, String data);
-    }
-
-    // OnItemClickListener 참조 변수 선언
-    private OnItemClickListener itemClickListener;
-
-    // OnItemClickListener 전달 메소드
-    public void setOnItemClickListener (OnItemClickListener listener) {
-        itemClickListener = listener;
-    }
-
-
     // 요리 단계 리스트리사이클러 뷰를 위한 뷰 홀더
     public static class RecipeStepListViewHolder extends RecyclerView.ViewHolder {
         private TextView recipe_step_number;

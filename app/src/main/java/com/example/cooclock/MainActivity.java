@@ -140,8 +140,5 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-//        ImageView goto_my_refrigerator = findViewById(R.id.go_my_refrigerator);
-
     }
 }

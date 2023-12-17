@@ -1,6 +1,5 @@
 package com.example.cooclock;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,20 +17,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAdapter.IngredientListViewHolder> {
     private static String TAG = "IngredientAdapter";
     ArrayList<ingredientItem> items;
-
-    // OnItemClickListener 인터페이스 선언
-    public interface OnItemClickListener {
-        void onItemClicked(int position, String data);
-    }
-
-    // OnItemClickListener 참조 변수 선언
-    private OnItemClickListener itemClickListener;
-
-    // OnItemClickListener 전달 메소드
-    public void setOnItemClickListener (OnItemClickListener listener) {
-        itemClickListener = listener;
-    }
-
 
     // 요리 단계 리스트리사이클러 뷰를 위한 뷰 홀더
     public class IngredientListViewHolder extends RecyclerView.ViewHolder {
@@ -54,7 +39,6 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
                 @Override
                 public void onClick(View v) {
                     int position = getLayoutPosition();
-                    Log.d(TAG,""+position);
                     if (position != RecyclerView.NO_POSITION && position < items.size()) {
                         ingredientItem item = items.get(position);
                         item.setWeight(String.format("%.1f",item.getWeightF()-0.1));
@@ -68,7 +52,6 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
                 @Override
                 public void onClick(View v) {
                     int position = getLayoutPosition();
-                    Log.d(TAG,""+position);
                     if (position != RecyclerView.NO_POSITION && position < items.size()) {
                         ingredientItem item = items.get(position);
                         item.setWeight(String.format("%.1f",item.getWeightF()+0.1));
