@@ -14,7 +14,7 @@
             android:id="@+id/my_refrigerator_category_icon"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:scaleType="fitCenter"/>
+            android:scaleType="fitCenter" />
         <TextView
             android:id="@+id/my_refrigerator_category_name"
             android:layout_width="wrap_content"

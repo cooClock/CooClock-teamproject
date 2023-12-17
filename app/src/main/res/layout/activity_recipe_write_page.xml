@@ -225,7 +225,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
             android:padding="15dp"
             android:background="@drawable/search_edit_text_border_gray">
             <EditText
@@ -239,6 +238,59 @@
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
                 android:background="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- 재료 양 입력 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginVertical="10dp">
+            <!-- - 버튼 -->
+            <ImageView
+                android:id="@+id/ingredient_weight_sub1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/minus_btn"
+                android:background="@color/clear"
+                android:layout_gravity="center"
+                android:onClick="sub_ingredient_weight"/>
+            <!-- 수량 -->
+            <TextView
+                android:id="@+id/input_ingredient_weight1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="5dp"
+                android:textSize="25dp"
+                android:fontFamily="@font/notosanskr_light"
+                android:includeFontPadding="false"
+                android:text="0.1"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kg"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:fontFamily="@font/notosanskr_light"
+                android:includeFontPadding="false"
+                android:layout_gravity="center"
+                android:paddingRight="20dp"/>
+            <!-- + 버튼 -->
+            <ImageView
+                android:id="@+id/ingredient_weight_add1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/plus_btn"
+                android:background="@color/clear"
+                android:layout_gravity="center"
+                android:onClick="add_ingredient_weight"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -292,7 +344,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginBottom="15dp"
                 android:padding="15dp"
                 android:background="@drawable/search_edit_text_border_gray">
 
@@ -308,7 +359,85 @@
                     android:includeFontPadding="false"
                     android:background="#FFFFFF" />
             </LinearLayout>
+
+            <!-- 레시피 타이머 시간 입력 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginVertical="10dp">
+                <!-- - 버튼 -->
+                <ImageView
+                    android:id="@+id/sub_recipieTime1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/minus_btn"
+                    android:background="@color/clear"
+                    android:layout_gravity="center"
+                    android:onClick="sub_recipieStepTimer"/>
+                <!-- 분 -->
+                <TextView
+                    android:id="@+id/input_recipieTime_minute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="5dp"
+                    android:textSize="25dp"
+                    android:fontFamily="@font/notosanskr_light"
+                    android:includeFontPadding="false"
+                    android:text="0"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="븐"
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    android:fontFamily="@font/notosanskr_light"
+                    android:includeFontPadding="false"
+                    android:layout_gravity="center"
+                    android:paddingRight="5dp"/>
+                <!-- 초 -->
+                <TextView
+                    android:id="@+id/input_recipieTime_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="25dp"
+                    android:fontFamily="@font/notosanskr_light"
+                    android:includeFontPadding="false"
+                    android:text="10"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="초"
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    android:fontFamily="@font/notosanskr_light"
+                    android:includeFontPadding="false"
+                    android:layout_gravity="center"
+                    android:paddingRight="20dp"/>
+                <!-- + 버튼 -->
+                <ImageView
+                    android:id="@+id/add_recipieTime1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/plus_btn"
+                    android:background="@color/clear"
+                    android:layout_gravity="center"
+                    android:onClick="add_recipieStepTimer"/>
+            </LinearLayout>
         </LinearLayout>
+
+
 
         <!--   레시피 추가 버튼     -->
         <Button

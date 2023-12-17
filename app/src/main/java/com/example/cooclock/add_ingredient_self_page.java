@@ -111,7 +111,7 @@ public class add_ingredient_self_page extends AppCompatActivity {
         databaseReference = database.getReference("cooclock").child("ingredientItem");  // DB테이블 연결
         String databaseReferenceString = databaseReference.toString(); // DatabaseReference를 문자열로 변환
 
-        Log.d("DB", databaseReferenceString); // 디버그 로그에 DatabaseReference 출력
+        Log.d("logcat", databaseReferenceString); // 디버그 로그에 DatabaseReference 출력
         // Firebase에 새 데이터 추가 (push() 메서드를 사용하여 자동으로 고유한 ID 부여)
         DatabaseReference newIngredientRef = databaseReference.push();
         newIngredientRef.setValue(ing_items);
