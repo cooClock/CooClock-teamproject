@@ -48,7 +48,7 @@ public class profile_page extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent resultIntent = new Intent(requireContext(), result_page.class);
-                resultIntent.putExtra("intentTitle","profile_page_myRecipie");
+                resultIntent.putExtra("intentTitle","myRecipe");
                 resultIntent.putExtra("titleText","내가 올린 레시피입니다.");
                 startActivity(resultIntent);
             }
@@ -59,7 +59,7 @@ public class profile_page extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent resultIntent = new Intent(requireContext(), result_page.class);
-                resultIntent.putExtra("intentTitle","profile_page_RecentView");
+                resultIntent.putExtra("intentTitle","recentRecipe");
                 resultIntent.putExtra("titleText","최근 본 레시피입니다.");
                 startActivity(resultIntent);
             }
@@ -294,39 +294,11 @@ public class profile_page extends Fragment {
                         String usernamestr = dataSnapshot.child("username").getValue(String.class);
                         if (usernamestr != null) {
                             username.setText(usernamestr + "님");
-                            Log.d("Firebase_user",usernamestr);
-
-                        }
-
-
-                        // Recipe 데이터 가져오기
-                        ArrayList<knowHowItem> recipes = new ArrayList<knowHowItem>();
-                        DataSnapshot recipeSnapshot = dataSnapshot.child("Recipe");
-                        for (DataSnapshot itemSnapshot : recipeSnapshot.getChildren()) {
-                            knowHowItem recipeItem = new knowHowItem();
-
-                            // 각 레시피 아이템 설정
-//                            int resId =Integer.parseInt(itemSnapshot.child("resId").getValue(String.class));
-//                            recipeItem.setTitle(itemSnapshot.child("title").getValue(String.class));
-//                            recipeItem.setResId(String.valueOf(itemSnapshot.child("resId")));
-                            // string을 int로
-
-                            recipes.add(recipeItem);
-                        }
-
-                        // UserAccount에 레시피 목록 설정
-                        userAccount.setMyRecipes(recipes);
-                        profile_page.CurrentRecipeListAdapter rlAdapter = new profile_page.CurrentRecipeListAdapter(userAccount.getMyRecipes());
-                        RecipeShortList.setAdapter(rlAdapter);
-
-
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false);
-                        RecipeShortList.setLayoutManager(layoutManager);
-
-
+                            Log.d("Firebase_user", usernamestr);
 
                         }
                     }
+                }
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                     // onCancelled 메서드를 구현하여 오류 처리
