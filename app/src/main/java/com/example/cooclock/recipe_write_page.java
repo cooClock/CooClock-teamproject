@@ -553,6 +553,7 @@ public class recipe_write_page extends AppCompatActivity {
     }
 
     public void write_recipe_complete(View v) throws JSONException {
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("cooclock");
         EditText TitleEditText = (EditText) findViewById(R.id.itemTitle);
         Slider TimeSlider = findViewById(R.id.slider);
         EditText servingEditText = (EditText) findViewById(R.id.iteServings);
@@ -618,9 +619,10 @@ public class recipe_write_page extends AppCompatActivity {
 
                         JSONObject recipieItemObject = new JSONObject()
                                 .put(itemTitle.toString(), itemObject);
+                        Log.d("logcat", recipieItemObject.toString());
 
                         //firebase로 데이터 전송
-                        
+                        mDatabaseRef.child("Recipe").push().setValue(recipieItemObject);
 
                         Log.d("logcat", recipieItemObject.toString());
                         Log.d("logcat", "write_recipe_complete");

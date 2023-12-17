@@ -52,6 +52,8 @@ public class home_page extends Fragment {
         Button foodSituation = rootView.findViewById(R.id.food_situation);
         // 유저 정보 업데이트
         updataUserInfo();
+        updateSubCategories();
+        updateMyRefrigeratorCategoryList();
         getRecipeLists();
 
         categorySelect.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
@@ -183,6 +185,7 @@ public class home_page extends Fragment {
             getActivity().finish();
         }
     }
+
     // 세부 카테고리 업데이트 코드
     public void updateSubCategories(){
         RecyclerView subCategory = rootView.findViewById(R.id.subCategory);
@@ -380,51 +383,30 @@ public class home_page extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Log.d(TAG, String.valueOf(dataSnapshot.getChildrenCount()));
-//                Log.d(TAG, "Tot Data: " + dataSnapshot.getValue().toString());
-                ArrayList<String> allList  = new ArrayList<String>();
+
+                int cnt = (int) dataSnapshot.getChildrenCount();
+                int a1 = (int) (System.currentTimeMillis() % cnt);
+                int a2 = (a1+1) % cnt;
+
+                int i=0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Log.d(TAG, snapshot.getKey());
-                    allList.add(snapshot.getKey());
-                }
-
-                for (int i=0; i<2; ++i) {
-                    while (true) {
-                        int tmp = (int) (Math.random() * allList.size());
-                        if (!showList.contains(tmp)) {
-                            showList.add(tmp);
-                            break;
+                    if (i == a1 || i ==a2) {
+                        recipeItem item = new recipeItem();
+                        item.setTitle(snapshot.getKey());
+                        for (DataSnapshot detail : snapshot.getChildren()) {
+                            if (detail.getKey().equals("totaltime"))
+                                item.setTotalTime((Long) detail.getValue());
+                            else if (detail.getKey().equals("likeCnt"))
+                                item.setLikeCnt((Long) detail.getValue());
+                            // 사진 추가
                         }
+                        item.setResId(R.drawable.sample_img);
+                        recipeList.add(item);
                     }
+                    i++;
                 }
-
-                for(int i=0; i<2; ++i){
-                    String name = allList.get(showList.get(i));
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                        if (snapshot.getKey().equals(name)){
-                            recipeItem item = new recipeItem();
-
-                            for (DataSnapshot detail : snapshot.getChildren()) {
-                                Log.d(TAG, i +" " + detail.getKey());
-                                if (detail.getKey().equals("title"))
-                                    item.setTitle(detail.getValue().toString());
-                                else if (detail.getKey().equals("totaltime"))
-                                    item.setTotalTime((Long) detail.getValue());
-                                else if (detail.getKey().equals("likeCnt"))
-                                    item.setLikeCnt((Long) detail.getValue());
-                                // 사진 추가
-                            }
-                            item.setResId(R.drawable.sample_img);
-                            Log.d(TAG, item.title+ " "+ item.likeCnt+ " "+ item.totalTime);
-                            recipeList.add(item);
-                        }
-                    }
-                }
-                // 그리드 뷰 배치
-                updateSubCategories();
                 // 리스트 뷰 배치
                 updateRecommendedList();
-                // 리사이클러뷰 배치
-                updateMyRefrigeratorCategoryList();
             }
 
             @Override
