@@ -1,15 +1,16 @@
 package com.example.cooclock;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class signin_page extends AppCompatActivity {
+    SharedPreferences sharedPreferences;
 
     private FirebaseAuth mFirebaseAuth; // 파이어베이스 인증
     private DatabaseReference mDatabaseRef; // 실시간 데이터베이스 연동
@@ -63,7 +65,7 @@ public class signin_page extends AppCompatActivity {
                                         UserAccount account = new UserAccount();
                                         account.setIdToken(firebaseUser.getUid());
                                         account.setEmailId(firebaseUser.getEmail());
-                                         account.setUsername(strName);
+                                        account.setUsername(strName);
                                         // 비밀번호를 저장하지 않음 (Firebase Authentication에서 관리)
 
                                         // mDatabaseRef.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
