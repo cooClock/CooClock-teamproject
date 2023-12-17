@@ -27,6 +27,7 @@ public class my_refrigerator_page extends Fragment {
     View MyRefrigeratorView;
     private DatabaseReference mDatabaseRef;
     private FirebaseAuth mAuth;
+    ArrayList<ingredientItem> myIngredient = new ArrayList<ingredientItem>();
 
 
     @Override
@@ -37,8 +38,9 @@ public class my_refrigerator_page extends Fragment {
         TextView go_add_self = MyRefrigeratorView.findViewById(R.id.go_add_ingredient_self_page);
         TextView go_photo = MyRefrigeratorView.findViewById(R.id.go_photo_scan_page);
 
+        getMyIngredient();
         updataUserInfo();
-        initializeIngredients();
+
 
         go_add_self.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,12 +66,7 @@ public class my_refrigerator_page extends Fragment {
     private void initializeIngredients(){
         RecyclerView myIngredientList = MyRefrigeratorView.findViewById(R.id.my_refrigerator_ingredient_list);
 
-        ArrayList<ingredientItem> items = new ArrayList<ingredientItem>();
-        items.add(new ingredientItem("당근", "0.1","과일-채소"));
-        items.add(new ingredientItem("양파", "0.1","과일-채소"));
-        items.add(new ingredientItem("애호박", "0.1","과일-채소"));
-        items.add(new ingredientItem("만두", "0.1","기타"));
-        items.add(new ingredientItem("소고기 국거리", "0.1","육류"));
+        ArrayList<ingredientItem> items = myIngredient;
 
         IngredientListAdapter rAdapter = new IngredientListAdapter(items);
         myIngredientList.setAdapter(rAdapter);
@@ -113,5 +110,39 @@ public class my_refrigerator_page extends Fragment {
             startActivity(intent);
             getActivity().finish();
         }
+    }
+
+
+    /*
+    파이어베이스에서 찾아서 가져오기
+     */
+    private void getMyIngredient() {
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance(); // firebase 연동
+        DatabaseReference mDatabase = database.getReference("cooclock");  // DB테이블 연결
+        mDatabase.addValueEventListener(new ValueEventListener() {
+//                    items.add(new ingredientItem("소고기 국거리", "0.1","육류"));
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // 즐겨찾는 레시피 추가
+                for (DataSnapshot snapshot : dataSnapshot.child("UserAccount").child(currentUser.getUid()).child("myIngredient").getChildren()) {
+                    ingredientItem item = new ingredientItem();
+                    ArrayList<String> tmp = ((ArrayList<String>) snapshot.getValue());
+                    item.setName(tmp.get(0));
+                    item.setWeight(tmp.get(1));
+                    item.setKind(tmp.get(2));
+                    myIngredient.add(item);
+                    Log.d("MY", snapshot.getKey() + " : " + item.kind);
+
+                }
+                Log.d("MY", String.valueOf(myIngredient.size()));
+                initializeIngredients();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 }

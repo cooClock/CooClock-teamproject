@@ -1,18 +1,9 @@
 package com.example.cooclock;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -21,8 +12,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class filtering_page extends AppCompatActivity {
     private Button cookTime1Btn;
@@ -37,11 +42,17 @@ public class filtering_page extends AppCompatActivity {
     private int editTextItemCount=0;
 
     public ArrayList<String> filterItem = new ArrayList<>();
+    private DatabaseReference mDatabaseRef;
+    private FirebaseAuth mAuth;
+
+    ArrayList<ingredientBtnModel> myIngredients = new ArrayList<ingredientBtnModel>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filtering_page);
+
+        getMyIngredient();
 
         // Assuming your EditText has an id of filter_search
         filterSearch = findViewById(R.id.filter_search);
@@ -131,25 +142,11 @@ public class filtering_page extends AppCompatActivity {
         cookTime1Btn.setOnClickListener(commonClickListener);
         cookTime2Btn.setOnClickListener(commonClickListener);
         cookTime3Btn.setOnClickListener(commonClickListener);
+    }
 
-
+    public void initIngredientButtons(){
         //recycler view
-        List<ingredientBtnModel> buttonList = new ArrayList<>();
-        buttonList.add(new ingredientBtnModel("당근"));
-        buttonList.add(new ingredientBtnModel("양파"));
-        buttonList.add(new ingredientBtnModel("무"));
-        buttonList.add(new ingredientBtnModel("감자"));
-        buttonList.add(new ingredientBtnModel("멸치"));
-        buttonList.add(new ingredientBtnModel("만두"));
-        buttonList.add(new ingredientBtnModel("어묵"));
-        buttonList.add(new ingredientBtnModel("조미김"));
-        buttonList.add(new ingredientBtnModel("김치"));
-        buttonList.add(new ingredientBtnModel("계란"));
-        buttonList.add(new ingredientBtnModel("양상추"));
-        buttonList.add(new ingredientBtnModel("파프리카"));
-        buttonList.add(new ingredientBtnModel("오이"));
-        buttonList.add(new ingredientBtnModel("소고기 국거리"));
-        buttonList.add(new ingredientBtnModel("삼겹살"));
+        ArrayList<ingredientBtnModel> buttonList = myIngredients;
 
         RecyclerView recyclerView = findViewById(R.id.ingredient_btn_recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
@@ -281,5 +278,28 @@ public class filtering_page extends AppCompatActivity {
             // Terminate the current activity
             finish();
         }
+    }
+
+    private void getMyIngredient() {
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance(); // firebase 연동
+        DatabaseReference mDatabase = database.getReference("cooclock");  // DB테이블 연결
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            //                    items.add(new ingredientItem("소고기 국거리", "0.1","육류"));
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // 즐겨찾는 레시피 추가
+                for (DataSnapshot snapshot : dataSnapshot.child("UserAccount").child(currentUser.getUid()).child("myIngredient").getChildren()) {
+                    ArrayList<String> tmp = ((ArrayList<String>) snapshot.getValue());
+                    myIngredients.add(new ingredientBtnModel(tmp.get(0)));
+                }
+                initIngredientButtons();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 }

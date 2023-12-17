@@ -1,26 +1,23 @@
 package com.example.cooclock;
 
-import static java.lang.Math.ceil;
-import static java.lang.Math.round;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAdapter.IngredientListViewHolder> {
     private static String TAG = "IngredientAdapter";
-    static ArrayList<ingredientItem> items;
+    ArrayList<ingredientItem> items;
 
     // OnItemClickListener 인터페이스 선언
     public interface OnItemClickListener {
@@ -38,7 +35,7 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
 
     // 요리 단계 리스트리사이클러 뷰를 위한 뷰 홀더
     public class IngredientListViewHolder extends RecyclerView.ViewHolder {
-        private ImageView ingredient_color;
+        private CircleImageView ingredient_color;
         private TextView ingredient_name;
         private TextView ingredient_weight;
         private ImageView ingredient_sub;
@@ -100,8 +97,11 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
     }
 
     public int getColor(String kind){
+        if (kind == null)
+            return R.color.black;
         switch (kind) {
-            case "과일-채소":
+            case "과일류":
+            case "채소류":
                 return R.color.fruite;
             case "육류":
                 return R.color.meat;
@@ -113,8 +113,10 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
                 return R.color.eggs;
             case "유제품류":
                 return R.color.milk;
-            default:
+            case "기타":
                 return R.color.etc;
+            default:
+                return R.color.black;
         }
     }
 

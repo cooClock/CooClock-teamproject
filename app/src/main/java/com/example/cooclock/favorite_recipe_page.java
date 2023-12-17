@@ -95,6 +95,7 @@ public class favorite_recipe_page extends Fragment {
             getActivity().finish();
         }
     }
+
     /*
     파이어베이스에서 찾아서 가져오기
      */
