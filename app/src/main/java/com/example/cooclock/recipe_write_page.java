@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.InputFilter;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -47,6 +48,8 @@ public class recipe_write_page extends AppCompatActivity {
     int itemTime;
     int itemIngridientCount = 1;
     int itemRecipieCount = 1;
+    int itemServings=0;
+    JSONArray itemRating = new JSONArray();
 
     public ArrayList<Integer> idArray_itemIngridientET = new ArrayList<>();
     public ArrayList<Integer> idArray_itemIngridientAmount = new ArrayList<>();
@@ -64,7 +67,7 @@ public class recipe_write_page extends AppCompatActivity {
         //id 변수값
         idArray_itemIngridientET.add(R.id.itemIngridient1);
         idArray_itemRecipieET.add(R.id.itemRecipie1);
-        idArray_itemIngridientAmount.add(R.id.input_ingredient_weight1);
+        idArray_itemIngridientAmount.add(R.id.itemIngridientAmount1);
         idArray_itemRecipieTimeMinute.add(R.id.input_recipieTime_minute);
         idArray_itemRecipieTimeSecond.add(R.id.input_recipieTime_second);
 
@@ -110,6 +113,27 @@ public class recipe_write_page extends AppCompatActivity {
             });
             dlg.show();
         });
+
+
+        //기준인원 editText 값 정수로 제한하는 코드.
+        EditText editText = findViewById(R.id.iteServings);
+        // Set an InputFilter to restrict input to integers only
+        InputFilter inputFilter = (source, start, end, dest, dstart, dend) -> {
+            // Iterate through each character in the source
+            for (int i = start; i < end; i++) {
+                // Check if the character is not a digit
+                if (!Character.isDigit(source.charAt(i))) {
+                    // Return an empty string to reject the input
+                    return "";
+                }
+            }
+            // Allow the input because all characters are digiㅅts
+            return null;
+        };
+
+        // Apply the InputFilter to the EditText
+        editText.setFilters(new InputFilter[]{inputFilter});
+
     }
 
     ActivityResultLauncher<Intent> startActivityResult = registerForActivityResult(
@@ -134,14 +158,14 @@ public class recipe_write_page extends AppCompatActivity {
 
 
     // 재료 용량 - or + button listener
-    public void sub_ingredient_weight(View v){
-        TextView textView = findViewById(R.id.input_ingredient_weight1);
-        textView.setText(String.format("%.1f",Float.parseFloat(textView.getText().toString())-0.1));
-    }
-    public void add_ingredient_weight(View v){
-        TextView textView = findViewById(R.id.input_ingredient_weight1);
-        textView.setText(String.format("%.1f",Float.parseFloat(textView.getText().toString())+0.1));
-    }
+//    public void sub_ingredient_weight(View v){
+//        TextView textView = findViewById(R.id.input_ingredient_weight1);
+//        textView.setText(String.format("%.1f",Float.parseFloat(textView.getText().toString())-0.1));
+//    }
+//    public void add_ingredient_weight(View v){
+//        TextView textView = findViewById(R.id.input_ingredient_weight1);
+//        textView.setText(String.format("%.1f",Float.parseFloat(textView.getText().toString())+0.1));
+//    }
     // 재료 용량 - or + button listener
     public void sub_recipieStepTimer(View v){
         TextView secondTextView = findViewById(R.id.input_recipieTime_second);
@@ -189,7 +213,7 @@ public class recipe_write_page extends AppCompatActivity {
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(0, 0, 0, getResources().getDimensionPixelSize(R.dimen.dimeMargin5)); // Adjust the margin
+        layoutParams.setMargins(0, 0, 0, getResources().getDimensionPixelSize(R.dimen.dimeMargin10)); // Adjust the margin
         newIngredientLayout.setLayoutParams(layoutParams);
         newIngredientLayout.setOrientation(LinearLayout.VERTICAL); // Adjust orientation if needed
         newIngredientLayout.setPadding(
@@ -228,90 +252,49 @@ public class recipe_write_page extends AppCompatActivity {
         // Add the new LinearLayout to the parent layout
         layoutIngredient.addView(newIngredientLayout);
 
-
-        // 재료 양 입력받을 -> LinearLayout 생성
-        LinearLayout linearLayout = new LinearLayout(this);
-        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-        ));
-        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-        linearLayout.setGravity(Gravity.CENTER);
-
-        // 수량 텍스트뷰
-        TextView quantityTextView = new TextView(this);
-
-        quantityTextView.setId(View.generateViewId());
-        idArray_itemIngridientAmount.add(quantityTextView.getId());
-
-        quantityTextView.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-        ));
-        quantityTextView.setGravity(Gravity.CENTER);
-        quantityTextView.setPadding(
-                getResources().getDimensionPixelSize(R.dimen.dimeMargin20),
-                getResources().getDimensionPixelSize(R.dimen.dimeMargin10),
-                getResources().getDimensionPixelSize(R.dimen.dimeMargin5),
-                getResources().getDimensionPixelSize(R.dimen.dimeMargin10));
-        quantityTextView.setTextSize(25);
-        quantityTextView.setIncludeFontPadding(false);
-        quantityTextView.setTypeface(ResourcesCompat.getFont(this, R.font.notosanskr_light));
-        quantityTextView.setText("0.1");
+        // Create a new LinearLayout
+        LinearLayout newIngredientLayout1 = new LinearLayout(this);
+        LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams1.setMargins(0, 0, 0, getResources().getDimensionPixelSize(R.dimen.dimeMargin25)); // Adjust the margin
+        newIngredientLayout1.setLayoutParams(layoutParams1);
+        newIngredientLayout1.setOrientation(LinearLayout.VERTICAL); // Adjust orientation if needed
+        newIngredientLayout1.setPadding(
+                getResources().getDimensionPixelSize(R.dimen.dimeMargin15), // Adjust the horizontal padding
+                getResources().getDimensionPixelSize(R.dimen.dimeMargin7), // Adjust the vertical padding
+                getResources().getDimensionPixelSize(R.dimen.dimeMargin15), // Adjust the horizontal padding
+                getResources().getDimensionPixelSize(R.dimen.dimeMargin7)); // Adjust the vertical padding
+        newIngredientLayout1.setBackgroundResource(R.drawable.search_edit_text_border_gray); // Set background drawable
 
 
-        // kg 텍스트뷰
-        TextView kgTextView = new TextView(this);
-        kgTextView.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-        ));
-        kgTextView.setGravity(Gravity.CENTER);
-        kgTextView.setTextSize(17);
-        kgTextView.setTypeface(ResourcesCompat.getFont(this, R.font.notosanskr_light));
-        kgTextView.setTextColor(Color.BLACK);
-        kgTextView.setText("kg");
-        kgTextView.setIncludeFontPadding(false);
-        kgTextView.setPadding(0, 0, getResources().getDimensionPixelSize(R.dimen.dimeMargin20), 0);
+        // Create a new EditText
+        EditText newEditText1 = new EditText(this);
 
-        // - 버튼
-        ImageView subButton = new ImageView(this);
-        subButton.setLayoutParams(new ViewGroup.LayoutParams(
-                getResources().getDimensionPixelSize(R.dimen.dimeMargin30), // Width
-                getResources().getDimensionPixelSize(R.dimen.dimeMargin30)  // Height
-        ));
-        subButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        subButton.setImageResource(R.drawable.minus_btn);
-        subButton.setBackgroundColor(Color.TRANSPARENT);
-        subButton.setOnClickListener(this::sub_ingredient_weight);
-        subButton.setOnClickListener(view -> {
-            // - 버튼 클릭시
-            quantityTextView.setText(String.format("%.1f",Float.parseFloat(quantityTextView.getText().toString())-0.1));
-        });
+        newEditText1.setId(View.generateViewId()); //TODO : 이렇게 써도 맞는가 ㅋㅋ 처맞는가?
+        idArray_itemIngridientAmount.add(newEditText1.getId());
 
-        // + 버튼
-        ImageView addButton = new ImageView(this);
-        addButton.setLayoutParams(new ViewGroup.LayoutParams(
-                getResources().getDimensionPixelSize(R.dimen.dimeMargin30), // Width
-                getResources().getDimensionPixelSize(R.dimen.dimeMargin30)  // Height
-        ));
-        addButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        addButton.setImageResource(R.drawable.plus_btn);
-        addButton.setBackgroundColor(Color.TRANSPARENT);
-        addButton.setOnClickListener(this::add_ingredient_weight);
-        addButton.setOnClickListener(view -> {
-            // - 버튼 클릭시
-            quantityTextView.setText(String.format("%.1f",Float.parseFloat(quantityTextView.getText().toString())+0.1));
-        });
+        LinearLayout.LayoutParams editTextParams1 = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        editTextParams1.setMargins(
+                getResources().getDimensionPixelSize(R.dimen.dimeMargin5), // Adjust the horizontal margin
+                0,
+                getResources().getDimensionPixelSize(R.dimen.dimeMargin5), // Adjust the horizontal margin
+                0);
+        newEditText1.setLayoutParams(editTextParams1);
+        newEditText1.setHint(getString(R.string.write_the_ingridient_amount));
+        newEditText1.setTextColor(getResources().getColor(R.color.black));
+        newEditText1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+        newEditText1.setTypeface(ResourcesCompat.getFont(this, R.font.notosanskr_medium));
+        newEditText1.setIncludeFontPadding(false);
+        newEditText1.setBackgroundColor(getResources().getColor(android.R.color.white));
 
-        // 레이아웃에 추가
-        linearLayout.addView(subButton);
-        linearLayout.addView(quantityTextView);
-        linearLayout.addView(kgTextView);
-        linearLayout.addView(addButton);
+        // Add the EditText to the new LinearLayout
+        newIngredientLayout1.addView(newEditText1);
 
         // Add the new LinearLayout to the parent layout
-        layoutIngredient.addView(linearLayout);
+        layoutIngredient.addView(newIngredientLayout1);
     }
 
 //    레시피 추가 button
@@ -527,15 +510,23 @@ public class recipe_write_page extends AppCompatActivity {
     public void write_recipe_complete(View v) throws JSONException {
         EditText TitleEditText = (EditText) findViewById(R.id.itemTitle);
         Slider TimeSlider = findViewById(R.id.slider);
+        EditText servingEditText = (EditText) findViewById(R.id.iteServings);
         itemTitle = TitleEditText.getText().toString();
         itemTime = (int) TimeSlider.getValue();
+        itemServings = Integer.parseInt(servingEditText.getText().toString());
+        itemRating.put(0);
+        itemRating.put(0);
+        itemRating.put(0);
+        itemRating.put(0);
+        itemRating.put(0);
 
             // Check if the value is not empty
             if (!itemTitle.isEmpty()) {
 //                Log.d("logcat", "itemtitle:"+ itemTitle.toString());
                 if(itemCategory != null){
+                    if(itemServings>0) {
 //                    Log.d("logcat", itemCategory.toString());
-                    //TODO : ingridient list & recipie List 다 채워져있다고 생각함. 예외처리 추후 적용
+                        //TODO : ingridient list & recipie List 다 채워져있다고 생각함. 예외처리 추후 적용
                         JSONObject ingredientList = new JSONObject();
                         for (int i = 0; i < idArray_itemIngridientET.size(); i++) {
                             // For each ingredient, create a JSONArray and put it in the ingredientList JSONObject
@@ -543,11 +534,11 @@ public class recipe_write_page extends AppCompatActivity {
                             EditText editText = findViewById(id11);
 
                             int id12 = idArray_itemIngridientAmount.get(i);
-                            TextView textView = findViewById(id12);
+                            EditText editTextAmount = findViewById(id12);
 
                             JSONArray ingredientArray = new JSONArray()
                                     .put(editText.getText().toString())
-                                    .put(textView.getText().toString()); // Change this to the actual quantity
+                                    .put(editTextAmount.getText().toString()); // Change this to the actual quantity
                             ingredientList.put(String.valueOf(i), ingredientArray);
                         }
 
@@ -564,7 +555,7 @@ public class recipe_write_page extends AppCompatActivity {
 
                             JSONArray recipieArray = new JSONArray()
                                     .put(editText.getText().toString())
-                                    .put(String.format("%s.%s",textViewMinute.getText().toString(),textViewSecond.getText().toString())); // Change this to the actual quantity
+                                    .put(String.format("%s.%s", textViewMinute.getText().toString(), textViewSecond.getText().toString())); // Change this to the actual quantity
                             recipieList.put(String.valueOf(i), recipieArray);
                         }
 
@@ -572,15 +563,28 @@ public class recipe_write_page extends AppCompatActivity {
                         JSONObject itemObject = new JSONObject()
                                 .put("title", itemTitle)
                                 .put("category", itemCategory)
-                                .put("time", itemTime)
-                                .put("ingredientList", ingredientList)
-                                .put("recipieList",recipieList);
-                        Log.d("logcat",itemObject.toString());
+                                .put("totaltime", itemTime)
+                                .put("servings",itemServings)
+                                .put("ratings",itemRating)
+                                .put("recipeIngredient", ingredientList)
+                                .put("recipeStep", recipieList);
+
+                        JSONObject recipieItemObject = new JSONObject()
+                                .put(itemTitle.toString(), itemObject);
+
+                        //firebase로 데이터 전송
+                        
+
+                        Log.d("logcat", recipieItemObject.toString());
                         Log.d("logcat", "write_recipe_complete");
-                        Toast.makeText(getApplicationContext(), "레시피가 작성되었습니다.",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "레시피가 작성되었습니다.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(this, MainActivity.class);
                         startActivity(intent);
                         finish();
+                    }else{
+                        Log.d("logcat", "itemServings is empty");
+                        Toast.makeText(getApplicationContext(), "기준 인원을 작성해주세요.",Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     Log.d("logcat", "itemCategory is empty");
                     Toast.makeText(getApplicationContext(), "카테고리를 선택해주세요.",Toast.LENGTH_SHORT).show();

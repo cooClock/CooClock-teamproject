@@ -46,7 +46,9 @@
     <string name="picture">사진을 첨부하세요.</string>
     <string name="food_name">음식 이름</string>
     <string name="write_the_food_name">음식 이름을 입력하세요.</string>
+    <string name="write_the_food_servings">레시피의 기준 인원을 숫자로 입력하세요.</string>
     <string name="write_the_ingridient_name">재료를 입력하세요.</string>
+    <string name="write_the_ingridient_amount">재료의 양을 입력하세요.</string>
     <string name="write_the_recipie">레시피를 단계별로 입력하세요.</string>
     <string name="food_category">카테고리</string>
     <string name="check_the_food_category">카테고리를 선택하세요.</string>

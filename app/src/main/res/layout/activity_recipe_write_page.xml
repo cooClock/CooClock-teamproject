@@ -205,6 +205,41 @@
             android:stepSize="30.0"
             android:layout_marginBottom="20dp"/>
 
+        <!--  인분 title      -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="기준 인원"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginBottom="15dp"/>
+
+        <!-- 인분 입력칸 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="7dp"
+            android:background="@drawable/search_edit_text_border_gray">
+
+            <EditText
+                android:id="@+id/iteServings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:hint="@string/write_the_food_servings"
+                android:textColorHint="@color/pc_unclicked"
+                android:textSize="15dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:background="#FFFFFF" />
+        </LinearLayout>
+
+
+
+
         <!--  재료      -->
         <TextView
             android:layout_width="wrap_content"
@@ -226,6 +261,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/search_edit_text_border_gray">
             <EditText
                 android:id="@+id/itemIngridient1"
@@ -239,58 +275,23 @@
                 android:includeFontPadding="false"
                 android:background="#FFFFFF" />
         </LinearLayout>
-
-        <!-- 재료 양 입력 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginVertical="10dp">
-            <!-- - 버튼 -->
-            <ImageView
-                android:id="@+id/ingredient_weight_sub1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/minus_btn"
-                android:background="@color/clear"
-                android:layout_gravity="center"
-                android:onClick="sub_ingredient_weight"/>
-            <!-- 수량 -->
-            <TextView
-                android:id="@+id/input_ingredient_weight1"
+            android:padding="15dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/search_edit_text_border_gray">
+            <EditText
+                android:id="@+id/itemIngridientAmount1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingLeft="20dp"
-                android:paddingRight="5dp"
-                android:textSize="25dp"
-                android:fontFamily="@font/notosanskr_light"
+                android:layout_marginHorizontal="5dp"
+                android:hint="@string/write_the_ingridient_amount"
+                android:textColorHint="@color/pc_unclicked"
+                android:textSize="15dp"
+                android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
-                android:text="0.1"
-                android:gravity="center"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="kg"
-                android:textColor="@color/black"
-                android:textSize="17dp"
-                android:fontFamily="@font/notosanskr_light"
-                android:includeFontPadding="false"
-                android:layout_gravity="center"
-                android:paddingRight="20dp"/>
-            <!-- + 버튼 -->
-            <ImageView
-                android:id="@+id/ingredient_weight_add1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/plus_btn"
-                android:background="@color/clear"
-                android:layout_gravity="center"
-                android:onClick="add_ingredient_weight"/>
+                android:background="#FFFFFF" />
         </LinearLayout>
     </LinearLayout>
 

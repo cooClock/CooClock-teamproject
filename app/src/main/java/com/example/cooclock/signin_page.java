@@ -1,8 +1,5 @@
 package com.example.cooclock;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -78,7 +78,8 @@ public class signin_page extends AppCompatActivity {
                                     }
                                 } else {
                                     if (task.getException() != null) {
-                                        Toast.makeText(signin_page.this, "회원가입에 실패하셨습니다. " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(signin_page.this, "회원가입에 실패하셨습니다. " , Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(signin_page.this,  task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             }
