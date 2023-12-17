@@ -23,12 +23,20 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
 import com.google.android.material.slider.Slider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,6 +49,14 @@ public class recipe_write_page extends AppCompatActivity {
     Uri uri;
     ImageView imageView;
     LinearLayout get_picture;
+
+//    SharedPreferences sharedPreferences;
+    private DatabaseReference mDatabaseRef;
+    private FirebaseAuth mFirebaseAuth; // 파이어베이스 인증
+
+    private FirebaseAuth mAuth;
+
+    String nickname;
 
     int selectedPosition;
     String itemTitle;
@@ -133,6 +149,9 @@ public class recipe_write_page extends AppCompatActivity {
 
         // Apply the InputFilter to the EditText
         editText.setFilters(new InputFilter[]{inputFilter});
+
+        //user 정보 업데이트
+        updateUserInfo();
 
     }
 
@@ -507,7 +526,34 @@ public class recipe_write_page extends AppCompatActivity {
     }
 
 
+    public void updateUserInfo() {
+        // 유저이름 반영하기
+        mAuth = FirebaseAuth.getInstance();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("cooclock").child("UserAccount");
+
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            String currentUserId = currentUser.getUid();
+
+            mDatabaseRef.child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        nickname = dataSnapshot.child("username").getValue(String.class);
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // onCancelled 메서드를 구현하여 오류 처리
+                    Log.w("Firebase", "loadPost:onCancelled", databaseError.toException());
+                    // 오류 처리를 추가하거나 필요한 작업 수행
+                }
+            });
+        }
+    }
+
     public void write_recipe_complete(View v) throws JSONException {
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("cooclock");
         EditText TitleEditText = (EditText) findViewById(R.id.itemTitle);
         Slider TimeSlider = findViewById(R.id.slider);
         EditText servingEditText = (EditText) findViewById(R.id.iteServings);
@@ -563,6 +609,8 @@ public class recipe_write_page extends AppCompatActivity {
                         JSONObject itemObject = new JSONObject()
                                 .put("title", itemTitle)
                                 .put("category", itemCategory)
+                                .put("likeCnt", 0)
+                                .put("writer", nickname.toString())
                                 .put("totaltime", itemTime)
                                 .put("servings",itemServings)
                                 .put("ratings",itemRating)
@@ -571,12 +619,13 @@ public class recipe_write_page extends AppCompatActivity {
 
                         JSONObject recipieItemObject = new JSONObject()
                                 .put(itemTitle.toString(), itemObject);
+                        Log.d("logcat", recipieItemObject.toString());
 
                         //firebase로 데이터 전송
-                        
+                        mDatabaseRef.child("Recipe").push().setValue(recipieItemObject);
 
                         Log.d("logcat", recipieItemObject.toString());
-                        Log.d("logcat", "write_recipe_complete");
+//                        Log.d("logcat", "write_recipe_complete");
                         Toast.makeText(getApplicationContext(), "레시피가 작성되었습니다.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(this, MainActivity.class);
                         startActivity(intent);
