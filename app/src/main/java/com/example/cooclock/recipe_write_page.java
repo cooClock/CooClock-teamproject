@@ -623,7 +623,7 @@ public class recipe_write_page extends AppCompatActivity {
                         
 
                         Log.d("logcat", recipieItemObject.toString());
-                        Log.d("logcat", "write_recipe_complete");
+//                        Log.d("logcat", "write_recipe_complete");
                         Toast.makeText(getApplicationContext(), "레시피가 작성되었습니다.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(this, MainActivity.class);
                         startActivity(intent);
