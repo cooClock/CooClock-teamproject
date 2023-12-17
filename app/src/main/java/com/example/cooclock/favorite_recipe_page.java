@@ -27,14 +27,15 @@ public class favorite_recipe_page extends Fragment {
     View rootView;
     private DatabaseReference mDatabaseRef;
     private FirebaseAuth mAuth;
+    ArrayList<recipeItem> favoriteRecipe = new ArrayList<recipeItem>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
         rootView = inflater.inflate(R.layout.activity_favorite_recipe_page,container,false);
 
         updataUserInfo();
-        // 리스트 뷰 배치
-        updateFavoriteList();
+        getRecipeLists();
+
 
         //return inflater.inflate(R.layout.activity_favorite_recipe_page,container,false);
         return rootView;
@@ -42,20 +43,18 @@ public class favorite_recipe_page extends Fragment {
 
     // 추천 레시피 리스트 업데이트 코드
     private void updateFavoriteList(){
-        RecyclerView recommendedList = rootView.findViewById(R.id.favorite_list);
+        RecyclerView favoriteList = rootView.findViewById(R.id.favorite_list);
 //        myRefrigeratorCategory.removeAllViews();
 
-        ArrayList<recipeItem> items = new ArrayList<recipeItem>();
-        items.add(new recipeItem("멸치 볶음", R.drawable.recipe_list_test2,20,100));
-        items.add(new recipeItem("된장 찌개", R.drawable.recipe_list_test1,30,500));
+        ArrayList<recipeItem> items = favoriteRecipe;
 
 
         BasicRecipeListAdapter rlAdapter = new BasicRecipeListAdapter(items);
-        recommendedList.setAdapter(rlAdapter);
+        favoriteList.setAdapter(rlAdapter);
 
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL,false);
-        recommendedList.setLayoutManager(layoutManager);
+        favoriteList.setLayoutManager(layoutManager);
     }
 
 
@@ -95,5 +94,51 @@ public class favorite_recipe_page extends Fragment {
             startActivity(intent);
             getActivity().finish();
         }
+    }
+
+    /*
+    파이어베이스에서 찾아서 가져오기
+     */
+    private void getRecipeLists() {
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance(); // firebase 연동
+        DatabaseReference mDatabase = database.getReference("cooclock");  // DB테이블 연결
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // 즐겨찾는 레시피 추가
+                ArrayList<String> tmp = new ArrayList<String>();
+                for (DataSnapshot snapshot : dataSnapshot.child("UserAccount").child(currentUser.getUid()).child("favoriteRecipe").getChildren()) {
+                    tmp.add((String) snapshot.getValue());
+                }
+                for (int i = 0; i < tmp.size(); ++i) {
+                    String name = tmp.get(i);
+                    for (DataSnapshot snapshot : dataSnapshot.child("Recipe").getChildren()) {
+                        if (snapshot.getKey().equals(name)) {
+                            Log.d("FAVORITE", name);
+                            recipeItem item = new recipeItem();
+                            for (DataSnapshot detail : snapshot.getChildren()) {
+                                if (detail.getKey().equals("title"))
+                                    item.setTitle(detail.getValue().toString());
+                                else if (detail.getKey().equals("totaltime"))
+                                    item.setTotalTime((Long) detail.getValue());
+                                else if (detail.getKey().equals("likeCnt"))
+                                    item.setLikeCnt((Long) detail.getValue());
+                                // 사진 추가
+                            }
+                            item.setResId(R.drawable.sample_img);
+                            favoriteRecipe.add(item);
+                        }
+                    }
+                }
+                // 리스트 뷰 배치
+                updateFavoriteList();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 }

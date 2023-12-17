@@ -127,9 +127,9 @@ public class result_page extends AppCompatActivity {
 //        myRefrigeratorCategory.removeAllViews();
 
         ArrayList<recipeItem> items = new ArrayList<recipeItem>();
-        items.add(new recipeItem("멸치 볶음", R.drawable.recipe_list_test2,20,100));
-        items.add(new recipeItem("된장 찌개", R.drawable.recipe_list_test1,30,500));
-        items.add(new recipeItem("젓갈", R.drawable.recipe_list_test2,40,200));
+        items.add(new recipeItem("멸치 볶음", R.drawable.recipe_list_test2,20L,100L));
+        items.add(new recipeItem("된장 찌개", R.drawable.recipe_list_test1,30L,500L));
+        items.add(new recipeItem("젓갈", R.drawable.recipe_list_test2,40L,200L));
 
         BasicRecipeListAdapter rlAdapter = new BasicRecipeListAdapter(items);
         recommendedList.setAdapter(rlAdapter);

@@ -15,9 +15,8 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/my_refrigerator_ingredient_color"
             android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@color/black"
-            android:layout_marginLeft="15dp"/>
+            android:layout_height="10dp"
+            android:layout_marginLeft="15dp" />
         <!-- 재료 명 -->
         <TextView
             android:id="@+id/my_refrigerator_ingredient_name"
