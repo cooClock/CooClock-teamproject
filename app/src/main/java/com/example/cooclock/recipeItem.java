@@ -3,15 +3,15 @@ package com.example.cooclock;
 public class recipeItem {
     String title;
     int resId;
-    int totalTime;
-    int likeCnt;
+    Long totalTime;
+    Long likeCnt;
     // 기본 생성자
     public recipeItem() {
         // 기본 생성자 내용 (필요 시 추가)
     }
 
 
-    public recipeItem(String title, int resId, int totalTime, int likeCnt){
+    public recipeItem(String title, int resId, Long totalTime, Long likeCnt){
         this.title = title;
         this.resId = resId;
         this.totalTime = totalTime;
@@ -26,11 +26,11 @@ public class recipeItem {
         return resId;
     }
 
-    public int getTotalTime(){
+    public Long getTotalTime(){
         return totalTime;
     }
 
-    public int getLikeCnt(){
+    public Long getLikeCnt(){
         return likeCnt;
     }
 
@@ -41,11 +41,11 @@ public class recipeItem {
         this.resId = resId;
     }
 
-    public void setTotalTime(int totalTime){
+    public void setTotalTime(Long totalTime){
         this.totalTime = totalTime;
     }
 
-    public void setLikeCnt(int likeCnt) {
+    public void setLikeCnt(Long likeCnt) {
         this.likeCnt = likeCnt;
     }
 }

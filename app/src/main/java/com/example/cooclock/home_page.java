@@ -33,9 +33,9 @@ import java.util.ArrayList;
 public class home_page extends Fragment {
     View rootView;
     private static String TAG = "HOME_PAGE";
-    String nick = "";
     public ArrayList<String> filterItem = new ArrayList<>();
-
+    ArrayList<Integer> showList  = new ArrayList<Integer>();
+    ArrayList<recipeItem> recipeList = new ArrayList<recipeItem>();
     private DatabaseReference mDatabaseRef;
     private FirebaseAuth mAuth;
 
@@ -50,15 +50,10 @@ public class home_page extends Fragment {
         MaterialButtonToggleGroup categorySelect = rootView.findViewById(R.id.category_select);
         Button foodType = rootView.findViewById(R.id.food_type);
         Button foodSituation = rootView.findViewById(R.id.food_situation);
-
-        // 그리드 뷰 배치
-        updateSubCategories();
-        // 리스트 뷰 배치
-        updateRecommendedList();
-        // 리사이클러뷰 배치
-        updateMyRefrigeratorCategoryList();
         // 유저 정보 업데이트
         updataUserInfo();
+        getRecipeLists();
+
         categorySelect.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
             @Override
             public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
@@ -272,7 +267,6 @@ public class home_page extends Fragment {
         public void onBindViewHolder(@NonNull home_page.RecipeListCustomViewHolder holder, int position) {
             recipeItem item = items.get(position);
             holder.recipe_image.setImageResource(item.getResId());
-//            Glide.with(holder.itemView).load(item.getResId()).into(holder.recipe_image);
             holder.recipe_title.setText(item.getTitle());
             holder.recipe_time.setText(String.valueOf(item.getTotalTime()));
             holder.recipe_like.setText(String.valueOf(item.getLikeCnt()));
@@ -298,10 +292,7 @@ public class home_page extends Fragment {
     private void updateRecommendedList(){
         RecyclerView recommendedList = rootView.findViewById(R.id.recommend_list);
 
-        ArrayList<recipeItem> items = new ArrayList<recipeItem>();
-        items.add(new recipeItem("멸치 볶음", R.drawable.recipe_list_test2,20,100));
-        items.add(new recipeItem("된장찌개", R.drawable.recipe_list_test1,30,500));
-
+        ArrayList<recipeItem> items = recipeList;
 
         home_page.RecipeListCustomAdapter rlAdapter = new home_page.RecipeListCustomAdapter(items);
         recommendedList.setAdapter(rlAdapter);
@@ -376,4 +367,70 @@ public class home_page extends Fragment {
         myRefrigeratorCategory.setLayoutManager(layoutManager);
     }
 
+
+
+
+    /*
+    파이어베이스에서 찾아서 가져오기
+     */
+    private void getRecipeLists() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance(); // firebase 연동
+        DatabaseReference mDatabase = database.getReference("cooclock").child("Recipe");  // DB테이블 연결
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.d(TAG, String.valueOf(dataSnapshot.getChildrenCount()));
+//                Log.d(TAG, "Tot Data: " + dataSnapshot.getValue().toString());
+                ArrayList<String> allList  = new ArrayList<String>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Log.d(TAG, snapshot.getKey());
+                    allList.add(snapshot.getKey());
+                }
+
+                for (int i=0; i<2; ++i) {
+                    while (true) {
+                        int tmp = (int) (Math.random() * allList.size());
+                        if (!showList.contains(tmp)) {
+                            showList.add(tmp);
+                            break;
+                        }
+                    }
+                }
+
+                for(int i=0; i<2; ++i){
+                    String name = allList.get(showList.get(i));
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        if (snapshot.getKey().equals(name)){
+                            recipeItem item = new recipeItem();
+
+                            for (DataSnapshot detail : snapshot.getChildren()) {
+                                Log.d(TAG, i +" " + detail.getKey());
+                                if (detail.getKey().equals("title"))
+                                    item.setTitle(detail.getValue().toString());
+                                else if (detail.getKey().equals("totaltime"))
+                                    item.setTotalTime((Long) detail.getValue());
+                                else if (detail.getKey().equals("likeCnt"))
+                                    item.setLikeCnt((Long) detail.getValue());
+                                // 사진 추가
+                            }
+                            item.setResId(R.drawable.sample_img);
+                            Log.d(TAG, item.title+ " "+ item.likeCnt+ " "+ item.totalTime);
+                            recipeList.add(item);
+                        }
+                    }
+                }
+                // 그리드 뷰 배치
+                updateSubCategories();
+                // 리스트 뷰 배치
+                updateRecommendedList();
+                // 리사이클러뷰 배치
+                updateMyRefrigeratorCategoryList();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w(TAG, "Failed to read value.", databaseError.toException());
+            }
+        });
+    }
 }
