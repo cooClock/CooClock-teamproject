@@ -1,14 +1,14 @@
 package com.example.cooclock;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -45,18 +45,26 @@ public class login_page extends AppCompatActivity {
                 String strID = mEtID.getText().toString();
                 String strPW = mEtPwd.getText().toString();
 
-                mFirebaseAuth.signInWithEmailAndPassword(strID,strPW).addOnCompleteListener(login_page.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            Intent intent = new Intent(login_page.this, MainActivity.class);
-                            startActivity(intent);
-                            finish(); //현재 액티비티 파괴
-                        } else{
-                            Toast.makeText(login_page.this, "로그인에 실패하셨습니다.",Toast.LENGTH_SHORT).show();
+                if (strID.isEmpty()){
+                    Toast.makeText(login_page.this, "아이디를 입력하세요.",Toast.LENGTH_SHORT).show();
+                }
+                else if (strPW.isEmpty()){
+                    Toast.makeText(login_page.this, "비밀번호를 입력하세요.",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    mFirebaseAuth.signInWithEmailAndPassword(strID, strPW).addOnCompleteListener(login_page.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Intent intent = new Intent(login_page.this, MainActivity.class);
+                                startActivity(intent);
+                                finish(); //현재 액티비티 파괴
+                            } else {
+                                Toast.makeText(login_page.this, "아이디와 비밀번호를 확인하세요.", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
         });
 
