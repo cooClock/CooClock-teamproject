@@ -1,6 +1,8 @@
 package com.example.cooclock;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,16 +24,18 @@ public class login_page extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth; // 파이어베이스 인증
     private DatabaseReference mDatabaseRef; // 실시간 데이터베이스 연동
     private EditText mEtID, mEtPwd; // 로그인 입력필드
+    SharedPreferences sharedPreferences;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
-
-        // Firebase 초기화
         FirebaseApp.initializeApp(this);
-
+        sharedPreferences = getSharedPreferences("login_info", Context.MODE_PRIVATE);
         mFirebaseAuth = FirebaseAuth.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("cooclock");
+        SharedPreferences.Editor editor = sharedPreferences.edit();
 
         mEtID = findViewById(R.id.et_id); // 뷰 기준이라 아이디가 동일해도  setContentView를 기준으로 아이디를 찾기 때문에 상관이 없다.
         mEtPwd = findViewById(R.id.et_pw);
@@ -57,6 +61,9 @@ public class login_page extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                editor.putString("username", strID);
+                                editor.putString("password", strPW);
+                                editor.apply();
                                 Intent intent = new Intent(login_page.this, MainActivity.class);
                                 startActivity(intent);
                                 finish(); //현재 액티비티 파괴

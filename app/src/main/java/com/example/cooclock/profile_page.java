@@ -1,6 +1,7 @@
 package com.example.cooclock;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,16 +30,18 @@ public class profile_page extends Fragment {
     View ProfileRootView;
     private DatabaseReference mDatabaseRef;
     private FirebaseAuth mAuth;
+    SharedPreferences sharedPreferences;
+    UserAccount userAccount = new UserAccount();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
 
         ProfileRootView = inflater.inflate(R.layout.activity_profile_page,container,false);
-
+        updateUserInfo();
         updateRecipeShortList();
         // updateCurrentShortList();
-        updateUserInfo();
+
 
         LinearLayout goto_result_page_MyRecipie = ProfileRootView.findViewById(R.id.layout_MyRecipie);
         goto_result_page_MyRecipie.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +79,9 @@ public class profile_page extends Fragment {
             @Override
             public void onClick(View view) {
                 //!TODO 로그아웃 부분 코드 추가
-                
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                mAuth.signOut();
+
                 Log.d("logcat", "logout");
             }
         });
@@ -227,12 +232,13 @@ public class profile_page extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
-                        UserAccount userAccount = new UserAccount();
+                        String usernamestr = dataSnapshot.child("username").getValue(String.class);
+                        if (usernamestr != null) {
+                            username.setText(usernamestr + "님");
+                            Log.d("Firebase_user",usernamestr);
 
-                        // 기본 필드 설정
-                        userAccount.setIdToken(dataSnapshot.child("idToken").getValue(String.class));
-                        userAccount.setEmailId(dataSnapshot.child("emailId").getValue(String.class));
-                        userAccount.setUsername(dataSnapshot.child("username").getValue(String.class));
+                        }
+
 
                         // Recipe 데이터 가져오기
                         ArrayList<knowHowItem> recipes = new ArrayList<knowHowItem>();

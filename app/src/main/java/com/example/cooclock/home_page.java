@@ -33,15 +33,18 @@ import java.util.ArrayList;
 public class home_page extends Fragment {
     View rootView;
     private static String TAG = "HOME_PAGE";
+    String nick = "";
     public ArrayList<String> filterItem = new ArrayList<>();
 
     private DatabaseReference mDatabaseRef;
     private FirebaseAuth mAuth;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                          Bundle savedInstanceState){
         rootView = inflater.inflate(R.layout.activity_home_page,container,false);
+        TextView username = rootView.findViewById(R.id.user_name);
 
         // 카테고리 선택 버튼(라디오 그룹)
         MaterialButtonToggleGroup categorySelect = rootView.findViewById(R.id.category_select);
@@ -149,6 +152,7 @@ public class home_page extends Fragment {
 
 
     public void updataUserInfo() {
+
         // 유저이름 반영하기
         mAuth = FirebaseAuth.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("cooclock").child("UserAccount");
