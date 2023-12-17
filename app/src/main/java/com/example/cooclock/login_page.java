@@ -46,30 +46,29 @@ public class login_page extends AppCompatActivity {
                 String strID = mEtID.getText().toString();
                 String strPW = mEtPwd.getText().toString();
 
-                mFirebaseAuth.signInWithEmailAndPassword(strID,strPW).addOnCompleteListener(login_page.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            Intent intent = new Intent(login_page.this, MainActivity.class);
-                            startActivity(intent);
-                            finish(); //현재 액티비티 파괴
-                        } else{
-                            Toast.makeText(login_page.this, "로그인에 실패하셨습니다.",Toast.LENGTH_SHORT).show();
+                if (strID.isEmpty()){
+                    Toast.makeText(login_page.this, "아이디를 입력하세요.",Toast.LENGTH_SHORT).show();
+                }
+                else if (strPW.isEmpty()){
+                    Toast.makeText(login_page.this, "비밀번호를 입력하세요.",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    mFirebaseAuth.signInWithEmailAndPassword(strID, strPW).addOnCompleteListener(login_page.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Intent intent = new Intent(login_page.this, MainActivity.class);
+                                startActivity(intent);
+                                finish(); //현재 액티비티 파괴
+                            } else {
+                                Toast.makeText(login_page.this, "아이디와 비밀번호를 확인하세요.", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
         });
 
-
-        Button btn_google_register = (Button) findViewById(R.id.btn_google_register);
-        btn_google_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),signin_page.class);
-                startActivity(intent);
-            }
-        });
         Button btn_register = (Button) findViewById(R.id.btn_register);
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
