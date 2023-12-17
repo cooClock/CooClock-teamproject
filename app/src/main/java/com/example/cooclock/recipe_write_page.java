@@ -52,6 +52,7 @@ public class recipe_write_page extends AppCompatActivity {
 
 //    SharedPreferences sharedPreferences;
     private DatabaseReference mDatabaseRef;
+    private DatabaseReference iDatabaseRef;
     private FirebaseAuth mFirebaseAuth; // 파이어베이스 인증
 
     private FirebaseAuth mAuth;
@@ -553,7 +554,9 @@ public class recipe_write_page extends AppCompatActivity {
     }
 
     public void write_recipe_complete(View v) throws JSONException {
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("cooclock");
+        iDatabaseRef = FirebaseDatabase.getInstance().getReference("cooclock").child("Recipe");
+
+
         EditText TitleEditText = (EditText) findViewById(R.id.itemTitle);
         Slider TimeSlider = findViewById(R.id.slider);
         EditText servingEditText = (EditText) findViewById(R.id.iteServings);
@@ -568,10 +571,8 @@ public class recipe_write_page extends AppCompatActivity {
 
             // Check if the value is not empty
             if (!itemTitle.isEmpty()) {
-//                Log.d("logcat", "itemtitle:"+ itemTitle.toString());
                 if(itemCategory != null){
                     if(itemServings>0) {
-//                    Log.d("logcat", itemCategory.toString());
                         //TODO : ingridient list & recipie List 다 채워져있다고 생각함. 예외처리 추후 적용
                         JSONObject ingredientList = new JSONObject();
                         for (int i = 0; i < idArray_itemIngridientET.size(); i++) {
@@ -621,11 +622,8 @@ public class recipe_write_page extends AppCompatActivity {
                                 .put(itemTitle.toString(), itemObject);
                         Log.d("logcat", recipieItemObject.toString());
 
-                        //firebase로 데이터 전송
-                        mDatabaseRef.child("Recipe").push().setValue(recipieItemObject);
+                        // Push data to Firebase
 
-                        Log.d("logcat", recipieItemObject.toString());
-//                        Log.d("logcat", "write_recipe_complete");
                         Toast.makeText(getApplicationContext(), "레시피가 작성되었습니다.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(this, MainActivity.class);
                         startActivity(intent);
