@@ -1,6 +1,21 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // ...
+
+        // 이 부분에서 Google Services 플러그인 버전을 수정할 수 있습니다.
+        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath 'com.google.gms:google-services:4.3.10' // 예시 버전입니다.
+    }
+}
+
 plugins {
     id 'com.android.application'
-    id 'com.google.gms.google-services' // Google Services plugin
+    id 'com.google.gms.google-services'
+//    id 'com.google.gms.google-services' // Google Services plugin
 }
 
 android {
@@ -31,7 +46,6 @@ android {
     }
 }
 
-
 dependencies {
     implementation "androidx.recyclerview:recyclerview:1.2.1"
     implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
@@ -48,7 +62,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
 
     // Correctly define Firebase dependencies without using braces
-    implementation platform('com.google.firebase:firebase-bom:29.0.0')
+    implementation platform('com.google.firebase:firebase-bom:31.0.0')
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.android.gms:play-services-tasks:18.0.1'
