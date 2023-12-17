@@ -26,11 +26,11 @@ public class recipeStepItem {
     }
 
     public int getMinute() {
-        return Integer.parseInt(time);
+        return (int) Double.parseDouble(time);
     }
 
     public int getSecond() {
-        return (int) ((Double.parseDouble(time)-Integer.parseInt(time))*100);
+        return (int) ((Double.parseDouble(time)-(int) Double.parseDouble(time))*100);
     }
 
     public int getResId() {

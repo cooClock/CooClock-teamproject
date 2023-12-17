@@ -83,7 +83,7 @@ public class recipe_page extends AppCompatActivity {
         long tot_rating = 1*one + 2*two + 3*three + 4*four + 5*five;
         long rating_stars = tot_rating/tot_cnt;
 
-        rating_average.setText(String.valueOf(tot_rating/(float)tot_cnt)); // 평균 평점 설정
+        rating_average.setText(String.format("%.2f", tot_rating / (float) tot_cnt)); // 평균 평점 설정
         rating_average_star.setRating(rating_stars); // 평균 평점 별표시 설정
         rating_cnt.setText(String.valueOf(tot_cnt)); // 리뷰 개수 설정
 
@@ -115,15 +115,10 @@ public class recipe_page extends AppCompatActivity {
     // 레시피 재료 리스트를 관리할 adapter
     public static class RecipeIngredientListCustomAdapter extends RecyclerView.Adapter<recipe_page.RecipeIngredientListCustomViewHolder> {
         List<List<String>> items;
-//        ArrayList<ingredientItem> items;
 
         public RecipeIngredientListCustomAdapter(List<List<String>> a_map) {
             items = a_map;
         }
-
-//        public RecipeIngredientListCustomAdapter(ArrayList<ingredientItem> a_list) {
-//            items = a_list;
-//        }
 
         @NonNull
         @Override
@@ -140,13 +135,6 @@ public class recipe_page extends AppCompatActivity {
             holder.ingredient_weight.setText((String)item.get(1));
         }
 
-//        @Override
-//        public void onBindViewHolder(@NonNull recipe_page.RecipeIngredientListCustomViewHolder holder, int position) {
-//            ingredientItem item = items.get(position);
-//            holder.ingredient_name.setText(item.getName());
-//            holder.ingredient_weight.setText(item.getWeight());
-//        }
-
         @Override
         public int getItemCount() {
             return items.size();
@@ -158,13 +146,6 @@ public class recipe_page extends AppCompatActivity {
         RecyclerView IngredientList = findViewById(R.id.recipe_ingredient_list);
 
         List<List<String>>items = recipe.getRecipeIngredient();
-//        ArrayList<ingredientItem> items = new ArrayList<ingredientItem>();
-
-//        items.add(new ingredientItem("당근", "0.1","과일-채소"));
-//        items.add(new ingredientItem("양파", "0.1","과일-채소"));
-//        items.add(new ingredientItem("애호박", "0.1","과일-채소"));
-//        items.add(new ingredientItem("만두", "0.1","기타"));
-//        items.add(new ingredientItem("소고기 국거리", "0.1","육류"));
 
         recipe_page.RecipeIngredientListCustomAdapter rlAdapter = new recipe_page.RecipeIngredientListCustomAdapter(items);
         IngredientList.setAdapter(rlAdapter);
