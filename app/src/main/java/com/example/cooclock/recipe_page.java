@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -118,6 +119,7 @@ public class recipe_page extends AppCompatActivity {
     레시피 기본 정보 수정(작성자, 몇 인분, 제목, 좋아요 상태, 후기
      */
     public void initializeRecipe() {
+        ImageView recipe_image = (ImageView) findViewById(R.id.recipe_page_recipe_image); // 사진
         TextView recipe_writer = (TextView) findViewById(R.id.recipe_writer); // 작성자
         TextView recipe_servings = (TextView) findViewById(R.id.recipe_servings); // 기준 인원
         TextView recipe_title = (TextView) findViewById(R.id.recipe_title); // 제목
@@ -131,7 +133,7 @@ public class recipe_page extends AppCompatActivity {
         LinearProgressIndicator two_point = (LinearProgressIndicator) findViewById(R.id.rating_2); // 2점
         LinearProgressIndicator one_point = (LinearProgressIndicator) findViewById(R.id.rating_1); // 1점
 
-
+        recipe_image.setImageResource(R.drawable.sample_img);
         recipe_writer.setText(recipe.getWriter()); // 레시피 작성자 설정
         recipe_servings.setText(String.valueOf(recipe.getServings())); // 기준 인원 설정
         recipe_title.setText(recipe.getTitle()); // 제목 설정
