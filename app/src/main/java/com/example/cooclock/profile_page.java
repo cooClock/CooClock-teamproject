@@ -81,7 +81,9 @@ public class profile_page extends Fragment {
                 //!TODO 로그아웃 부분 코드 추가
                 FirebaseAuth mAuth = FirebaseAuth.getInstance();
                 mAuth.signOut();
-
+                Intent intent = new Intent(requireContext(),login_page.class);
+                startActivity(intent);
+                getActivity().finish();
                 Log.d("logcat", "logout");
             }
         });
